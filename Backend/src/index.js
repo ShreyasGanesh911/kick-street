@@ -1,6 +1,7 @@
 const connection = require('./db/index.js')
 const app = require("./app.js")
-
+const Error = require('./middlewares/Error.js')
+app.use(Error)
 connection().then(()=>{
     app.listen(4000,()=>console.log("Listening to port ",4000))
 }).catch((err)=>{
