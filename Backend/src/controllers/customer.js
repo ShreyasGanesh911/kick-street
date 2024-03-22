@@ -1,4 +1,4 @@
-const AsyncHandler = require("../middlewares/AsyncHandler")
+const AsyncHandler = require("../utils/AsyncHandler.js")
 const ErrorHandler = require("../utils/errorHandler")
 const user = require('../models/user.model.js')
 /*

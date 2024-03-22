@@ -1,5 +1,5 @@
 const express = require("express")
-const AsyncHandler = require("../middlewares/AsyncHandler")
+const AsyncHandler = require("../utils/AsyncHandler")
 const { userRouterCheck , userLogin , userSignUp } = require("../controllers/customer")
 
 const userRouter = express.Router()
