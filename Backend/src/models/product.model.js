@@ -44,10 +44,11 @@ const productSchema = new mongoose.Schema({
         enum : ['male','female','unisex'],
         default:"unisex"
     },
-    category:{
-        type: Schema.Types.ObjectId,
-        ref:"category"
-    },
+    category:[
+        {   type: Schema.Types.ObjectId,
+            ref:"category"
+        }]
+,
     images:[{
         url:{
             type:String,
