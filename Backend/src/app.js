@@ -4,7 +4,9 @@ const cookieParser = require('cookie-parser')
 const userRouter = require("./Routes/User.route")
 const productRouter = require("./Routes/Products.route")
 const orderRouter = require("./Routes/Order.route")
+
 const APIError = require("./utils/APIError")
+const categoryRouter = require("./Routes/Category.route")
 // const AsyncHandler = require("./utils/AsyncHandler")
 
 const app = express()
@@ -13,6 +15,7 @@ app.use(cookieParser())
 app.use("/user",userRouter)
 app.use('/products',productRouter)
 app.use("/order",orderRouter)
+app.use('/category',categoryRouter)
 app.use(APIError)
 module.exports = app
 
