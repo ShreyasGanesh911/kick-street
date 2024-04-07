@@ -1,3 +1,6 @@
+const express = require("express")
+const { getDetails } = require("../controllers/admin")
+const adminAuth = require("../middlewares/Auth.admin")
 /*
     Admin role in this app
     
@@ -14,3 +17,9 @@
     2) Add trending list
 
 */
+const adminRoute = express.Router()
+
+adminRoute.get('/details',adminAuth,getDetails)
+
+
+module.exports = adminRoute
