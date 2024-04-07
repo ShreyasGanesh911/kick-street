@@ -9,17 +9,13 @@ const productSchema = new mongoose.Schema({
         type:String,
         required:[true,"Description of the product must be mentioned"]
     },
-    image:[{
-        type:String,
-        required:true
-    }],
     rating:{
         type:Number,
         default:0
     },
     reviews:[{
         user:{
-            type:Schema.Types.ObjectId,
+            type:mongoose.Schema.Types.ObjectId,
             ref:"user"
         },
         review:{
@@ -45,7 +41,7 @@ const productSchema = new mongoose.Schema({
         default:"unisex"
     },
     category:[
-        {   type: Schema.Types.ObjectId,
+        {   type: mongoose.Schema.Types.ObjectId,
             ref:"category"
         }]
 ,
@@ -57,7 +53,15 @@ const productSchema = new mongoose.Schema({
     }]
 
 })
-
+// const productSchema = new mongoose.Schema({
+//     name:{
+//         type:String
+//     },
+//     price:{
+//         type:Number,
+//         required:[true,"Enter the proce of the product "]
+//     }
+// })
 const product = mongoose.model('product',productSchema)
 
-module.export = product
+module.exports = product
