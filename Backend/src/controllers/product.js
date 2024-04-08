@@ -26,4 +26,12 @@ const deleteProduct = AsyncHandler(async(req,res,next)=>{
         return next(new ErrorHandler("Product doesn't exist",404))
     res.status(200).json({success:true,message:"Product deleted successfully!"})
 })
-module.exports = {addProduct,viewProducts,deleteProduct}   
+
+const updateProduct = AsyncHandler(async(req,res,next)=>{
+    const {name,description,price,stock,gender,_id} = req.body
+    const responce = await product.findByIdAndUpdate(_id,{name,description,price,stock,gender})
+    if(!responce)
+        return next(new ErrorHandler('Product not found',404))
+    res.status(200).json({success:true,message:"Product updated successfully"})
+})
+module.exports = {addProduct,viewProducts,deleteProduct,updateProduct}    
