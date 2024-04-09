@@ -3,6 +3,8 @@ const ErrorHandler = require("../utils/errorHandler")
 const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken')
 const user = require('../models/user.model.js')
+const cart = require("../models/cart.model.js")
+const mongoose = require('mongoose');
 require('dotenv').config()
 /*
     User must be able to carry out the following operations
@@ -29,6 +31,7 @@ const userLogin = AsyncHandler(async(req,res,next)=>{
     if(!check)
         return next(new ErrorHandler("Incorrect password",401))
     const {email,_id,phone,type} = findUser
+    
     const token = jwt.sign({email,_id,phone,type},process.env.JWTPASSWORD,{expiresIn:'1d'})
     res.cookie("Auth",token).status(200).json({success:true,message:"User logged in successfully!"})
     
@@ -42,7 +45,33 @@ const userSignUp = AsyncHandler(async(req,res,next)=>{
         {name,email,phone,type,password:hashedPassword,dob:date}
         ).then(()=>res.status(201).json({success:true,message:"User created successfully!"}))
 })
+//
+
+// Add product to cart 
+/*
+    Problems while adding item to cart
+    1. Check if the cart exists for the user
+    2. Check if the item is already added to the cart -> yes ? increment the qty of the product
+*/
+const addProduct = AsyncHandler(async(req,res,next)=>{
+    const {_id} = req.user
+    const {pId,qty,price} = req.body
+    items = [{pId,qty,price}]
+    const find = await cart.findOne({user:_id})
+    if(!find)
+        await cart.create({user:id})
+    const responce = await cart.findOneAndUpdate({user:_id},{$push:{"items":items}})
+    res.status(200).send({success:true,message:"Added to cart successfully ",responce})
+})  
+
+const viewCart = AsyncHandler(async(req,res,next)=>{
+    const {_id} = req.user
+    const find = await cart.findOne({user:_id}).populate('items.pId')
+     const cartItems = find.items
+    //const cartItems = find.items.populate("product")
+    res.status(200).json({success:true,result:find})
+})
 
 
 
-module.exports = {userRouterCheck , userLogin , userSignUp}
+module.exports = {userRouterCheck , userLogin , userSignUp,addProduct,viewCart}
