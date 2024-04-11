@@ -2,6 +2,24 @@ const category = require("../models/category.model");
 const AsyncHandler = require("../utils/AsyncHandler");
 const ErrorHandler = require("../utils/errorHandler");
 // CRUD operations on category
+/*
+
+    Admin must be able to create a new category where the product belongs to 
+    Must be able to add multiple categories
+
+*/
+
+/**
+ Basic categories 
+    Men
+    Women
+    Unisex
+    Sale / offer
+    Street ware
+    Casuals
+    ACCESSORIES
+
+ */
 const addCategory = AsyncHandler(async(req,res)=>{
     const {categoryName,categoryDesc} = req.body
     const responce = await category.create({categoryName,categoryDesc})

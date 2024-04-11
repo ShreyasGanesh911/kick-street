@@ -1,22 +1,12 @@
 const express = require('express')
+const adminAuth = require('../middlewares/Auth.admin')
+const userAuth = require('../middlewares/Auth.customer')
 const orderRouter = express.Router()
-
 /*
+    Orders placed by a customer shall be seen only by him
 
-    Admin must be able to create a new category where the product belongs to 
-    Must be able to add multiple categories
-
+    An admin can see all orders placed by all customers
 */
-
-/**
- Basic categories 
-    Men
-    Women
-    Unisex
-    Sale / offer
-    Street ware
-    Casuals
-    ACCESSORIES
-
- */
+orderRouter.get('/all',adminAuth,getAllOrders)
+orderRouter.get('/myOrders',userAuth,viewOrders)
 module.exports = orderRouter
