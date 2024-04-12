@@ -1,5 +1,6 @@
 # backend portal
-
+### Schema
+![Schema](./public/KS_Schema.png)
 ## Collections :
 User <br/>
 Admin <br/>
