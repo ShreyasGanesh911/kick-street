@@ -34,7 +34,8 @@ const orderSchema = new mongoose.Schema({
     },
     payment:{
         type:mongoose.Schema.Types.ObjectId,
-        ref:"payment"
+        ref:"payment",
+        required:[true,"Payment Id not provided"]
     }
 
 })

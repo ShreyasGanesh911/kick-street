@@ -20,10 +20,10 @@ const viewOrders = AsyncHandler(async(req,res,next)=>{
 const placeOrder = AsyncHandler(async(req,res,next)=>{
     const{_id} = req.user
     const user = _id
-    const {amount,items} = req.body
+    const {amount,items,payment} = req.body
     console.log(typeof items)
-    const result = await order.create({user,items,amount})
-    const responce = await result.populate("items.pId")
+    const result = await order.create({user,items,amount,payment})
+    const responce = await result.populate("items.pId payment")
     res.status(200).json({success:true,responce,message:"Order placed"})
 })
 module.exports = {getAllOrders,viewOrders,placeOrder}
