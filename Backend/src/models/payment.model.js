@@ -12,9 +12,14 @@ const paymentSchema = new mongoose.Schema({
         required:true
     },
     txnId:{
-        ty
+        type :String,
+        required : [true,"Txn ID not provided"]
     },
-    refer
+    date:{
+        type:Date,
+        default: new Date()
+    },
+    
 
 })
 
