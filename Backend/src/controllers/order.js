@@ -13,6 +13,10 @@ const viewOrders = AsyncHandler(async(req,res,next)=>{
     const result = await order.find({user}).populate('items.pId')
     res.status(200).json({Success:true,result})
 })
+
+/*
+    In place an order, the user must first do the payment and then the order should be placed
+*/
 const placeOrder = AsyncHandler(async(req,res,next)=>{
     const{_id} = req.user
     const user = _id
