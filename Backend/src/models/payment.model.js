@@ -1,15 +1,11 @@
 const mongoose = require('mongoose')
 
 const paymentSchema = new mongoose.Schema({
-    orderId:{
-        type:Schema.Types.ObjectId,
-        ref:"order"
-    },
 
     method:{
         type:String,
         enum:['COD','UPI','Card'],
-        required:true
+        required:[true,"Payment method not mentioned"]
     },
     txnId:{
         type :String,
@@ -19,7 +15,11 @@ const paymentSchema = new mongoose.Schema({
         type:Date,
         default: new Date()
     },
-    
+    amount:{
+        type:Number,
+        required:[true,"Amount not specified"]
+    }
+
 
 })
 

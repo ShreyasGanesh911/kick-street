@@ -32,6 +32,10 @@ const orderSchema = new mongoose.Schema({
         type:Number,
         required:true
     },
+    payment:{
+        type:mongoose.Schema.Types.ObjectId,
+        ref:"payment"
+    }
 
 })
 
