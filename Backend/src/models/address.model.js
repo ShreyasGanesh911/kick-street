@@ -6,6 +6,7 @@ const addressSchema = new mongoose.Schema({
     },
     addressName:{
         type:String,
+        unique:[true,"Name must be unique"]
     },
     addressLine1 : {
         type:String,
