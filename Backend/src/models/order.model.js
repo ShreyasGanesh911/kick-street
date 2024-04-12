@@ -6,8 +6,10 @@ const orderSchema = new mongoose.Schema({
         ref:"user"
     },
     items:[{
-        pId : mongoose.Schema.Types.ObjectId,
-        ref:"product",
+        pId : {
+            type:mongoose.Schema.Types.ObjectId,
+            ref:"product",
+        },
         price:{
             type:Number,
             required:true

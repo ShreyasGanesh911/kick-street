@@ -12,7 +12,7 @@ const paymentSchema = new mongoose.Schema({
         required:true
     },
     txnId:{
-
+        ty
     },
     refer
 

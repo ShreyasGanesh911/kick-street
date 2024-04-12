@@ -1,6 +1,8 @@
 const express = require('express')
 const adminAuth = require('../middlewares/Auth.admin')
 const userAuth = require('../middlewares/Auth.customer')
+const {getAllOrders,viewOrders,placeOrder} = require('../controllers/order')
+
 const orderRouter = express.Router()
 /*
     Orders placed by a customer shall be seen only by him
@@ -9,4 +11,5 @@ const orderRouter = express.Router()
 */
 orderRouter.get('/all',adminAuth,getAllOrders)
 orderRouter.get('/myOrders',userAuth,viewOrders)
+orderRouter.post("/placeOrder",userAuth,placeOrder)
 module.exports = orderRouter
