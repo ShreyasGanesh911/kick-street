@@ -1,15 +1,12 @@
 const express = require("express")
 const cookieParser = require('cookie-parser') 
-// const ErrorHandler = require("./utils/errorHandler")
+const APIError = require("./utils/APIError")
 const userRouter = require("./Routes/User.route")
 const productRouter = require("./Routes/Products.route")
 const orderRouter = require("./Routes/Order.route")
-
-const APIError = require("./utils/APIError")
 const categoryRouter = require("./Routes/Category.route")
 const adminRoute = require("./Routes/Admin.route")
-const { paymentRouter } = require("./Routes/Payment.route")
-// const AsyncHandler = require("./utils/AsyncHandler")
+const paymentRouter = require("./Routes/Payment.route")
 
 const app = express()
 app.use(express.json())
@@ -22,19 +19,4 @@ app.use('/admin',adminRoute)
 app.use('/payment',paymentRouter)
 app.use(APIError)
 module.exports = app
-
-// app.get('/test',(req,res,next)=>{
-//     if(0)
-//         res.status(200).json("Good to go")
-//     else
-//         next(new ErrorHandler("Test message",404))
-// })
-
-// app.get('/test/async',AsyncHandler(async(req,res,next)=>{
-//     if(1)
-//     res.stats(200).json("Good to go")
-// else
-//     next(new ErrorHandler("Test message",404))
-// }))
-
 

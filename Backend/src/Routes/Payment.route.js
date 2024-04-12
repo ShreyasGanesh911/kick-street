@@ -4,4 +4,4 @@ const { userPayment } = require('../controllers/Payment')
 const paymentRouter = express.Router()
 
 paymentRouter.post('/pay',userAuth,userPayment)
-module.exports = {paymentRouter}
+module.exports = paymentRouter
