@@ -3,7 +3,7 @@
 ![Schema](./public/KS_Schema.png)
 ## Collections :
 User <br/>
-Admin <br/>
+Payment <br/>
 Cart <br/>
 Categories <br/>
 Orders <br/>
