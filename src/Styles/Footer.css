@@ -1,0 +1,21 @@
+.footer-div{
+    width: 100vw;
+    height: 50vh;
+    background-color: #264348;
+    
+}
+
+ul.social > li{
+    font-size: 40px;
+    overflow-y: hidden;
+}
+.social{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.footer-content{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
