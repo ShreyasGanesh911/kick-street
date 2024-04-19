@@ -6,3 +6,9 @@
   margin: 0;
   overflow-x: hidden;
 }
+
+.displayFlex{
+  display: flex;
+  justify-content: space-between !important;
+  align-items: center;
+}
