@@ -1,0 +1,10 @@
+.item-container{
+    width: 400px;
+    height: 400px;
+}
+.container-div{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+}

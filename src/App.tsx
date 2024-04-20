@@ -2,6 +2,7 @@ import '@radix-ui/themes/styles.css';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Navbar from './global/Navbar';
 import Footer from './global/Footer';
+import Home from './page/User/Home';
 function App() {
   return (
 
@@ -10,7 +11,7 @@ function App() {
       <Navbar/>
         <Routes>
           
-          <Route path = "" element=""></Route>
+          <Route path = "/" element={<Home/>}></Route>
         </Routes>
         <Footer/>
       </BrowserRouter>
