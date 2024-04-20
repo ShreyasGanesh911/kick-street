@@ -1,4 +1,3 @@
-import React from 'react'
 import Carousel from '../../components/CarouselDiv'
 import "../../Styles/Home.css"
 import Card from '../../components/Card'
