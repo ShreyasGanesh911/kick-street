@@ -1,5 +1,4 @@
-import React, { SetStateAction, useState } from 'react'
-import { Link } from 'react-router-dom'
+import React, {useState } from 'react'
 
 type Props={
     form:boolean,
