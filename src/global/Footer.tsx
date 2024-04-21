@@ -37,8 +37,10 @@ export default function Footer() {
         
       </div>
       <hr className='my-6'/>
+    <div className=''>
       <p className='text-center text-white'>Created with  <i className="fa-solid fa-heart text-red-700 text-xl "></i>  by shreyas</p>
       <p className='text-center font-mono text-orange-300'>2024 github</p>
+    </div>
       </section>
     </>
   )
