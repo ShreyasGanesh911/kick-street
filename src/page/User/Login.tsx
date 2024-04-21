@@ -1,7 +1,10 @@
-import React from 'react'
+import React, { useContext, useState } from 'react'
 import LoginForm from '../../components/LoginForm'
 import img from "../../Assets/mural.jpg"
+import SignupForm from '../../components/SignupForm'
+
 export default function Login() {
+  const [form , setForm] = useState(true)
   return (
     <>
      <section className='page displayFlex bg-gray-50'>
@@ -12,7 +15,14 @@ export default function Login() {
         </div>
       </div>
       <div className=' w-1/2 h-full flex justify-center items-center bg-gray-50'>
-      <LoginForm/>
+        {
+          form ?
+          <LoginForm form = {form} setForm={setForm}/>
+          :
+          <SignupForm form = {form} setForm={setForm}/>
+        }
+        
+        
       </div>
       </div>
       </section> 
