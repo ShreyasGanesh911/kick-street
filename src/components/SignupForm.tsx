@@ -15,9 +15,9 @@ export default function SignupForm({form,setForm}:Props) {
     }
   return (
     <>
-     <form className=' px-14  bg-white w-3/4 h-3/5  flex flex-col justify-center'>
+     <form className=' px-14  bg-white w-3/4 h-4/5  flex flex-col justify-center'>
               <h1 className=' text-4xl overflow-hidden font-semibold my-3'>Create account</h1>
-              <p className='py-3'>Have an account!? <span className='text-red-500 underline'><button onClick={()=>{setForm(true)}} className='text-lg'>Login</button></span></p>
+              <p className='py-3'>Have an account!?, try  <span className='text-red-500 underline'><button onClick={()=>{setForm(true)}} className='text-lg underline'>Logging in</button></span></p>
               <div className='flex justify-center items-start flex-col'>
                <div >
                <label htmlFor="email" className=' text-slate-700 tracking-wide text-lg ' >Email:</label>
@@ -48,7 +48,7 @@ export default function SignupForm({form,setForm}:Props) {
 
         
               <div className='flex flex-row-reverse w-full my-3 px-3'>
-                <button className='bg-slate-700 hover:bg-slate-950 text-white font-bold py-2 px-4 rounded'>Signup</button>
+                <button className='bg-slate-700 hover:bg-slate-950 text-white font-bold py-2 px-4 rounded'>Register</button>
               </div>
 
         </form>  
