@@ -9,11 +9,16 @@ function App() {
 
     <>
       <BrowserRouter>
-      <Navbar/>
-        <Routes>
-          
-          <Route path = "/" element={<Home/>}></Route>
-          <Route path = "/login" element={<Login/>}></Route>
+      
+        <Routes> 
+          <Route path = "/" element={<Navbar/>}>
+          <Route path='' element={<Home/>}></Route>
+          <Route path = "login" element={<Login/>}></Route>
+          </Route>
+
+          <Route path="/admin">
+            
+          </Route> 
         </Routes>
         <Footer/>
       </BrowserRouter>

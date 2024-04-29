@@ -1,7 +1,9 @@
 import "../Styles/Navbar.css"
 import logo from "../Assets/Logo.png"
+import { Outlet } from "react-router-dom"
 export default function Navbar() {
   return (
+    <>
     <nav className='border border-slate-950 nav displayFlex'>
       <div className="displayFlex nav-div">
         <div className="nav-logo"><img className="logo" src={logo} alt="Logo Here" /></div>
@@ -13,6 +15,11 @@ export default function Navbar() {
           <li><i className="fa-solid fa-bag-shopping px-4"></i></li>
           </ul></div>
       </div>
+      
     </nav>
+    <Outlet/>
+    </>
+    
+    
   )
 }
