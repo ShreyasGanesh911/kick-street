@@ -6,10 +6,10 @@ export default function Navbar() {
   
   return (
     <>
-    <div className="bg-black text-white  flex justify-center w-full">
+    <div className="bg-black text-white  flex justify-center w-full ">
       <span className="p-2">FREE SHIPPING ON ALL ORDERS ABOVE 9,999/-</span>
     </div>
-    <nav className=' nav displayFlex sticky top-0 bg-white z-30'>
+    <nav className=' nav displayFlex sticky top-0 bg-white z-30 overflow-hidden'>
       <div className="displayFlex nav-div bg-white">
         <Link to='/'><div className="nav-logo"><img className="logo" src={logo} alt="Logo Here" /></div></Link>
         <div className="nav-main"><input className="nav-search" type="text" placeholder="Search" /></div>
