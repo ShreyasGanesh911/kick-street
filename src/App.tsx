@@ -7,6 +7,7 @@ import Login from './page/User/Login';
 import Product from './components/Product';
 import Notfound from './global/Notfound';
 import Cart from './page/User/Cart';
+import About from './page/About';
 function App() {
   return (
 
@@ -18,8 +19,9 @@ function App() {
         <Route path='' element={<Home/>}></Route>
         <Route path='home' element={<Home/>}></Route>
         <Route path="product/:productId" element={<Product/>}></Route>
-        <Route path='/cart' element={<Cart/>}></Route>
+        <Route path='cart' element={<Cart/>}></Route>
         <Route path = "login" element={<Login/>}></Route>
+        <Route path = "about" element={<About/>}></Route>
         </Route>
 
         <Route path="/admin">
