@@ -1,10 +1,11 @@
 .nav{
-    width: 100%;
+    width: 100vw;
     height: 10vh;
-    overflow-y: hidden;
+    overflow: hidden;
 }
 .nav-div{
-    width: 100vw;
+    width: 100%;
+    overflow-x: hidden;
 }
 .nav-logo{
     padding: 0 0 0 130px;
