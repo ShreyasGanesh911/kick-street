@@ -15,8 +15,8 @@ export default function Navbar() {
         <div className="nav-main"><input className="nav-search" type="text" placeholder="Search" /></div>
         <div className="nav-side">
           <ul className="flex text-xl">
-          <li><i className="fa-regular fa-user px-4"></i></li>
-          <li><i className="fa-solid fa-circle-info"></i></li>
+          <li><NavLink to='/login'><i className="fa-regular fa-user px-4"></i></NavLink></li>
+          <li><NavLink to='/about'><i className="fa-solid fa-circle-info"></i></NavLink></li>
           <li><NavLink to='/cart'> <i className="fa-solid fa-bag-shopping px-4 "></i></NavLink></li>
           </ul></div>
       </div>

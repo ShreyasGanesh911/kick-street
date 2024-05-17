@@ -20,3 +20,8 @@
 .active{
   color: rgba(6, 152, 250, 0.623);
 }
+
+
+.backGround-car{
+  background-image: url('https://i.pinimg.com/736x/03/08/34/030834f7223ebfd68a5b7a0749b1659e.jpg');
+}
