@@ -8,6 +8,7 @@ import Product from './components/Product';
 import Notfound from './global/Notfound';
 import Cart from './page/User/Cart';
 import About from './page/About';
+import AllProducts from './page/User/AllProducts';
 function App() {
   return (
 
@@ -22,6 +23,7 @@ function App() {
         <Route path='cart' element={<Cart/>}></Route>
         <Route path = "login" element={<Login/>}></Route>
         <Route path = "about" element={<About/>}></Route>
+        <Route path = "all" element={<AllProducts/>}></Route>
         </Route>
 
         <Route path="/admin">
