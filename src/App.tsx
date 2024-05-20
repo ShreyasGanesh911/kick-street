@@ -9,6 +9,8 @@ import Notfound from './global/Notfound';
 import Cart from './page/User/Cart';
 import About from './page/About';
 import AllProducts from './page/User/AllProducts';
+import HomeAdmin from './page/Admin/HomeAdmin';
+import Sidebar from './global/Admin/SidebarMenu';
 function App() {
   return (
 
@@ -26,8 +28,8 @@ function App() {
         <Route path = "all" element={<AllProducts/>}></Route>
         </Route>
 
-        <Route path="/admin">
-          
+        <Route path="/admin" element={<Sidebar/>}>
+          <Route path='' element={<HomeAdmin/>}></Route>
         </Route> 
         <Route path='*' element={<Notfound/>}></Route>
       </Routes> 
