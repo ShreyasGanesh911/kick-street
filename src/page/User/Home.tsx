@@ -7,7 +7,7 @@ export default function Home() {
     <>
      <section className='page displayFlex flex-col relative'>
       <Carousel />
-      <div className='container-div py-20 w-full'>
+      <div className='container-div py-20 w-full overflow-x-hidden'>
        <Link to='/product/45'> <Card/></Link>
         <Card/>
         <Card/>
