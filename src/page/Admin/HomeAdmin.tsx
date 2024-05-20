@@ -14,7 +14,7 @@ export default function HomeAdmin() {
           </select>
         </div>
       </div>
-      <div className='w-full h-auto min-h-96 bg-pink-200'>
+      <div className='w-full h-auto min-h-96 '>
         <div className='flex items-center justify-evenly py-5'>
           <div className='w-1/2 flex justify-around'>
             <div className='w-1/3 h-40 bg-slate-500'></div>
