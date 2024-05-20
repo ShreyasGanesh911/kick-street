@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { Link, Outlet } from 'react-router-dom'
 import { Sidebar, Menu, MenuItem} from 'react-pro-sidebar';
 //import logo from '../../Assets/Logo.png'
-const menuList:{name:string,fav:string,path:string}[] = [{name:"Overview",fav:'fa-solid fa-chart-simple',path:'/admin'},{name:'Products',fav:'fa-solid fa-box',path:'/admin/products'},{name:"Orders",fav:"fa-solid fa-box-open",path:'/admin/users'},{name:"Users",fav:"fa-solid fa-users",path:'/admin/users'}
+const menuList:{name:string,fav:string,path:string}[] = [{name:"Overview",fav:'fa-solid fa-chart-simple',path:'/admin'},{name:'Products',fav:'fa-solid fa-box',path:'/admin/products'},{name:"Orders",fav:"fa-solid fa-box-open",path:'/admin/orders'},{name:"Users",fav:"fa-solid fa-users",path:'/admin/users'}
   ,{name:"Payments",fav:'fa-solid fa-money-check-dollar',path:'/admin/payments'},{name:"Settings",fav:'fa-solid fa-gear',path:'/admin/settings'}
 ]
 export default function SidebarMenu() {
