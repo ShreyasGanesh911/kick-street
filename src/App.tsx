@@ -13,6 +13,9 @@ import HomeAdmin from './page/Admin/HomeAdmin';
 import Sidebar from './global/Admin/SidebarMenu';
 import OrderAdmin from './page/Admin/OrderAdmin';
 import ProductAdmin from './page/Admin/ProductAdmin';
+import UserAdmin from './page/Admin/UserAdmin';
+import SettingsAdmin from './page/Admin/SettingsAdmin';
+import PaymentAdmin from './page/Admin/PaymentAdmin';
 function App() {
   return (
 
@@ -36,9 +39,9 @@ function App() {
           <Route path='' element={<HomeAdmin/>}></Route>
           <Route path='orders' element={<OrderAdmin/>}></Route>
           <Route path='products' element={<ProductAdmin/>}></Route>
-          <Route path='users' element={<ProductAdmin/>}></Route>
-          <Route path='settings' element={<ProductAdmin/>}></Route>
-          <Route path='payments' element={<ProductAdmin/>}></Route>
+          <Route path='users' element={<UserAdmin/>}></Route>
+          <Route path='settings' element={<SettingsAdmin/>}></Route>
+          <Route path='payments' element={<PaymentAdmin/>}></Route>
         </Route> 
         <Route path='*' element={<Notfound/>}></Route>
       </Routes> 
