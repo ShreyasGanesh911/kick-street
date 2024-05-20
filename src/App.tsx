@@ -38,7 +38,7 @@ function App() {
           <Route path='products' element={<ProductAdmin/>}></Route>
           <Route path='users' element={<ProductAdmin/>}></Route>
           <Route path='settings' element={<ProductAdmin/>}></Route>
-          <Route path='payment' element={<ProductAdmin/>}></Route>
+          <Route path='payments' element={<ProductAdmin/>}></Route>
         </Route> 
         <Route path='*' element={<Notfound/>}></Route>
       </Routes> 
