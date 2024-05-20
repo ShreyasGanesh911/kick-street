@@ -13,7 +13,7 @@
   align-items: center;
 }
 .page{
-  width: 100vw;
+  width: 99vw;
   min-height: 100vh;
   height: auto;
 }
@@ -21,6 +21,14 @@
   color: rgba(6, 152, 250, 0.623);
 }
 
+.adminPage{
+  min-height: 100vh;
+  height: auto;
+  width: 85%;
+  position: absolute;
+  top: 0;
+  right: 0;
+}
 
 .backGround-car{
   background-image: url('https://i.pinimg.com/736x/03/08/34/030834f7223ebfd68a5b7a0749b1659e.jpg');

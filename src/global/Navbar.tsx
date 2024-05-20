@@ -6,7 +6,7 @@ export default function Navbar() {
   
   return (
     <>
-    <div className="bg-black text-white  flex justify-center w-full ">
+    <div className="bg-black  overflow-x-hidden text-white  flex justify-center w-full ">
       <span className="p-2">FREE SHIPPING ON ALL ORDERS ABOVE 9,999/-</span>
     </div>
     <nav className=' nav displayFlex sticky top-0 bg-white z-30 overflow-hidden'>

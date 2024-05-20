@@ -3,7 +3,7 @@ import '../Styles/Footer.css'
 export default function Footer() {
   return (
     <>
-      <section className='footer-div '>
+      <section className='footer-div overflow-hidden'>
       <div className='text-white   my-4 overflow-y-hidden'>
         <h2 className='text-4xl text-center overflow-y-hidden'>Kick Street</h2>
       </div>
