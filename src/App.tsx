@@ -11,6 +11,8 @@ import About from './page/About';
 import AllProducts from './page/User/AllProducts';
 import HomeAdmin from './page/Admin/HomeAdmin';
 import Sidebar from './global/Admin/SidebarMenu';
+import OrderAdmin from './page/Admin/OrderAdmin';
+import ProductAdmin from './page/Admin/ProductAdmin';
 function App() {
   return (
 
@@ -18,23 +20,29 @@ function App() {
       <BrowserRouter>
       
       <Routes> 
-        <Route path = "/" element={<Navbar/>}>
-        <Route path='' element={<Home/>}></Route>
-        <Route path='home' element={<Home/>}></Route>
-        <Route path="product/:productId" element={<Product/>}></Route>
-        <Route path='cart' element={<Cart/>}></Route>
-        <Route path = "login" element={<Login/>}></Route>
-        <Route path = "about" element={<About/>}></Route>
-        <Route path = "all" element={<AllProducts/>}></Route>
+          
+          <Route path = "/" element={<Navbar/>}>
+          <Route path='' element={<Home/>}></Route>
+          <Route path='home' element={<Home/>}></Route>
+          <Route path="product/:productId" element={<Product/>}></Route>
+          <Route path='cart' element={<Cart/>}></Route>
+          <Route path = "login" element={<Login/>}></Route>
+          <Route path = "about" element={<About/>}></Route>
+          <Route path = "all" element={<AllProducts/>}></Route>
         </Route>
-
-        <Route path="/admin" element={<Sidebar/>}>
+        
+          <Route path="/admin/" element={<Sidebar/>}>
+          
           <Route path='' element={<HomeAdmin/>}></Route>
+          <Route path='orders' element={<OrderAdmin/>}></Route>
+          <Route path='products' element={<ProductAdmin/>}></Route>
         </Route> 
         <Route path='*' element={<Notfound/>}></Route>
       </Routes> 
       <Footer/>
     </BrowserRouter>
+
+    
     </>
   )
 }
