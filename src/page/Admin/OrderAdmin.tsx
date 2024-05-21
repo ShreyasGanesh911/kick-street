@@ -1,4 +1,5 @@
 import React from 'react'
+import OrderTableChild from '../../components/Admin/OrderTableChild'
 
 export default function OrderAdmin() {
   return (
@@ -12,18 +13,21 @@ export default function OrderAdmin() {
         <div className='w-11/12 flex flex-wrap justify-center items-center  my-9'>
         <table className='w-full my-14 py-5'>
             <tr className='border-b'>
-              <th className=' w-1/6 py-5'>USER ID</th>
+              <th className=' w-1/6 py-5'>ORDER ID</th>
               <th className=' w-1/6 py-5'>DATE</th>
               <th className='w-1/6 py-5'>NAME</th>
               <th className='w-1/6 py-5'>AMOUNT</th>
               <th className='w-1/6 py-5'>PAYMENT</th>
               <th className='w-1/6 py-5'>STATUS</th>
             </tr>
-          {/* <TableChildAdmin/>
-          <TableChildAdmin/>
-          <TableChildAdmin/>
-          <TableChildAdmin/>
-          <TableChildAdmin/> */}
+            <OrderTableChild/>
+            <OrderTableChild/>
+            <OrderTableChild/>
+            <OrderTableChild/>
+            <OrderTableChild/>
+            <OrderTableChild/>
+            <OrderTableChild/>
+            <OrderTableChild/>
             
 
             
