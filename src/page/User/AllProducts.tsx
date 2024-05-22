@@ -1,10 +1,12 @@
-import React from 'react' 
+import React, { useEffect } from 'react' 
 import IntroCard from '../../components/Carousel-card/IntroCard'
 import Filter from '../../components/AllProducts/Filter'
-import Card from '../../components/Card'
+import CardAdmin from '../../components/Admin/CardAdmin'
 
 export default function AllProducts() {
-
+  useEffect(()=>{
+    window.scrollTo(0,0)
+})
   return (
     <>
      <section className='page flex justify-start items-center flex-col overflow-hidden'>
@@ -12,7 +14,7 @@ export default function AllProducts() {
       <div className='w-3/4'>
       <IntroCard/>
       </div>
-        <h1 className='text-4xl p-2 mt-6 font-extralight'>All sneakers</h1>
+        <h1 className='text-5xl p-2 mt-6 font-extralight '>All sneakers</h1>
       <div className='w-full flex mt-14 overflow-hidden'>
       <Filter/>
       <div className='w-3/4  '>
@@ -23,18 +25,27 @@ export default function AllProducts() {
           </select>
         </div>
         <div className='w-full flex flex-wrap py-5 justify-center items-center'>
-        <Card/>
-        <Card/>
-        <Card/>
-        <Card/>
-        <Card/>
-        <Card/>
-        <Card/>
-        <Card/>
-        <Card/>
-        <Card/>
-        <Card/>
-        <Card/>
+          <CardAdmin/>
+          <CardAdmin/>
+          <CardAdmin/>
+          <CardAdmin/>
+          <CardAdmin/>
+          <CardAdmin/>
+          <CardAdmin/>
+          <CardAdmin/>
+          <CardAdmin/>
+          <CardAdmin/>
+          <CardAdmin/>
+          <CardAdmin/>
+          <CardAdmin/>
+          <CardAdmin/>
+          <CardAdmin/>
+          <CardAdmin/>
+          <CardAdmin/>
+          <CardAdmin/>
+          <CardAdmin/>
+          <CardAdmin/>
+      
         </div>
        
       </div>
