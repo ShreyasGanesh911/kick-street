@@ -8,7 +8,7 @@ export default function ProductDetails() {
       <h1 className='text-4xl capitalize py-5'>adidas OZWEEGO</h1>
         <div className='my-3'>
         <p className='text-2xl'>RS. <span className='text-black font-semibold space-x-1 tracking-wider'>11999/-</span></p>
-      <p className='text-2xl'>Brand: <span>Adidas</span></p>
+      <p className='text-2xl'>Brand: <span className='font-semibold'>Adidas</span></p>
         </div>
       <ul className='inline-flex  p-1 my-3'>
         <li><button className={`text-white px-4 py-2  bg-gray-800 hover:bg-black rounded text-3xl ${qty===0 ? "cursor-not-allowed bg-gray-500":'' }`} disabled={qty===0? true:false} onClick={()=> setQty(qty-1) }>-</button></li>
@@ -17,12 +17,15 @@ export default function ProductDetails() {
       </ul>
       <br />
       <button className={`p-3 text-white border bg-gray-800 hover:bg-black rounded mb-5  ${qty===0 ? "cursor-not-allowed bg-gray-500":'' }`} disabled={qty===0? true: false}>Add to cart</button>
-      <p>sizes</p>
+      <p>sizes (UK)</p>
       <div className='flex justify-start m-2'>
+        <div className='w-10 h-10 border mx-3 flex justify-center items-center border-black'>6</div>
+        <div className='w-10 h-10 border mx-3 flex justify-center items-center border-black'>7</div>
         <div className='w-10 h-10 border mx-3 flex justify-center items-center border-black'>8</div>
         <div className='w-10 h-10 border mx-3 flex justify-center items-center border-black'>9</div>
         <div className='w-10 h-10 border mx-3 flex justify-center items-center border-black'>10</div>
         <div className='w-10 h-10 border mx-3 flex justify-center items-center border-black'>11</div>
+        <div className='w-10 h-10 border mx-3 flex justify-center items-center border-black'>12</div>
 
       </div>
 

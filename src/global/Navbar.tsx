@@ -12,7 +12,15 @@ export default function Navbar() {
     <nav className=' nav displayFlex sticky top-0 bg-white z-30 overflow-hidden'>
       <div className="displayFlex nav-div bg-white">
         <Link to='/'><div className="nav-logo"><img className="logo" src={logo} alt="Logo Here" /></div></Link>
-        <div className="nav-main"><input className="nav-search" type="text" placeholder="Search" /></div>
+        <div className="flex">
+          <ul className="flex justify-center items-center">
+            <NavLink to='/cart'><li className="px-3">Men</li></NavLink>
+            <NavLink to='/cart'><li className="px-3">Women</li></NavLink>
+            <NavLink to='/cart'><li className="px-3">Trending</li></NavLink>
+            <NavLink to='/cart'><li className="px-3">Sale</li></NavLink>
+           
+          </ul>
+        </div>
         <div className="nav-side">
           <ul className="flex text-xl">
           <li><NavLink to='/login'><i className="fa-regular fa-user px-4"></i></NavLink></li>
