@@ -50,7 +50,17 @@ const productSchema = new mongoose.Schema({
             type:String,
             required:[true,"Need to provide product images"]
         }
-    }]
+    }],
+    size:[
+        {
+            size:{
+                type:String
+            },
+            stock:{
+                type:Number
+            }
+        }
+    ]
 
 })
 // const productSchema = new mongoose.Schema({

@@ -9,14 +9,30 @@ const product = require("../models/product.model")
     4. View all products 
 */
 const addProduct = AsyncHandler(async(req,res,next)=>{
-    const {name,description,images,price,stock,gender,category} = req.body
-    const responce = await product.create({name,description,images,price,stock,gender,category})
+    const {name,description,images,price,stock,gender,category,size} = req.body
+    console.log(size)
+    let stockCheck = 0
+    size.forEach((e)=>stockCheck += e.stock)
+    console.log(stockCheck)
+    if(stockCheck !== stock)
+        return res.status(400).json({success:false,message:"Stock not matching, please check the stock for each size"})
+    const responce = await product.create({name,description,images,price,stock,gender,category,size})
     res.status(201).json({success:true,message:"Product added successfully"})
 })
 
 const viewProducts = AsyncHandler(async(req,res,next)=>{
-    const responce = await product.find().populate("category")
-    res.status(200).json({success:true,result:responce})
+    const {brand} = req.query 
+    if(brand){
+        let responce = await product.find({name:{ $regex: '.*' + brand + '.*' }}).populate("category")
+       return res.status(200).json({success:true,result:responce})
+    }
+    else
+        {
+        let responce = await product.find().populate("category")
+        return res.status(200).json({success:true,result:responce})
+        }
+
+   
 })
 
 const deleteProduct = AsyncHandler(async(req,res,next)=>{
