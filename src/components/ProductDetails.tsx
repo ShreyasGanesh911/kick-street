@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { Product } from '../Types/Product'
 export default function ProductDetails({description,name,price,size}:Product) {
   const [qty,setQty] = useState(1)
+  const [select,setSelect] = useState(false)
   console.log(name)
   return (
     <>
@@ -22,7 +23,7 @@ export default function ProductDetails({description,name,price,size}:Product) {
       
       <div className='flex justify-start m-2'>
       {size.map((e)=>{
-        return <button className='w-10 h-10 border mx-3 flex justify-center items-center border-black hover:bg-neutral-200'>{e.size}</button>
+        return <button value={e.size} className={`w-10 h-10 border mx-3 flex justify-center items-center   hover:bg-neutral-200 ${select? 'border border-green-400':'border border-black'}`} onClick={()=>select?setSelect(false):setSelect(true)}>{e.size}</button>
       })}
       </div>
 
