@@ -35,15 +35,23 @@ const productSchema = new mongoose.Schema({
         type:Number,
         default:0
     },
+    sale:{
+        type:Boolean,
+        default:false
+    },
+    offer:{
+        type:Number,
+        default:0
+    },
     gender:{
         type:String,
         enum : ['male','female','unisex'],
         default:"unisex"
     },
-    category:[
-        {   type: mongoose.Schema.Types.ObjectId,
+    category:{
+           type: mongoose.Schema.Types.ObjectId,
             ref:"category"
-        }]
+        }
 ,
     images:[{
         url:{
@@ -63,15 +71,6 @@ const productSchema = new mongoose.Schema({
     ]
 
 })
-// const productSchema = new mongoose.Schema({
-//     name:{
-//         type:String
-//     },
-//     price:{
-//         type:Number,
-//         required:[true,"Enter the proce of the product "]
-//     }
-// })
 const product = mongoose.model('product',productSchema)
 
 module.exports = product

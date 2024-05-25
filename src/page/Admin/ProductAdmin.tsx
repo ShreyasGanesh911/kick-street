@@ -26,7 +26,7 @@ export default function ProductAdmin() {
           </div>
         </div>
         <div className='w-11/12 flex flex-wrap justify-center items-center border my-2 py-2 border-slate-200'>
-          <CardAdmin/>
+          {/* <CardAdmin/>
           <CardAdmin/>
           <CardAdmin/>
           <CardAdmin/>
@@ -40,7 +40,7 @@ export default function ProductAdmin() {
           <CardAdmin/>        
           <CardAdmin/>        
           <CardAdmin/>        
-          <CardAdmin/>        
+          <CardAdmin/>         */}
         </div>
       </section> 
     </>

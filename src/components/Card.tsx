@@ -1,5 +1,6 @@
 import img from "../Assets/Shoe.webp"
-export default function Card() {
+import {Product} from '.././Types/Product'
+export default function Card({description,name,price,size}:Product) {
   return (
 <>
         <div className='  border-slate-300 item-container mx-8  '> 
@@ -8,8 +9,8 @@ export default function Card() {
             <img src={img} className="object-contain overflow-hidden" alt="" />
           </div>
           <div className='  h-1/4  flex items-center flex-col justify-evenly'> 
-            <p className="font-thin text-">Air Jordan 1 Low 'Bred Toe 2.0'</p>
-            <p >Price : <span className="font-semibold">Rs. 9999</span> </p>
+            <p className="font-thin capitalize">{name}</p>
+            <p >Price : <span className="font-semibold">Rs. {price}</span> </p>
           </div>
         </div>
 </>

@@ -12,4 +12,13 @@ const userPayment = AsyncHandler(async(req,res,next)=>{
     res.status(200).json({success:true,responce})
 })
 
-module.exports = {userPayment}
+const allPayments = AsyncHandler(async(req,res,next)=>{
+    const responce = await payment.find()
+    res.status(200).json({success:true,responce})
+})
+
+const updatePayment = AsyncHandler(async(req,res,next)=>{
+    const {method,txnId,amount,status} = req.body
+})
+
+module.exports = {userPayment,allPayments}

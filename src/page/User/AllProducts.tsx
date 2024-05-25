@@ -1,12 +1,36 @@
-import React, { useEffect } from 'react' 
+import { useEffect, useState } from 'react'
+import {Product} from '../../Types/Product'
 import IntroCard from '../../components/Carousel-card/IntroCard'
 import Filter from '../../components/AllProducts/Filter'
 import CardAdmin from '../../components/Admin/CardAdmin'
+import { Link } from 'react-router-dom'
 
 export default function AllProducts() {
+  const [products,setProucts] = useState<Product[]>([])
+  const getData = async()=>{
+    try{
+      const response = await fetch('http://localhost:4000/products/all?limit=20', {
+        method: "GET", 
+        mode: "cors", 
+        credentials: "include", 
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+      const data = await response.json(); 
+      console.log(data.result)
+      setProucts(data.result)
+    
+    }catch(e){
+      console.log(e)
+    }
+  }
   useEffect(()=>{
     window.scrollTo(0,0)
 })
+  useEffect(()=>{
+    getData()
+  },[])
   return (
     <>
      <section className='page flex justify-start items-center flex-col overflow-hidden'>
@@ -25,6 +49,10 @@ export default function AllProducts() {
           </select>
         </div>
         <div className='w-full flex flex-wrap py-5 justify-center items-center'>
+          {products.map((e)=>{
+            return(<Link to={`/product/${e.name}`} state={{description:e.description,price:e.price,images:e.images,size:e.size,name:e.name }} > <CardAdmin description={e.description} gender={e.gender} images={e.images} name={e.name} offer={e.offer} price={e.price} rating={e.rating} reviews={e.reviews} sale={e.sale} size={e.size} stock={e.stock}  /></Link>)
+          })}
+          {/* <CardAdmin/>
           <CardAdmin/>
           <CardAdmin/>
           <CardAdmin/>
@@ -43,8 +71,7 @@ export default function AllProducts() {
           <CardAdmin/>
           <CardAdmin/>
           <CardAdmin/>
-          <CardAdmin/>
-          <CardAdmin/>
+          <CardAdmin/> */}
       
         </div>
        

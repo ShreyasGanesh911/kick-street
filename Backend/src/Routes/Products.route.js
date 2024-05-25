@@ -12,7 +12,7 @@ const productRouter = express.Router()
 */
 
 productRouter.post("/add",adminAuth,addProduct)
-productRouter.get('/all',adminAuth,viewProducts)
+productRouter.get('/all',viewProducts)
 productRouter.delete('/delete',adminAuth,deleteProduct)
 productRouter.post('/update',adminAuth,updateProduct)
 
