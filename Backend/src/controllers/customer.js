@@ -8,8 +8,8 @@ const mongoose = require('mongoose');
 require('dotenv').config()
 /*
     User must be able to carry out the following operations
-        Create account
-        Login
+        Create account ✔
+        Login  ✔
         Check / modify Address
         Check his orders
 
@@ -24,9 +24,7 @@ const userLogin = AsyncHandler(async(req,res,next)=>{
     const {password,userEmail} = req.body
     const findUser = await user.findOne({email:userEmail})
     if(!findUser)
-        console.log("null user",findUser)
-    if(!findUser)
-        return next(new ErrorHandler("User doesn't exist",401))
+        return next(new ErrorHandler("User doesn't exist",404))
     const check = bcrypt.compareSync(password,findUser.password)
     if(!check)
         return next(new ErrorHandler("Incorrect password",401))
@@ -39,10 +37,16 @@ const userLogin = AsyncHandler(async(req,res,next)=>{
 
 // To sign up
 const userSignUp = AsyncHandler(async(req,res,next)=>{
-    const {email,name,phone,type,password,date} = req.body
+    const {email,name,phone,type,password} = req.body
     const hashedPassword = bcrypt.hashSync(password,10)
-    const create = await user.create(
-        {name,email,phone,type,password:hashedPassword,dob:date}
+    let response = await user.find({email})
+    if(response.length)
+        return res.status(409).json({success:false,message:"Email is already used"})
+    response = await user.find({phone:Number(phone)})
+    if(response.length)
+        return res.status(409).json({success:false,message:"Phone number is already used"})
+    await user.create(
+        {name,email,phone:Number(phone),type,password:hashedPassword}
         ).then(()=>res.status(201).json({success:true,message:"User created successfully!"}))
 })
 //
