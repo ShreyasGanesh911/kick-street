@@ -38,7 +38,7 @@ export default function Home() {
       <Carousel />
       <div className='container-div py-20 w-full overflow-x-hidden'>  
       {products.map((e)=>{
-        return (<Link to={`/product/${e.name}`}> <Card description={e.description} gender={e.gender} images={e.images} name={e.name} offer={e.offer} price={e.price} rating={e.rating} reviews={e.reviews} sale={e.sale} size={e.size} stock={e.stock}  /></Link>)
+        return (<Link to={`/product/${e.name}`} state={{description:e.description,price:e.price,images:e.images,size:e.size,name:e.name }}> <Card description={e.description} gender={e.gender} images={e.images} name={e.name} offer={e.offer} price={e.price} rating={e.rating} reviews={e.reviews} sale={e.sale} size={e.size} stock={e.stock}  /></Link>)
       })}
       </div>
       <div className='mb-14'><Link to='/all'><button className='border p-4 font-medium border-black text-lg hover:bg-gray-500 '>View all</button></Link></div>
