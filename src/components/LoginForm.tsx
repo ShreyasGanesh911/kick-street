@@ -34,11 +34,15 @@ export default function LoginForm({ form, setForm }: Props) {
         },
         body: JSON.stringify(cred), 
       });
-      if(response.status === 401)
+      if(response.status===200){
+        toastSuccesss("Logged in!")
+        setTimeout(()=>navigate('/'),5005)
+      }
+      else if(response.status === 401)
         return toastError("Incorrect credentials")
       else if(response.status === 404)
         return toastError("User not found")
-      navigate('/')
+      
     }catch(e){
       toastWarning("Internal server error")
     }
@@ -71,7 +75,9 @@ export default function LoginForm({ form, setForm }: Props) {
             <button className="border border-slate-400 rounded px-2 py-1 text-sm text-gray-600 font-mono cursor-pointer js-password-label relative right-14" onClick={handlePasswordVisibility} >{visibility}</button>
           </div>
         </div>
-
+        <div className='flex justify-center items-start flex-col mt-3 p-10'>
+          <p className='invisible'> q</p>
+        </div>
         <div className='flex justify-center items-start flex-col mt-3 p-10'>
           <p className='invisible'> q</p>
         </div>
