@@ -4,6 +4,7 @@ import Card from '../../components/Card'
 import { Link } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 import {Product} from '../../Types/Product'
+//import UseFetch from '../../Hooks/UseFetch'
 
 export default function Home() {
   const [products,setProucts] = useState<Product[]>([])
@@ -25,7 +26,12 @@ export default function Home() {
       console.log(e)
     }
   }
-  useEffect(()=>{getData()},[])
+  //const [data] = UseFetch('http://localhost:4000/products/all?limit=12')
+  
+  useEffect(()=>{
+   getData()
+    
+  },[])
   return (
     <>
      <section className='page displayFlex flex-col relative'>
@@ -34,18 +40,6 @@ export default function Home() {
       {products.map((e)=>{
         return (<Link to={`/product/${e.name}`}> <Card description={e.description} gender={e.gender} images={e.images} name={e.name} offer={e.offer} price={e.price} rating={e.rating} reviews={e.reviews} sale={e.sale} size={e.size} stock={e.stock}  /></Link>)
       })}
-       {/* 
-        <Card/>
-        <Card/>
-        <Card/>
-        <Card/>
-        <Card/>
-        <Card/>
-        <Card/>
-        <Card/>
-        <Card/>
-        <Card/>
-        <Card/> */}
       </div>
       <div className='mb-14'><Link to='/all'><button className='border p-4 font-medium border-black text-lg hover:bg-gray-500 '>View all</button></Link></div>
       <h2 className='w-3/4 text-3xl'>Shop by category</h2>
