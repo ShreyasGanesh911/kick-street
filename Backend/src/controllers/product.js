@@ -17,7 +17,7 @@ const addProduct = AsyncHandler(async(req,res,next)=>{
     if(!offer && sale)
         return res.status(400).json({success:false,message:"Please mention the offer percentage"})
         
-    const responce = await product.create({name,description,images,price,stock,gender,category,size,sale,offer})
+   await product.create({name,description,images,price,stock,gender,category,size,sale,offer})
     res.status(201).json({success:true,message:"Product added successfully"})
 })
 
@@ -25,16 +25,23 @@ const viewProducts = AsyncHandler(async(req,res,next)=>{
     let {brand,limit} = req.query 
     limit = limit || 0
     if(brand){
-        let responce = await product.find({name:{ $regex: '.*' + brand + '.*' }}).populate("category").limit(limit)
-       return res.status(200).json({success:true,result:responce})
+        const brandArray = brand.split("%")
+        const myFunc = async()=>{
+            let myArray = []
+            for(let i=0;i<brandArray.length;i++){
+                const responce = await product.find({name:{ $regex: '.*' + brandArray[i] + '.*' }}).populate("category").limit(limit)
+                myArray.push(responce)
+            }
+            return myArray
+        }
+        const result = await myFunc()
+       return res.status(200).json({success:true,result:result})
     }
     else
         {
         let responce = await product.find().populate("category").limit(limit)
         return res.status(200).json({success:true,result:responce})
-        }
-
-   
+        }  
 })
 
 const deleteProduct = AsyncHandler(async(req,res,next)=>{
