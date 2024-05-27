@@ -23,9 +23,6 @@ const userSchema = new mongoose.Schema({
         type:String,
         required : [true,"Password cannot be empty "]
     },
-    dob:{
-        type:Date
-    }
 })
 
 const user = mongoose.model("user",userSchema)
