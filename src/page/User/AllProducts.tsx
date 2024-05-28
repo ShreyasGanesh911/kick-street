@@ -50,7 +50,7 @@ export default function AllProducts() {
         </div>
         <div className='w-full flex flex-wrap py-5 justify-center items-center'>
           {products.map((e)=>{
-            return(<Link to={`/product/${e.name}`} state={{description:e.description,price:e.price,images:e.images,size:e.size,name:e.name }} > <CardAdmin description={e.description} gender={e.gender} images={e.images} name={e.name} offer={e.offer} price={e.price} rating={e.rating} reviews={e.reviews} sale={e.sale} size={e.size} stock={e.stock}  /></Link>)
+            return(<Link to={`/product/${e.name}`} state={{description:e.description,price:e.price,images:e.images,size:e.size,name:e.name }} > <CardAdmin _id={e._id} description={e.description} gender={e.gender} images={e.images} name={e.name} offer={e.offer} price={e.price} rating={e.rating} reviews={e.reviews} sale={e.sale} size={e.size} stock={e.stock}  /></Link>)
           })}     
         </div>
        
