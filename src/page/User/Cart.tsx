@@ -1,16 +1,10 @@
-import React, { useEffect, useState } from 'react'
 import TableChild from '../../components/TableChild'
 import OrderSummary from '../../components/OrderSummary'
-import { useSelector, useDispatch } from 'react-redux'
+import { useSelector} from 'react-redux'
 import {RootState} from '../../Redux/Store'
 export default function Cart() {
   let sum = 0
   const cart = useSelector((state: RootState) => state.cart.cart)
-  
-  const dispatch = useDispatch()
-  useEffect(()=>{
-
-  },[])
   return (
     <>
       <section className='page flex justify-center items-start p-5 text-black'>

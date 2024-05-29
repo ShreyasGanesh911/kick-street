@@ -8,6 +8,11 @@ import {Product} from '../../Types/Product'
 
 export default function Home() {
   const [products,setProucts] = useState<Product[]>([])
+  const handleClick = (e:React.MouseEvent<HTMLButtonElement, MouseEvent>)=>{
+      e.preventDefault()
+      const value = e.currentTarget.value
+      console.log(value)
+  }
   const getData = async()=>{
     try{
       const response = await fetch('http://localhost:4000/products/all?limit=12', {
@@ -38,17 +43,17 @@ export default function Home() {
       <Carousel />
       <div className='container-div py-20 w-full overflow-x-hidden'>  
       {products.map((e)=>{
-        return (<Link to={`/product/${e.name}`} state={{description:e.description,price:e.price,images:e.images,size:e.size,name:e.name,_id:e._id }}> <Card _id={e._id} description={e.description} gender={e.gender} images={e.images} name={e.name} offer={e.offer} price={e.price} rating={e.rating} reviews={e.reviews} sale={e.sale} size={e.size} stock={e.stock}  /></Link>)
+        return (<Link key={e._id} to={`/product/${e.name}`} state={{description:e.description,price:e.price,images:e.images,size:e.size,name:e.name,_id:e._id }}> <Card key={e._id} _id={e._id} description={e.description} gender={e.gender} images={e.images} name={e.name} offer={e.offer} price={e.price} rating={e.rating} reviews={e.reviews} sale={e.sale} size={e.size} stock={e.stock}  /></Link>)
       })}
       </div>
-      <div className='mb-14'><Link to='/all'><button className='border p-4 font-medium border-black text-lg hover:bg-gray-500 '>View all</button></Link></div>
+      <div className='mb-14'><Link to='/all'><button className='border p-4 font-medium border-black text-lg hover:bg-neutral-200 '>View all</button></Link></div>
       <h2 className='w-3/4 text-3xl'>Shop by category</h2>
       <div className='container-div py-20 w-3/4 text-white'>
-        <div className='w-72 h-72 bg-black flex justify-center items-center text-2xl'>
+        <button className='w-72 h-72 bg-black flex justify-center items-center text-2xl hover:text-3xl hover:delay-100 hover:duration-150' onClick={handleClick} value='men'>
           Men
-        </div>
-        <div className='w-72 h-72 bg-black flex justify-center items-center text-2xl'>Women</div>
-        <div className='w-72 h-72 bg-black flex justify-center items-center text-2xl'>Trending</div>
+        </button>
+        <Link to='/all' state={{gender:'female'}}><button className='w-72 h-72 bg-black flex justify-center items-center text-2xl hover:text-3xl hover:delay-75 hover:duration-150'  value='women'>Women</button></Link>
+        <button className='w-72 h-72 bg-black flex justify-center items-center text-2xl hover:text-3xl hover:delay-75 hover:duration-150' onClick={handleClick} value='trending'>Trending</button>
       </div>
       <div></div>
      </section>

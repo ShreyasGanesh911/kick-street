@@ -1,6 +1,5 @@
 import React from 'react'
-import { RootState } from '../Redux/Store'
-import { useDispatch, useSelector } from 'react-redux'
+import { useDispatch} from 'react-redux'
 import { removeFromCart } from '../Redux/Slice/Cart/Index'
 type Props = {
   name:string,
@@ -10,8 +9,6 @@ type Props = {
   size:number
 }
 export default function TableChild({name,price,qty,pId,size}:Props) {
-  const cart = useSelector((state: RootState) => state.cart.cart)
-  
   const dispatch = useDispatch()
   const handleRemove = (e:React.MouseEvent<HTMLButtonElement, MouseEvent>)=>{
     e.preventDefault()

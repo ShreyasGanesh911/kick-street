@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, {useState } from 'react'
 import { Product } from '../Types/Product'
 import { useSelector, useDispatch } from 'react-redux'
 import { addToCart, updateQty } from '../Redux/Slice/Cart/Index'
