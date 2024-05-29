@@ -3,8 +3,8 @@ import 'react-toastify/dist/ReactToastify.css';
 
 export const toastSuccesss = (message:string)=>{
     toast.success(message, {
-        position: "top-right",
-        autoClose: 5000,
+        position: "top-center",
+        autoClose: 3000,
         hideProgressBar: true,
         closeOnClick: true,
         pauseOnHover: true,
@@ -17,8 +17,8 @@ export const toastSuccesss = (message:string)=>{
 
 export const toastWarning = (message:string)=>{
     toast.warn(message, {
-        position: "top-right",
-        autoClose: 5000,
+        position: "top-center",
+        autoClose: 3000,
         hideProgressBar: true,
         closeOnClick: true,
         pauseOnHover: true,
@@ -31,8 +31,8 @@ export const toastWarning = (message:string)=>{
 
 export const toastError = (message:string)=>{
     toast.error(message, {
-        position: "top-right",
-        autoClose: 5000,
+        position: "top-center",
+        autoClose: 3000,
         hideProgressBar: true,
         closeOnClick: true,
         pauseOnHover: true,
