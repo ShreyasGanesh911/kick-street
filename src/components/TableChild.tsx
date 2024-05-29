@@ -1,11 +1,23 @@
 import React from 'react'
+import { RootState } from '../Redux/Store'
+import { useDispatch, useSelector } from 'react-redux'
+import { removeFromCart } from '../Redux/Slice/Cart/Index'
 type Props = {
   name:string,
   price:number,
   qty:number,
-  pId:string
+  pId:string,
+  size:number
 }
-export default function TableChild({name,price,qty,pId}:Props) {
+export default function TableChild({name,price,qty,pId,size}:Props) {
+  const cart = useSelector((state: RootState) => state.cart.cart)
+  
+  const dispatch = useDispatch()
+  const handleRemove = (e:React.MouseEvent<HTMLButtonElement, MouseEvent>)=>{
+    e.preventDefault()
+    dispatch(removeFromCart(pId))
+    console.log('pressed',pId)
+  }
   return (
     <>
     <tr className='h-28 border-b '>
@@ -14,8 +26,8 @@ export default function TableChild({name,price,qty,pId}:Props) {
                 <div className='w-1/2 bg-red-400 h-20 mx-3'></div>
                 <div className='w-1/2'>
                     <p className='text-start capitalize'>{name}</p>
-                    <p className='text-start text-sm'>Size: M{pId}</p>
-                    <button className='text-red-600'><span><i className="fa-solid fa-trash mx-2 text-sm"></i></span>Remove</button>
+                    <p className='text-start text-sm'>Size: {size}</p>
+                    <button className='text-red-600' onClick={handleRemove}><span><i className="fa-solid fa-trash mx-2 text-sm"></i></span>Remove</button>
                 </div>
             </div>
         </td>
