@@ -3,13 +3,24 @@ import {Product} from '../../Types/Product'
 import IntroCard from '../../components/Carousel-card/IntroCard'
 import Filter from '../../components/AllProducts/Filter'
 import CardAdmin from '../../components/Admin/CardAdmin'
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 
 export default function AllProducts() {
+  const location = useLocation()
   const [products,setProucts] = useState<Product[]>([])
   const getData = async()=>{
+    //console.log("gender",location.state)
+    let gender = " "
+      if(location.state){
+        gender = location.state.gender
+      }
+      else{
+        gender = " "
+      }
+
+    //console.log(gender)
     try{
-      const response = await fetch('http://localhost:4000/products/all?limit=20', {
+      const response = await fetch(`http://localhost:4000/products/all?limit=20&gender=${gender}`, {
         method: "GET", 
         mode: "cors", 
         credentials: "include", 

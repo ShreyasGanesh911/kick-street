@@ -46,12 +46,12 @@ export default function Home() {
         return (<Link key={e._id} to={`/product/${e.name}`} state={{description:e.description,price:e.price,images:e.images,size:e.size,name:e.name,_id:e._id }}> <Card key={e._id} _id={e._id} description={e.description} gender={e.gender} images={e.images} name={e.name} offer={e.offer} price={e.price} rating={e.rating} reviews={e.reviews} sale={e.sale} size={e.size} stock={e.stock}  /></Link>)
       })}
       </div>
-      <div className='mb-14'><Link to='/all'><button className='border p-4 font-medium border-black text-lg hover:bg-neutral-200 '>View all</button></Link></div>
+      <div className='mb-14'><Link to='/all ' state={{gender:""}}><button className='border p-4 font-medium border-black text-lg hover:bg-neutral-200 '>View all</button></Link></div>
       <h2 className='w-3/4 text-3xl'>Shop by category</h2>
       <div className='container-div py-20 w-3/4 text-white'>
-        <button className='w-72 h-72 bg-black flex justify-center items-center text-2xl hover:text-3xl hover:delay-100 hover:duration-150' onClick={handleClick} value='men'>
+      <Link to ='/all' state={{gender:'male'}}><button className='w-72 h-72 bg-black flex justify-center items-center text-2xl hover:text-3xl hover:delay-100 hover:duration-150' value='men'>
           Men
-        </button>
+        </button></Link>
         <Link to='/all' state={{gender:'female'}}><button className='w-72 h-72 bg-black flex justify-center items-center text-2xl hover:text-3xl hover:delay-75 hover:duration-150'  value='women'>Women</button></Link>
         <button className='w-72 h-72 bg-black flex justify-center items-center text-2xl hover:text-3xl hover:delay-75 hover:duration-150' onClick={handleClick} value='trending'>Trending</button>
       </div>

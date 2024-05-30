@@ -22,7 +22,19 @@ const addProduct = AsyncHandler(async(req,res,next)=>{
 })
 
 const viewProducts = AsyncHandler(async(req,res,next)=>{
-    let {brand,limit} = req.query 
+    let {brand,limit,gender} = req.query
+    gender = gender || null
+    if(gender){
+        if(gender!=='male'){
+            const result = await product.find({gender:{$ne:'male'}}).populate('category')
+            return res.status(200).json({success:true,result})
+        }
+        else{
+            const result = await product.find({$or:[{gender:'male'},{gender:'unisex'}]}).populate('category')
+            return res.status(200).json({success:true,result})
+        }
+            
+    } 
     limit = limit || 0
     if(brand){
         const brandArray = brand.split("%")
