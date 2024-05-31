@@ -22,38 +22,42 @@ const addProduct = AsyncHandler(async(req,res,next)=>{
 })
 
 const viewProducts = AsyncHandler(async(req,res,next)=>{
-    let {brand,limit,gender} = req.query
+    let {brand,limit,gender,sort} = req.query
+    sort = Number(sort) || 1
     gender = gender || null
+    
     if(gender){
         if(gender!=='male'){
-            const result = await product.find({gender:{$ne:'male'}}).populate('category')
+            const result = await product.find({gender:{$ne:'male'}}).populate('category').sort({'price':sort})
             return res.status(200).json({success:true,result})
         }
         else{
-            const result = await product.find({$or:[{gender:'male'},{gender:'unisex'}]}).populate('category')
+            const result = await product.find({$or:[{gender:'male'},{gender:'unisex'}]}).populate('category').sort({'price':sort})
             return res.status(200).json({success:true,result})
         }
             
     } 
     limit = limit || 0
     if(brand){
-        const brandArray = brand.split("%")
+        brand = brand.slice(0,-1)
+       let brandArray = brand.split("%")
+       
         const myFunc = async()=>{
             let myArray = []
             for(let i=0;i<brandArray.length;i++){
-                const responce = await product.find({name:{ $regex: '.*' + brandArray[i] + '.*' }}).populate("category").limit(limit)
-                myArray.push(responce)
+                const responce = await product.find({name:{ $regex: '.*' + brandArray[i] + '.*' }}).populate("category").limit(limit).sort({'price':sort})
+                responce.forEach(e=>myArray.push(e))
+                //myArray.push(responce)
             }
             return myArray
         }
         const result = await myFunc()
        return res.status(200).json({success:true,result:result})
     }
-    else
-        {
-        let responce = await product.find().populate("category").limit(limit)
+    else{
+        let responce = await product.find().populate("category").limit(limit).sort({'price':sort})
         return res.status(200).json({success:true,result:responce})
-        }  
+    }  
 })
 
 const deleteProduct = AsyncHandler(async(req,res,next)=>{
