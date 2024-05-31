@@ -12,6 +12,7 @@ const app = express()
 app.use(cors({origin:true,credentials: true}))
 app.use(express.json())
 app.use(cookieParser())
+app.use(express.urlencoded({extended: true}));
 app.use("/user",userRouter)
 app.use('/products',productRouter)
 app.use("/order",orderRouter)
