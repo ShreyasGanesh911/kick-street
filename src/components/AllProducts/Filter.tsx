@@ -1,10 +1,28 @@
-import React, { useState } from 'react'
+import React, { Dispatch, SetStateAction, useState } from 'react'
 import MultiRangeSlider,{ChangeResult} from "multi-range-slider-react";
-    const brand:string[] = ['adidas','reebok','Puma','ASICS']
+    const brand:string[] = ['adidas','jordan','nike','converse','crocs','new balance','asics']
     const size:string[] = ['6','7','8','9','10','11','12']
-
-export default function Filter() {
-    
+type Props = {
+  brands : string[],
+  setBrands :Dispatch<SetStateAction<string[]>>;
+}
+export default function Filter({brands,setBrands}:Props) {
+    const handleBrandInput = (e:React.MouseEvent<HTMLInputElement, MouseEvent>)=>{
+      const value = e.currentTarget.value
+      let bool = false
+      let count:number = 0
+      let tempBrand = brands
+      for(let i =0 ;i<brands.length;i++)
+        if(brands[i]===value){
+          bool = true
+          count = i
+          break
+        }
+          
+      bool? tempBrand.splice(count,1) : tempBrand.push(value)
+      //console.log(tempBrand)
+      setBrands([...tempBrand])
+    }
     const [minValue, set_minValue] = useState(0);
     const [maxValue, set_maxValue] = useState(15000);
     const handleInput = (e:ChangeResult) => {
@@ -35,8 +53,8 @@ export default function Filter() {
           <div >
           {brand.map((e)=>{
             return(<>
-                <input type="checkbox" name='brand' className='p-2 bg-red-300' value={e} />
-                <p className='inline-block px-3'>{e}</p>
+                <input type="checkbox" name='brand' className='p-2 bg-red-300 ' value={`${e}%`} onClick={handleBrandInput} />
+                <p  className='inline-block px-3 capitalize hover:font-medium '>{e}</p>
                 <br />
             </>)
           })}
@@ -47,8 +65,8 @@ export default function Filter() {
           <div>
           {size.map((e)=>{
             return(<>
-                <input type="checkbox" name='brand'  className='p-2 bg-red-300' value={e} />
-                <p className='inline-block px-3'>{e}</p>
+                <input  type="checkbox" name='brand'  className='p-2 bg-red-300' value={e}  />
+                <p  className='inline-block px-3 capitalize hover:font-medium'>{e}</p>
                 <br />
             </>)
           })}
