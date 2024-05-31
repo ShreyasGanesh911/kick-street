@@ -10,7 +10,7 @@ export default function Card({description,name,price,size}:Product) {
           </div>
           <div className='  h-1/4  flex items-center flex-col justify-evenly'> 
             <p className="font-thin capitalize">{name}</p>
-            <p >Price : <span className="font-semibold">Rs. {price}</span> </p>
+            <p >Price : <span className="font-semibold">Rs. {price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</span> </p>
           </div>
         </div>
 </>

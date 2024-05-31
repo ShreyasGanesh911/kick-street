@@ -28,9 +28,9 @@ export default function TableChild({name,price,qty,pId,size}:Props) {
                 </div>
             </div>
         </td>
-        <td className='w-1/4 text-center'>{price}</td>
+        <td className='w-1/4 text-center'>{price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</td>
         <td className='w-1/4 text-center'>{qty}</td>
-        <td className='w-1/4 text-center'>${qty*price}</td>
+        <td className='w-1/4 text-center'>₹ {(qty*price).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</td>
     </tr>
     </>
   )

@@ -48,7 +48,7 @@ export default function ProductDetails({description,name,price,size,_id}:Product
         <div className='p-5 overflow-y-hidden h-auto bg-neutral-50 rounded-lg'>
       <h1 className='text-4xl capitalize py-5'>{name}</h1>
         <div className='my-3'>
-        <p className='text-2xl'>RS. <span className='text-black font-semibold space-x-1 tracking-wider'>{price}/-</span></p>
+        <p className='text-2xl'>RS. <span className='text-black font-semibold space-x-1 tracking-wider'>{price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}/-</span></p>
       <p className='text-2xl'>Brand: <span className='font-semibold'>Adidas</span></p>
         </div>
       <ul className='inline-flex  p-1 my-3'>
