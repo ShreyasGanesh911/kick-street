@@ -8,7 +8,7 @@ import { toastSuccesss, toastWarning } from './Toast'
 
 export default function ProductDetails({description,name,price,size,_id}:Product) {
   const [qty,setQty] = useState(1)
-
+console.log('size',size)
   const [shoeSize,setShoeSize] = useState<number>(0)
   console.log('product id',_id)
   const handleSize = (e:React.MouseEvent<HTMLInputElement, MouseEvent>)=>{
@@ -65,8 +65,8 @@ export default function ProductDetails({description,name,price,size,_id}:Product
        //return <input/>
         return <div>
             <input type='radio' name='size' value={e.size} className={`w-12 h-12 border mx-3 opacity-0   relative z-40    hover:bg-neutral-200 `} onClick={handleSize}/>
-            <span className={`w-12 h-12 border mx-3 flex justify-center items-center relative bottom-12 ${shoeSize===Number(e.size) ? 'border border-black' : 'border border-slate-300'}`} about=''>{e.size}</span>
-
+            <span className={`w-12 h-12 border mx-3 flex justify-center items-center relative bottom-12 ${shoeSize===Number(e.size) ? 'border border-black' : 'border border-slate-300'} `} about=''>{e.size}</span>
+              {e.stock<5 && <p className='text-red-400 capitalize text-sm relative bottom-12 text-center'>few left</p>}
         </div>
       })}
       </div>

@@ -52,11 +52,11 @@ export default function Filter({brands,setBrands}:Props) {
           <h3 className='text-lg pb-2 border-b w-3/4'>BRAND</h3>
           <div >
           {brand.map((e)=>{
-            return(<>
+            return(<div className='hover:font-medium'>
                 <input type="checkbox" name='brand' className='p-2 bg-red-300 ' value={`${e}%`} onClick={handleBrandInput} />
-                <p  className='inline-block px-3 capitalize hover:font-medium '>{e}</p>
+                <p  className='inline-block px-3 capitalize  '>{e}</p>
                 <br />
-            </>)
+            </div>)
           })}
           </div>
         </div>
@@ -64,11 +64,11 @@ export default function Filter({brands,setBrands}:Props) {
           <h3 className='text-lg border-b w-3/4 pb-2'>SIZE</h3>
           <div>
           {size.map((e)=>{
-            return(<>
+            return(<div className='hover:font-medium'>
                 <input  type="checkbox" name='brand'  className='p-2 bg-red-300' value={e}  />
                 <p  className='inline-block px-3 capitalize hover:font-medium'>{e}</p>
                 <br />
-            </>)
+            </div>)
           })}
           </div>
         </div>
