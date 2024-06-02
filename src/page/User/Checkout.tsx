@@ -1,9 +1,11 @@
 import React from 'react'
+import AddressField from '../../components/Checkout/AddressField';
 declare global {
     interface Window {
         Razorpay: any; // Replace `any` with the appropriate type if known
     }
   }
+  
 export default function Checkout() {
     const handleCheckout = async(e:React.MouseEvent<HTMLButtonElement, MouseEvent>)=>{
         e.preventDefault()
@@ -27,9 +29,9 @@ export default function Checkout() {
                 key: key, 
                 amount:order.amount, 
                 currency: "INR",
-                name: "Acme Corp",
-                description: "Test Transaction",
-                image: "https://example.com/your_logo",
+                name: "Kick Street",
+                description: "Kick Street dummy payment",
+                image: "https://avatars.githubusercontent.com/u/127442299?v=4",
                 order_id: order.id, 
                 callback_url: "http://localhost:4000/payment/verify",
                 prefill: {
@@ -37,14 +39,10 @@ export default function Checkout() {
                     email: "gaurav.kumar@example.com",
                     contact: "9000090000"
                 },
-                notes: {
-                    address: "Razorpay Corporate Office"
-                },
                 theme: {
-                    color: "#fff"
+                    color: "#003366"
                 }
             };
-            //console.log(window.Razorpay)
             const razor= new window.Razorpay(options);
             razor.open();
 
@@ -54,8 +52,11 @@ export default function Checkout() {
     }
   return (
     <>
-    <section className='page flex justify-center items-center'>
-        <button className='border border-black p-3 rounded bg-red-400' onClick={handleCheckout}>handleCheckout</button>
+    <section className='page flex justify-evenly items-center'>
+        <div className='w-1/3 min-h-96 h-auto border' style={{height:'70vh'}}>
+            <AddressField/>
+        </div>
+        <div className='w-1/3 h-96 border'></div>
     </section> 
     </>
   )
