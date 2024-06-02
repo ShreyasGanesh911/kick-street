@@ -4,10 +4,6 @@ const addressSchema = new mongoose.Schema({
         type:mongoose.Schema.Types.ObjectId,
         ref:"user"
     },
-    addressName:{
-        type:String,
-        unique:[true,"Name must be unique"]
-    },
     addressLine1 : {
         type:String,
         required : [true,"Address line cannot be empty "]
@@ -27,11 +23,10 @@ const addressSchema = new mongoose.Schema({
         type:Number,
         required : [true,"Code line cannot be empty "]
     },
-    country:{
+    country :{
         type:String,
-        required : [true,"Country cannot be empty "]
-    },
-    
+        required:[true,"Need to provide country name"]
+    } 
 })
 
 const address = mongoose.model("address",addressSchema)
