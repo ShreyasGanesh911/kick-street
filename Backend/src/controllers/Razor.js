@@ -22,7 +22,6 @@ const checkOut = AsyncHandler(async(req,res,next)=>{
         receipt: "order_rcptid_11"
       }
       const order = await instance.orders.create(options)
-      console.log(order)
       res.status(200).json({success:true,order,key:process.env.KEY_ID})
 })
 
@@ -36,9 +35,14 @@ const verifyPayment = AsyncHandler(async(req,res,next)=>{
     .digest("hex");
 
   const isAuthentic = expectedSignature === razorpay_signature;
-  if(isAuthentic)
-    return res.status(200).json({success:true,message:"Done payment"})
-  else res.status(400).json({success:false,message:"invalid"})
-    res.status(200).json({success:true,message:"Test",body})
+  /*
+    1) After payment verification, data must be logged
+    2) Send an id with the link
+    3) Use the id to fetch the data from the DB about the order
+  */
+
+  isAuthentic ? res.status(200).redirect(`http://localhost:3000/checkout/success/?payment_id=${razorpay_payment_id}`) : res.status(400).json({success:false,message:"invalid"})
+
+   
 })
 module.exports = {checkOut,verifyPayment}
