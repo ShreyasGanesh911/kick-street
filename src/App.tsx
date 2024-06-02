@@ -17,6 +17,7 @@ import UserAdmin from './page/Admin/UserAdmin';
 import SettingsAdmin from './page/Admin/SettingsAdmin';
 import PaymentAdmin from './page/Admin/PaymentAdmin';
 import Checkout from './page/User/Checkout';
+import SuccessPayment from './page/User/SuccessPayment';
 function App() {
   return (
 
@@ -34,6 +35,7 @@ function App() {
           <Route path = "about" element={<About/>}></Route>
           <Route path = "all" element={<AllProducts/>}></Route>
           <Route path = "checkout" element={<Checkout/>}></Route>
+          <Route path = 'checkout/success' element={<SuccessPayment/>}></Route>
         </Route>
         
           <Route path="/admin/" element={<Sidebar/>}>
