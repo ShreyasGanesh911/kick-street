@@ -1,10 +1,28 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import LoginForm from '../../components/LoginForm'
 import img from "../../Assets/mural.jpg"
 import SignupForm from '../../components/SignupForm'
+import { useNavigate } from 'react-router-dom'
 
 export default function Login() {
+  const navigate = useNavigate()
   const [form , setForm] = useState(true)
+  const checkUser = async()=>{
+    try{
+      const response = await fetch('http://localhost:4000/user/check', {
+        method: "GET", 
+        mode: "cors", 
+        credentials: "include", 
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+      response.status===200 ? navigate('/account'):console.log("not logged in")
+    }catch(e){console.log(e)}
+  }
+  useEffect(()=>{
+      checkUser()
+  },[])
   return (
     <>
      <section className='page displayFlex bg-gray-50'>
