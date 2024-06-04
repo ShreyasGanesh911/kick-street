@@ -13,4 +13,11 @@ const addAddress = AsyncHandler(async(req,res,next)=>{
     await address.create({user,addressName,addressLine1,addressLine2,city,state,zipcode,country})
     res.status(200).json({success:true,message:"Address added successfully"})
 })
-module.exports = {addAddress}
+
+const getAddress = AsyncHandler(async(req,res,next)=>{
+    const {_id} = req.user
+    const user = _id
+    const response = await address.find({user}).populate('user')
+    res.status(200).json({success:true,response})
+})
+module.exports = {addAddress,getAddress}
