@@ -76,6 +76,15 @@ const viewCart = AsyncHandler(async(req,res,next)=>{
     res.status(200).json({success:true,result:find})
 })
 
+const getUserDetails = AsyncHandler(async(req,res,next)=>{
+    const {_id} = req.user
+    const details = await user.find({_id}).select('-password')
+    res.json({details})
+})
+
+const checkLoggedIn = AsyncHandler(async(req,res,next)=>{
+    res.status(200).json({success:true,message:"User has a valid token"})
+})
 
 
-module.exports = {userRouterCheck , userLogin , userSignUp,addProduct,viewCart}
+module.exports = {userRouterCheck , userLogin , userSignUp,addProduct,viewCart,getUserDetails,checkLoggedIn}
