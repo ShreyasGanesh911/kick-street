@@ -18,6 +18,7 @@ import SettingsAdmin from './page/Admin/SettingsAdmin';
 import PaymentAdmin from './page/Admin/PaymentAdmin';
 import Checkout from './page/User/Checkout';
 import SuccessPayment from './page/User/SuccessPayment';
+import AboutUser from './page/User/AboutUser';
 function App() {
   return (
 
@@ -32,6 +33,7 @@ function App() {
           <Route path="product/:productId" element={<Product/>}></Route>
           <Route path='cart' element={<Cart/>}></Route>
           <Route path = "login" element={<Login/>}></Route>
+          <Route path = "account" element={<AboutUser/>}></Route>
           <Route path = "about" element={<About/>}></Route>
           <Route path = "all" element={<AllProducts/>}></Route>
           <Route path = "checkout" element={<Checkout/>}></Route>
