@@ -10,10 +10,8 @@ const adminAuth = async(req,res,next)=>{
         if(err){
             res.clearCookie("Auth")
             return next(new ErrorHandler("Invalid token, login again",402))
-        }
-           
+        } 
         const check = await User.findOne({email:user.email})
-        console.log(check.type)
         if(!check)
             return next(new ErrorHandler("Invalid token, login again",402))
         if( check.type !== "admin")

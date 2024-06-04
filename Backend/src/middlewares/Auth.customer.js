@@ -13,7 +13,6 @@ const userAuth = async(req,res,next)=>{
         }
            
         const check = await User.findOne({email:user.email})
-        console.log(check.type)
         if(!check || check.type !== "user")
             return next(new ErrorHandler("Invalid token, login again",402))
         if(check.type !== "user")

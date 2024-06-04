@@ -1,8 +1,8 @@
 const express = require("express")
-const { userRouterCheck , userLogin , userSignUp,addProduct, viewCart } = require("../controllers/customer")
+const { userRouterCheck , userLogin , userSignUp,addProduct, viewCart, getUserDetails, checkLoggedIn } = require("../controllers/customer")
 const adminAuth = require("../middlewares/Auth.admin")
 const userAuth = require("../middlewares/Auth.customer")
-const { addAddress } = require("../controllers/address")
+const { addAddress, getAddress } = require("../controllers/address")
 /*
     Users must be able to 
         1) Login / logout
@@ -24,5 +24,8 @@ userRouter.post('/signUp',userSignUp)
 userRouter.post('/addToCart',userAuth,addProduct)
 userRouter.get('/cart',userAuth,viewCart)
 userRouter.post('/addAddress',userAuth,addAddress)
+userRouter.get('/about',userAuth,getUserDetails)
+userRouter.get('/check',userAuth,checkLoggedIn)
+userRouter.get('/getaddress',userAuth,getAddress)
 module.exports = userRouter
 
