@@ -9,15 +9,15 @@ export default function Navbar() {
   return (
     <>
     <div className="bg-black  overflow-x-hidden text-white  flex justify-center w-full ">
-      <span className="p-2">FREE SHIPPING ON ALL ORDERS ABOVE 9,999/-</span>
+      <span className="p-2">FREE SHIPPING ON ALL ORDERS ABOVE 19,999/-</span>
     </div>
     <nav className=' nav displayFlex sticky top-0 bg-white z-30 overflow-hidden'>
       <div className="displayFlex nav-div bg-white">
         <Link to='/'><div className="nav-logo"><img className="logo" src={logo} alt="Logo Here" /></div></Link>
         <div className="flex">
           <ul className="flex justify-center items-center">
-            <Link to='/all' state={{gender:'male'}}><li className="px-3 hover:font-medium">Men</li></Link>
-            <Link to='/all' state={{gender:'female'}} ><li className="px-3 hover:font-medium">Women</li></Link>
+            <Link to='/all' key='male' state={{gender:'male'}}><li className="px-3 hover:font-medium">Men</li></Link>
+            <Link to='/all' key='female' state={{gender:'female'}} ><li className="px-3 hover:font-medium">Women</li></Link>
             <NavLink to='/cart'><li className="px-3 hover:font-medium">Trending</li></NavLink>
             <NavLink to='/cart'><li className="px-3 hover:font-medium">Sale</li></NavLink>
            

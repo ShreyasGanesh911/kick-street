@@ -40,9 +40,10 @@ export default function Checkout() {
       useEffect(()=>{
         getAddresses()
       },[])
+
   return (
     <>
-    <section className='page flex justify-evenly items-center'>
+    <section className='page flex justify-evenly items-start mt-20'>
         <div className='w-1/3 min-h-96 h-auto border flex justify-start items-center pt-5 flex-col ' style={{height:'70vh'}}>
             {show ? <AddressField setShow={setShow} show={show}/>:
             <>
@@ -57,8 +58,14 @@ export default function Checkout() {
             
              
         </div>
-        <div className='w-1/3 h-96 border'>
+        <div className='w-1/3 h-96 '>
             <CheckoutForm/>
+            <div className="border w-3/5 h-48  bg-black  text-white rounded-xl flex justify-start items-end pb-12 mt-10">
+               <div className='w-full'>
+               <p className='ml-10 mb-2 text-lg'>5267 3181 8797 5449	</p>
+               <div className='w-full  justify-around flex'><span>TEST USER</span> <span>06/25</span></div>
+               </div>
+            </div>
         </div>
     </section> 
     </>
