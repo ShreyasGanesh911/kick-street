@@ -17,6 +17,10 @@ const orderSchema = new mongoose.Schema({
         qty:{
             type:Number,
             required:true
+        },
+        size:{
+            type: Number,
+            required :[true,'Size not mentioned']
         }
     }],
     status:{
@@ -32,11 +36,11 @@ const orderSchema = new mongoose.Schema({
         type:Number,
         required:true
     },
-    payment:{
-        type:mongoose.Schema.Types.ObjectId,
-        ref:"payment",
-        required:[true,"Payment Id not provided"]
-    }
+    // payment:{
+    //     type:mongoose.Schema.Types.ObjectId,
+    //     ref:"payment",
+    //     required:[true,"Payment Id not provided"]
+    // }
 
 })
 
