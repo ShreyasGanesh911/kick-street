@@ -1,10 +1,14 @@
 import React, { useEffect } from 'react'
+import {useDispatch } from 'react-redux';
 import { useSearchParams } from 'react-router-dom'
+import { addToCart } from '../../Redux/Slice/Cart/Index';
 
 export default function SuccessPayment() {
+  const dispatch = useDispatch()
     const [searchParams] = useSearchParams();
     useEffect(()=>{
-
+        dispatch(addToCart([]))
+        localStorage.setItem('cart',JSON.stringify([]))
     },[])
     return (
     <section className='page flex justify-center items-center flex-col'>

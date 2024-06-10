@@ -1,37 +1,46 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+import { RootState } from '../../Redux/Store';
+import { useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 declare global {
     interface Window {
-        Razorpay: any; // Replace `any` with the appropriate type if known
+        Razorpay: any;
     }
   }
 export default function CheckoutForm() {
+  const navigate = useNavigate()
+  const cart = useSelector((state: RootState) => state.cart.cart)
+  const [totalAmount,setTotalAmount] = useState<number>(0)
+  const [subTotal,setSubTotal] = useState<number>(0)
+  const [fee,setFee] = useState<boolean>(true)
     const handleCheckout = async(e:React.MouseEvent<HTMLButtonElement, MouseEvent>)=>{
         e.preventDefault()
         const body = {
-            amount : 499
+            amount : totalAmount,
+            cart : cart
         }
         try{
             const response = await fetch('http://localhost:4000/payment/checkout',{
                 method:"POST",
-                credentials:'same-origin',
+                credentials:'include',
                 headers:{
                   "Content-Type": "application/json",
                 },
                 body: JSON.stringify(body)
               })
-              const {order,key} = await response.json()
-              console.log(order.id)
+              const {createOrder,key,orderId} = await response.json()
+              console.log(response.status)
 
             
             const options = {
                 key: key, 
-                amount:order.amount, 
+                amount:createOrder.amount, 
                 currency: "INR",
                 name: "Kick Street",
                 description: "Kick Street dummy payment",
                 image: "https://avatars.githubusercontent.com/u/127442299?v=4",
-                order_id: order.id, 
-                callback_url: "http://localhost:4000/payment/verify",
+                order_id: createOrder.id, 
+                callback_url: `http://localhost:4000/payment/verify?orderId=${orderId}`,
                 prefill: {
                     name: "Gaurav Kumar",
                     email: "gaurav.kumar@example.com",
@@ -48,20 +57,58 @@ export default function CheckoutForm() {
             console.log(e)
         }
     }
+    const getAmount = ()=>{
+      let amount:number = 0
+      cart.forEach((e)=> amount += e.price)
+      setSubTotal(amount)
+      if(amount > 19999){
+        setTotalAmount(amount+(subTotal * 0.005))
+
+        setFee(false)
+      }
+
+      else
+        setTotalAmount(amount+299+(subTotal * 0.005))
+      
+        
+    }
+    console.log(cart)
+    useEffect(()=>{
+      getAmount()
+    },[])
+    useEffect(()=>{
+      if(cart.length === 0){
+        console.log("no items")
+        return  navigate('/cart')
+      }
+       
+    },[])
   return (
     <>  
         <div className='border rounded w-full  ' style={{minHeight:"30vh",height:"auto"}}>
           <h2 className='text-3xl p-2 border-b '>Order summary</h2>
           <div className='px-2 flex justify-around'>
             <p>Sub total </p>
-            {/* <p>₹ {sum.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}.00</p> */}
+            <p>₹ {subTotal.toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</p>
+          </div>
+          <div className='px-2 flex justify-around'>
+            <p>Delivery</p>
+            {
+              fee ?
+              <p>₹ 299.00</p>:
+              <p>₹ <span className='line-through'>299.00</span> <span className='text-green-400'>Free</span></p>
+            }
+          </div>
+          <div className='px-2 flex justify-around'>
+            <p>Handling Charges</p>
+            <p>₹ {(subTotal * 0.005).toFixed(2).toString()}</p>
           </div>
           <div className='px-2 flex justify-around border-t'>
             <p>Total </p>
-            {/* <p>₹ {sum.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}.00</p> */}
+            <p>₹ {totalAmount.toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</p>
           </div>
           <div className='flex flex-row-reverse m-3 '>
-          <button className='border border-white bg-gray-800 hover:bg-gray-600 rounded p-3 text-white ' onClick={handleCheckout}>Place order</button>
+          <button className='border border-white bg-gray-800 hover:bg-gray-600 rounded p-3 text-white ' onClick={handleCheckout}>Pay Now</button>
           </div>
         </div>
     </>
