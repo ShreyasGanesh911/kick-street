@@ -1,6 +1,7 @@
 require('dotenv').config()
 const Razorpay = require('razorpay');
 const crypto = require('crypto')
+const order = require("../models/order.model");
 const AsyncHandler = require("../utils/AsyncHandler");
 const ErrorHandler = require("../utils/errorHandler");
 const instance = new Razorpay({
@@ -13,7 +14,11 @@ const instance = new Razorpay({
 */
 
 const checkOut = AsyncHandler(async(req,res,next)=>{
-    const {amount} = req.body
+    const {amount,cart} = req.body
+    const {_id} = req.user
+    //console.log(req.user)
+    const user = _id
+    console.log(cart)
     if(!amount)
         return next(new ErrorHandler("Didn't pass the amount",400))
     const options = {
@@ -21,12 +26,16 @@ const checkOut = AsyncHandler(async(req,res,next)=>{
         currency: "INR",
         receipt: "order_rcptid_11"
       }
-      const order = await instance.orders.create(options)
-      res.status(200).json({success:true,order,key:process.env.KEY_ID})
+      const createOrder = await instance.orders.create(options)
+      const placeOrder = await order.create({user,items:cart,amount})
+      console.log(placeOrder._id)
+      const orderId = placeOrder._id
+      res.status(200).json({success:true,createOrder,key:process.env.KEY_ID,orderId})
 })
 
 const verifyPayment = AsyncHandler(async(req,res,next)=>{
     const {razorpay_payment_id,razorpay_order_id,razorpay_signature} = req.body
+    let {orderId} = req.query
     const body = razorpay_order_id + "|" + razorpay_payment_id;
 
   const expectedSignature = crypto
@@ -41,7 +50,12 @@ const verifyPayment = AsyncHandler(async(req,res,next)=>{
     3) Use the id to fetch the data from the DB about the order
   */
 
-  isAuthentic ? res.status(200).redirect(`http://localhost:3000/checkout/success/?payment_id=${razorpay_payment_id}`) : res.status(400).json({success:false,message:"invalid"})
+    if(isAuthentic){
+      await order.findByIdAndUpdate({_id:orderId},{status:"Placed"})
+      return res.status(200).redirect(`http://localhost:3000/checkout/success/?payment_id=${orderId}`)
+    }
+    await order.deleteOne({_id:orderId})
+  res.status(400).json({success:false,message:"invalid"})
 
    
 })
