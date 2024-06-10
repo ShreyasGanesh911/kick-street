@@ -7,7 +7,7 @@ const paymentRouter = express.Router()
 
 paymentRouter.post('/pay',userAuth,userPayment)
 paymentRouter.get('/all',adminAuth,allPayments)
-paymentRouter.post('/checkout',checkOut) // Add userAuth
-paymentRouter.post('/verify',verifyPayment) // Add userAuth
+paymentRouter.post('/checkout',userAuth,checkOut) // Add userAuth
+paymentRouter.post('/verify',userAuth,verifyPayment) // Add userAuth
 
 module.exports = paymentRouter
