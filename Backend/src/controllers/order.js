@@ -10,6 +10,7 @@ const getAllOrders = AsyncHandler(async(req,res,next)=>{
 const viewOrders = AsyncHandler(async(req,res,next)=>{
     const {_id} = req.user
     const user = _id
+    // const result = await order.find({user}).populate('items.pId').sort('orderDate')
     const result = await order.find({user}).populate('items.pId')
     res.status(200).json({Success:true,result})
 })
