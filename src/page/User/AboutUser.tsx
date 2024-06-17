@@ -1,31 +1,10 @@
 import React, { useEffect, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom';
+import {Data , Result} from '../../Types/About'
 export default function AboutUser() {
   const [orders,setOrders] = useState<Result[]>()
   const [details,setDetails] = useState({name:"",email:""})
-  type ProductId = {
-    images:{url:string}[],
-    name:string,
 
-  }
-  type Items = {
-    pId:ProductId,
-    price :number,
-    qty : number,
-    size:number
-  }
-  type Data = {
-    success:boolean,
-    result : Result[]
-  }
-  type Result = {
-    amount:number, 
-    items:Items[],
-    orderDate:string,
-    payment : string,
-    user : string,
-    _id : string
-  }
     const navigate = useNavigate()
     const checkUser = async()=>{
         try{
@@ -47,7 +26,6 @@ export default function AboutUser() {
           checkUser()
       },[])
       const getOrders = async()=>{
-        //http://localhost:4000/order/myorders
         try{
           const response = await fetch('http://localhost:4000/order/myorders', {
             method: "GET", 
@@ -61,6 +39,7 @@ export default function AboutUser() {
           
           console.log(data.result)
           setOrders(data.result)
+          console.log("hello test ", data.result[5].items[0].pId.name)
         }catch(e){console.log(e)}
       }
       useEffect(()=>{
@@ -78,10 +57,12 @@ export default function AboutUser() {
               {orders.map(e=><div className='w-3/4 h-auto border-b border-black  flex'>
               <div className='w-3/4 h-full '>
               {e.items.map(f=><div className='w-full  flex h-28 my-5 justify-between'> 
+                
                 <div className='w-1/4 h-full bg-red-500 '>
 
                 </div>
                 <div className='w-3/4 px-4 py-2 capitalize'>
+                {}
                 <p className='font-semibold'>{f.pId.name}</p>
                 <p>qty :{f.qty}</p>
                 <p>₹ {f.price.toFixed(2)} </p>
@@ -90,10 +71,12 @@ export default function AboutUser() {
           
               </div>)}
                 </div>  
-              <div className='w-1/4 h-full flex justify- items-center flex-col'>
-              <p className='font-semibold'>Date Placed</p>
-              <p className='flex-row-reverse flex px-2 font-thin'>{e.orderDate.slice(0,10)}</p>
-                <p className='text-center font-semibold my-5'>Total {e.amount.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}.00</p>
+              <div className='w-1/4 h-full flex justify-between items-center flex-col'>
+                <div className='my-3'>
+                <p className='font-semibold'>Date Placed</p>
+                <p className='flex-row-reverse flex px-2 font-thin'>{e.orderDate.slice(0,10)}</p>
+                </div>
+                <p className='text-center font-semibold my-5 border-t border-black py-1'>Total {e.amount.toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</p>
                
                 </div>  
               

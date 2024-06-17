@@ -1,8 +1,38 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Card from '../../components/Card'
 import CardAdmin from '../../components/Admin/CardAdmin'
-
+import { Product } from '../../Types/Product'
+import { motion } from 'framer-motion'
 export default function ProductAdmin() {
+  const [products,setProucts] = useState<Product[]>([])
+  const [sort,setSort] = useState<number>(1)
+  const [brands,setBrands] = useState<string[]>([])
+  const getData = async()=>{
+    let gender = undefined
+  
+    try{
+      const response = await fetch(`http://localhost:4000/products/all?limit=20}`, {
+        method: "GET", 
+        mode: "cors", 
+        credentials: "include", 
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+      const data = await response.json();
+      console.log(data) 
+      setProucts(data.result)
+    
+    }catch(e){
+      console.log(e)
+    }
+  }
+  useEffect(()=>{
+    window.scrollTo(0,0)
+},[])
+  useEffect(()=>{
+    getData()
+  },[sort,brands])
   return (
     <>
      <section className='adminPage bg-white p-2 flex items-center justify-center flex-col'>
@@ -25,23 +55,11 @@ export default function ProductAdmin() {
           <button className='bg-black p-3 rounded mx-2'><i className="fa-solid fa-arrow-right"></i></button>
           </div>
         </div>
-        <div className='w-11/12 flex flex-wrap justify-center items-center border my-2 py-2 border-slate-200'>
-          {/* <CardAdmin/>
-          <CardAdmin/>
-          <CardAdmin/>
-          <CardAdmin/>
-          <CardAdmin/>
-          <CardAdmin/>
-          <CardAdmin/>
-          <CardAdmin/>
-          <CardAdmin/>
-          <CardAdmin/>        
-          <CardAdmin/>        
-          <CardAdmin/>        
-          <CardAdmin/>        
-          <CardAdmin/>        
-          <CardAdmin/>         */}
-        </div>
+        <motion.div className='w-11/12 flex flex-wrap justify-center items-center border my-2 py-2 border-slate-200' >
+          {products.map((e)=>{
+            return(<CardAdmin _id={e._id} description={e.description} gender={e.gender} images={e.images} name={e.name} offer={e.offer} price={e.price} rating={e.rating} reviews={e.reviews} sale={e.sale} size={e.size} stock={e.stock} key={e._id}/>)
+          })}
+        </motion.div>
       </section> 
     </>
   )
