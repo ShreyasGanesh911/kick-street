@@ -25,7 +25,7 @@ const viewProducts = AsyncHandler(async(req,res,next)=>{
     let {brand,limit,gender,sort} = req.query
     sort = Number(sort) || 1
     gender = gender || null
-    
+    limit = Number(limit)
     if(gender){
         if(gender!=='male'){
             const result = await product.find({gender:{$ne:'male'}}).populate('category').sort({'price':sort})
