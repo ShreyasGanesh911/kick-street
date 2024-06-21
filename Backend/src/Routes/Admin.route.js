@@ -1,12 +1,12 @@
 const express = require("express")
-const { getDetails } = require("../controllers/admin")
+const { getUserDetails } = require("../controllers/admin")
 const adminAuth = require("../middlewares/Auth.admin")
 /*
     Admin role in this app
     
-    1) Must be able to add products
+    1) Must be able to add products                    -
     2) Must be able to add category to the site
-    3) Must be able to view all orders 
+    3) Must be able to view all orders                  
     4) Must be able to view all payments of the orders placed by a customer
         Chart (Bar graph of orders placed this month vs last month)
     5) Must be able to view all other admins and get details of a customer 
@@ -19,7 +19,7 @@ const adminAuth = require("../middlewares/Auth.admin")
 */
 const adminRoute = express.Router()
 
-adminRoute.get('/details',adminAuth,getDetails)
+adminRoute.get('/details',getUserDetails)
 
 
 module.exports = adminRoute

@@ -9,7 +9,7 @@ const orderRouter = express.Router()
 
     An admin can see all orders placed by all customers
 */
-orderRouter.get('/all',adminAuth,getAllOrders)
+orderRouter.get('/all',getAllOrders)
 orderRouter.get('/myOrders',userAuth,viewOrders)
 orderRouter.post("/placeOrder",userAuth,placeOrder)
 module.exports = orderRouter

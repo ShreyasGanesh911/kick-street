@@ -11,10 +11,10 @@ user
 AsyncHandler
 ErrorHandler
 
-const getDetails = AsyncHandler(async(req,res)=>{
+const getUserDetails = AsyncHandler(async(req,res)=>{
     const {type} = req.query
     const details = await user.find({type:type}).select("-password")
     res.status(200).json({success:true,result:details})
 })
 
-module.exports = {getDetails}
+module.exports = {getUserDetails}
