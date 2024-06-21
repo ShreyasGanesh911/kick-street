@@ -1,7 +1,48 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import OrderTableChild from '../../components/Admin/OrderTableChild'
+import {Items} from "../../Types/About"
+type User = {
+  email : string,
+  name : string,
+  phone : number
 
+}
+type Result = {
+  amount : number,
+  items :Items
+  orderDate : string,
+  status : string,
+  user : User,
+  _id:string
+}
+type Response = {
+  success : boolean,
+  result : Result[]
+}
 export default function OrderAdmin() {
+  const [orders,setOrders] = useState<Result[]>()
+  const getData = async()=>{
+    let gender = undefined
+  
+    try{
+      const response = await fetch(`http://localhost:4000/order/all`, {
+        method: "GET", 
+        mode: "cors", 
+        credentials: "include", 
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+      const data:Response = await response.json();
+      console.log(data) 
+      setOrders(data.result)
+      //setProucts(data.result)
+    
+    }catch(e){
+      console.log(e)
+    }
+  }
+  useEffect(()=>{getData()},[])
   return (
     <>
      <section className='adminPage bg-white p-2'>
@@ -17,21 +58,14 @@ export default function OrderAdmin() {
               <th className=' w-1/6 py-5'>DATE</th>
               <th className='w-1/6 py-5'>NAME</th>
               <th className='w-1/6 py-5'>AMOUNT</th>
-              <th className='w-1/6 py-5'>PAYMENT</th>
+              <th className='w-1/6 py-5'>USER ID</th>
               <th className='w-1/6 py-5'>STATUS</th>
             </tr>
-            <OrderTableChild/>
-            <OrderTableChild/>
-            <OrderTableChild/>
-            <OrderTableChild/>
-            <OrderTableChild/>
-            <OrderTableChild/>
-            <OrderTableChild/>
-            <OrderTableChild/>
-            
-
-            
- 
+            {
+              orders?.map((e)=>{
+                return <OrderTableChild amount={e.amount} date={e.orderDate} name={e.user.name} orderId={e._id} payment={e.status} status={e.status}/>
+              })
+            }         
           </table>
           </div>
       </section>  

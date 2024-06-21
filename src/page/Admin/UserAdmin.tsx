@@ -1,7 +1,39 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import TableChildAdmin from '../../components/Admin/TableChildAdmin'
-
+type Response = {
+  success : boolean,
+  result : Result[]
+}
+type Result = {
+  email : string,
+  name : string,
+  phone : number,
+  type : string,
+  _id : string
+}
 export default function UserAdmin() {
+  const [users,setUsers] = useState<Result[]>()
+  const getData = async()=>{
+  
+    try{
+      const response = await fetch(`http://localhost:4000/admin/details?type=user`, {
+        method: "GET", 
+        mode: "cors", 
+        credentials: "include", 
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+      const data:Response = await response.json();
+      console.log(data)     
+      setUsers(data.result)
+    }catch(e){
+      console.log(e)
+    }
+  }
+  useEffect(()=>{
+    getData()
+  },[])
   return (
     <>
       <section className='adminPage bg-white p-2'>
@@ -18,15 +50,9 @@ export default function UserAdmin() {
               <th className='w-1/5 py-5'>EMAIL</th>
               <th className='w-1/5 py-5'>ACTION</th>
             </tr>
-          <TableChildAdmin/>
-          <TableChildAdmin/>
-          <TableChildAdmin/>
-          <TableChildAdmin/>
-          <TableChildAdmin/>
-            
-
-            
- 
+            {users?.map((e)=>{
+              return <TableChildAdmin email={e.email} name={e.name} phone={e.phone} userId={e._id} key={e._id}/>
+            })}          
           </table>
           </div>
       </section>  
