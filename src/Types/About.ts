@@ -4,7 +4,7 @@ type ProductId = {
     _id : string
 
   }
-  type Items = {
+  export type Items = {
     pId:ProductId,
     price :number,
     qty : number,
