@@ -10,6 +10,7 @@ export default function ProductAdmin() {
   const [brands,setBrands] = useState<string[]>([])
   const [show,setShow] = useState<boolean>(false)
   const handleClick = (e:React.MouseEvent<HTMLButtonElement, MouseEvent>)=>{
+    document.body.style.overflow = "hidden"
       setShow(true)
   }
   const getData = async()=>{
@@ -40,7 +41,7 @@ export default function ProductAdmin() {
   },[sort,brands])
   return (
     <>
-    {show && <ModalWrapper/>}
+    {show && <ModalWrapper show={show} setShow={setShow}/>}
      <section className='adminPage bg-white p-2 flex items-center justify-center flex-col'>
       <h1 className='p-3 text-2xl font-semibold w-full'>Products</h1>
         <div className='w-full flex justify-evenly items-center mt-5' >
