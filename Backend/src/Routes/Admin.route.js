@@ -1,5 +1,5 @@
 const express = require("express")
-const { getUserDetails } = require("../controllers/admin")
+const { getUserDetails, stats } = require("../controllers/admin")
 const adminAuth = require("../middlewares/Auth.admin")
 /*
     Admin role in this app
@@ -20,6 +20,7 @@ const adminAuth = require("../middlewares/Auth.admin")
 const adminRoute = express.Router()
 
 adminRoute.get('/details',getUserDetails)
+adminRoute.get('/stats',stats)
 
 
 module.exports = adminRoute
