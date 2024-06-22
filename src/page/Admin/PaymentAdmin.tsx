@@ -4,7 +4,7 @@ import ModalWrapper from '../../components/Modal/ModalWrapper'
 export default function PaymentAdmin() {
   return (
     <>
-    <ModalWrapper/>
+    {/* <ModalWrapper/> */}
     </>
   )
 }
