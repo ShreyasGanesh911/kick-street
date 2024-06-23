@@ -9,8 +9,11 @@ export default function ProductAdmin() {
   const [sort,setSort] = useState<number>(1)
   const [brands,setBrands] = useState<string[]>([])
   const [show,setShow] = useState<boolean>(false)
+  const [productId,setProductId] = useState<string>("")
   const handleClick = (e:React.MouseEvent<HTMLButtonElement, MouseEvent>)=>{
+    setProductId(e.currentTarget.value)
     document.body.style.overflow = "hidden"
+
       setShow(true)
   }
   const getData = async()=>{
@@ -41,7 +44,7 @@ export default function ProductAdmin() {
   },[sort,brands])
   return (
     <>
-    {show && <ModalWrapper show={show} setShow={setShow}/>}
+    {show && <ModalWrapper  setShow={setShow} productId={productId}/>}
      <section className='adminPage bg-white p-2 flex items-center justify-center flex-col'>
       <h1 className='p-3 text-2xl font-semibold w-full'>Products</h1>
         <div className='w-full flex justify-evenly items-center mt-5' >
@@ -64,7 +67,7 @@ export default function ProductAdmin() {
         </div>
         <motion.div className='w-11/12 flex flex-wrap justify-center items-center border my-2 py-2 border-slate-200' >
           {products.map((e)=>{
-            return(<button onClick={handleClick}><CardAdmin _id={e._id} description={e.description} gender={e.gender} images={e.images} name={e.name} offer={e.offer} price={e.price} rating={e.rating} reviews={e.reviews} sale={e.sale} size={e.size} stock={e.stock} key={e._id}/></button>)
+            return(<button value={e._id} onClick={handleClick}><CardAdmin _id={e._id} description={e.description} gender={e.gender} images={e.images} name={e.name} offer={e.offer} price={e.price} rating={e.rating} reviews={e.reviews} sale={e.sale} size={e.size} stock={e.stock} key={e._id}/></button>)
           })}
         </motion.div>
       </section> 
