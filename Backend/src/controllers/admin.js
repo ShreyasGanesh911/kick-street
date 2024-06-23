@@ -25,7 +25,15 @@ const stats = AsyncHandler(async(req,res)=>{
     const orderCount = orders.length
     let orderAmount = 0
     orders.forEach((e)=>orderAmount += e.amount)
-    console.log(productCount,orderCount,orderAmount)
+    res.status(200).json({success:true,result:{productCount,orderCount,orderAmount}})
 })
 
-module.exports = {getUserDetails,stats}
+const productById = AsyncHandler(async(req,res,next)=>{
+    const {id} = req.body
+    const data = await product.findById({_id:id})
+    if(data === null)
+        return next(new ErrorHandler("No product exists",404))
+    res.status(200).json({success:true,result:data})
+})
+
+module.exports = {getUserDetails,stats,productById}
