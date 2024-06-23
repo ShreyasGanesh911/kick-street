@@ -1,4 +1,4 @@
-type Size = {size:string,stock:number}
+export type Size = {size:string,stock:number}
 export type Product = {
     description : string,
     _id:string,
