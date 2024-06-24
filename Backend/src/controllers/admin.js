@@ -3,6 +3,10 @@ const order = require("../models/order.model");
 const product = require("../models/product.model");
 const AsyncHandler = require("../utils/AsyncHandler");
 const ErrorHandler = require("../utils/errorHandler");
+const months = [
+    '','January', 'February', 'March', 'April', 'May', 'June',
+    'July', 'August', 'September', 'October', 'November', 'December'
+  ];
 user
 /*
     Adimn routes
@@ -20,12 +24,41 @@ const getUserDetails = AsyncHandler(async(req,res)=>{
 })
 
 const stats = AsyncHandler(async(req,res)=>{
+    const data = await order.aggregate([
+        {
+            $group:{
+                _id:{
+                    month:{$month:"$orderDate"},
+                    
+                },
+                count : {$sum:1},
+                revenue : {$sum:"$amount"}
+            },
+            
+        },
+        {
+            $sort:{
+                '_id':1
+            }
+        }
+    ])
+    let monthArray = []
+    let countArray = []
+    let revenueArray = []
+    data.forEach(e=>{
+            monthArray.push(months[e._id.month])
+            countArray.push(e.count)
+            revenueArray.push(e.revenue)
+    })
+    console.log(data)
+    console.log(monthArray,countArray)
     const productCount = await product.countDocuments()
     const orders = await order.find()
     const orderCount = orders.length
     let orderAmount = 0
     orders.forEach((e)=>orderAmount += e.amount)
-    res.status(200).json({success:true,result:{productCount,orderCount,orderAmount}})
+    res.status(200).json({success:true,result:{month:monthArray,orders:countArray,revenue:revenueArray,productCount,orderCount,orderAmount}})
+    
 })
 
 const productById = AsyncHandler(async(req,res,next)=>{
@@ -36,4 +69,8 @@ const productById = AsyncHandler(async(req,res,next)=>{
     res.status(200).json({success:true,result:data})
 })
 
-module.exports = {getUserDetails,stats,productById}
+const checkAdmin = AsyncHandler(async(req,res)=>{
+    res.status(200).json({success:true,message:"User is admin"})
+})
+
+module.exports = {getUserDetails,stats,productById,checkAdmin}
