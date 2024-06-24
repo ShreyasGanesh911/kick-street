@@ -1,17 +1,21 @@
 import React, { useEffect, useState } from 'react'
 import LineChart from '../../components/Charts/LineChart'
 import BarChart from '../../components/Charts/BarChart'
+import { useNavigate } from 'react-router-dom'
 type Result ={
   orderAmount:number,
   orderCount:number,
-  productCount:number
+  productCount:number,
+  month:string[],
+  orders:number[],
+  revenue:number[]
 }
 type Data = {
   success :boolean,
   result:Result
 }
 export default function HomeAdmin() {
-
+  const navigate = useNavigate()
   const [stats,setStats] = useState<Result>()
   const getData = async()=>{
     try{
@@ -23,6 +27,8 @@ export default function HomeAdmin() {
           "Content-Type": "application/json",
         },
       });
+      if(response.status === 402)
+        return navigate('/admin/login')
       const data:Data = await response.json();
       console.log(data)
       setStats(data.result) 
@@ -72,10 +78,10 @@ export default function HomeAdmin() {
         </div>
         <div className='flex items-center justify-around '>
           <div className='w-1/2 flex justify-center '>
-            <LineChart/>
+            <LineChart month={stats?.month?stats.month:[]} revenue={stats?.revenue? stats.revenue:[]}/>
           </div>
           <div className='w-1/2 flex justify-center '>
-          <BarChart/>    
+          <BarChart  month={stats?.month?stats.month:[]} orders={stats?.orders?stats.orders:[]}/>    
           </div>
         </div>
         <div className=' flex justify-center items-start py-5'>
