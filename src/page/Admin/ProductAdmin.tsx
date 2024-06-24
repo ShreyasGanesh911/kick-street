@@ -4,7 +4,9 @@ import CardAdmin from '../../components/Admin/CardAdmin'
 import { Product } from '../../Types/Product'
 import { motion } from 'framer-motion'
 import ModalWrapper from '../../components/Modal/ModalWrapper'
+import { useNavigate } from 'react-router-dom'
 export default function ProductAdmin() {
+  const navigate = useNavigate()
   const [products,setProucts] = useState<Product[]>([])
   const [sort,setSort] = useState<number>(1)
   const [brands,setBrands] = useState<string[]>([])
@@ -13,14 +15,25 @@ export default function ProductAdmin() {
   const handleClick = (e:React.MouseEvent<HTMLButtonElement, MouseEvent>)=>{
     setProductId(e.currentTarget.value)
     document.body.style.overflow = "hidden"
-
       setShow(true)
   }
   const getData = async()=>{
-    let gender = undefined
-  
     try{
-      const response = await fetch(`http://localhost:4000/products/all?limit=20}`, {
+      const response = await fetch(`http://localhost:4000/admin/check`, {
+        method: "GET", 
+        mode: "cors", 
+        credentials: "include", 
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+      if(response.status === 402)
+        return navigate('/admin/login')
+    }catch(e){
+      console.log(e)
+    }
+    try{
+      const response = await fetch(`http://localhost:4000/products/all?limit=20`, {
         method: "GET", 
         mode: "cors", 
         credentials: "include", 
@@ -36,6 +49,9 @@ export default function ProductAdmin() {
       console.log(e)
     }
   }
+
+
+
   useEffect(()=>{
     window.scrollTo(0,0)
 },[])

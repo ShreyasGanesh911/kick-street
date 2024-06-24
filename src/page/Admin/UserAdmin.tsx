@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import TableChildAdmin from '../../components/Admin/TableChildAdmin'
+import { useNavigate } from 'react-router-dom'
 type Response = {
   success : boolean,
   result : Result[]
@@ -12,6 +13,7 @@ type Result = {
   _id : string
 }
 export default function UserAdmin() {
+  const navigate = useNavigate()
   const [users,setUsers] = useState<Result[]>()
   const getData = async()=>{
   
@@ -24,6 +26,8 @@ export default function UserAdmin() {
           "Content-Type": "application/json",
         },
       });
+      if(response.status === 402)
+        return navigate('/admin/login')
       const data:Response = await response.json();
       console.log(data)     
       setUsers(data.result)

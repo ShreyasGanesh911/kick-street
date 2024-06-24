@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import OrderTableChild from '../../components/Admin/OrderTableChild'
 import {Items} from "../../Types/About"
+import { useNavigate } from 'react-router-dom'
 type User = {
   email : string,
   name : string,
@@ -20,6 +21,7 @@ type Response = {
   result : Result[]
 }
 export default function OrderAdmin() {
+  const navigate = useNavigate()
   const [orders,setOrders] = useState<Result[]>()
   const getData = async()=>{
     let gender = undefined
@@ -33,6 +35,8 @@ export default function OrderAdmin() {
           "Content-Type": "application/json",
         },
       });
+      if(response.status === 402)
+        return navigate('/admin/login')
       const data:Response = await response.json();
       console.log(data) 
       setOrders(data.result)
