@@ -19,6 +19,7 @@ import PaymentAdmin from './page/Admin/PaymentAdmin';
 import Checkout from './page/User/Checkout';
 import SuccessPayment from './page/User/SuccessPayment';
 import AboutUser from './page/User/AboutUser';
+import AdminLogin from './page/Admin/AdminLogin';
 function App() {
   return (
 
@@ -40,9 +41,11 @@ function App() {
           <Route path = 'checkout/success' element={<SuccessPayment/>}></Route>
         </Route>
         
+           <Route path='admin/login' element={<AdminLogin/>}></Route>
           <Route path="/admin/" element={<Sidebar/>}>
           
           <Route path='' element={<HomeAdmin/>}></Route>
+         
           <Route path='orders' element={<OrderAdmin/>}></Route>
           <Route path='products' element={<ProductAdmin/>}></Route>
           <Route path='users' element={<UserAdmin/>}></Route>
