@@ -14,6 +14,7 @@ type Result = {
 }
 export default function UserAdmin() {
   const navigate = useNavigate()
+
   const [users,setUsers] = useState<Result[]>()
   const getData = async()=>{
   
@@ -40,7 +41,9 @@ export default function UserAdmin() {
   },[])
   return (
     <>
+    
       <section className='adminPage bg-white p-2'>
+  
       <h1 className='p-3 text-2xl font-semibold w-full'>Users</h1>
         <div className='w-full flex justify-evenly items-center mt-5' >
           <input type="search" className='w-3/5 p-3 outline-none rounded text-xl border border-indigo-500 ' placeholder='Search' />

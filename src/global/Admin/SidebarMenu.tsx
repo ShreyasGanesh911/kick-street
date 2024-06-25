@@ -9,9 +9,9 @@ export default function SidebarMenu() {
   
   return (
     <>
-  <Sidebar className=' inline-block ' backgroundColor='#fafafa' width='15vw' style={{display:'inline-block',position:'fixed',height:'100vh'}}>
+  <Sidebar className=' inline-block ' backgroundColor='#fafafa' width='12vw' style={{display:'inline-block',position:'fixed',height:'100vh'}}>
     <Menu>
-        <div className="w-full flex justify-center items-center p-5">KICK STREET</div>
+          <div className="w-full flex justify-center items-center p-5">KICK STREET</div>
         {menuList.map(({name,fav,path})=>
           <Link to={path}><MenuItem className='text-black font-semibold '><i className={`${fav}  text-indigo-700`}></i> <span >{name}</span></MenuItem></Link>
         )}

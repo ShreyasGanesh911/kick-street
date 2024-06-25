@@ -5,7 +5,7 @@ import { useLocation } from 'react-router-dom'
 import { Product } from '../Types/Product'
 
 export default function ProductCard() {
-  const [details,setDetails] = useState<Product>({description:'',gender:'',images:[''],name:'aa',offer:0,price:0,rating:0,reviews:[''],sale:false,size:[],stock:0,_id:''})
+  const [details,setDetails] = useState<Product>({description:'',gender:'',images:[''],name:'',offer:0,price:0,rating:0,reviews:[''],sale:false,size:[],stock:0,_id:''})
   const location = useLocation()
   console.log(location.state.size[0].stock)
     useEffect(()=>{

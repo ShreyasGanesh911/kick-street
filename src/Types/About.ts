@@ -20,5 +20,6 @@ type ProductId = {
     orderDate:string,
     payment : string,
     user : string,
-    _id : string
+    _id : string,
+    status:string
   }
