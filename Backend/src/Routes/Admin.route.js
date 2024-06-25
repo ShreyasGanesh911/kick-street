@@ -1,5 +1,5 @@
 const express = require("express")
-const { getUserDetails, stats, productById, checkAdmin} = require("../controllers/admin")
+const { getUserDetails, stats, productById, checkAdmin,getUserStats} = require("../controllers/admin")
 const adminAuth = require("../middlewares/Auth.admin")
 /*
     Admin role in this app
@@ -23,6 +23,7 @@ adminRoute.get('/details',adminAuth,getUserDetails)
 adminRoute.get('/stats',adminAuth,stats)
 adminRoute.post('/product',adminAuth,productById)
 adminRoute.get('/check',adminAuth,checkAdmin)
+adminRoute.get('/userdetails',adminAuth,getUserStats)
 
 
 module.exports = adminRoute
