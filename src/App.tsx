@@ -20,6 +20,7 @@ import Checkout from './page/User/Checkout';
 import SuccessPayment from './page/User/SuccessPayment';
 import AboutUser from './page/User/AboutUser';
 import AdminLogin from './page/Admin/AdminLogin';
+import AboutUserAdmin from './page/Admin/AboutUserAdmin';
 function App() {
   return (
 
@@ -49,6 +50,7 @@ function App() {
           <Route path='orders' element={<OrderAdmin/>}></Route>
           <Route path='products' element={<ProductAdmin/>}></Route>
           <Route path='users' element={<UserAdmin/>}></Route>
+          <Route path='users/:id' element={<AboutUserAdmin/>}></Route>
           <Route path='settings' element={<SettingsAdmin/>}></Route>
           <Route path='payments' element={<PaymentAdmin/>}></Route>
         </Route> 
