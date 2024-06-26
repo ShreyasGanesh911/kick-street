@@ -27,4 +27,12 @@ const placeOrder = AsyncHandler(async(req,res,next)=>{
     const responce = await result.populate("items.pId payment")
     res.status(200).json({success:true,responce,message:"Order placed"})
 })
-module.exports = {getAllOrders,viewOrders,placeOrder}
+
+const getSingleOrder = AsyncHandler(async(req,res,next)=>{
+    const {orderId} = req.query
+    if(!orderId)
+        return next(new ErrorHandler("OrderId not provided",400))
+    const result = await order.findById({_id:orderId}).populate("items.pId","-size -rating -stock -offer -gender -category -price -sale -reviews -description -__v").populate("user",'-password')
+    res.status(200).json({success:true,result})
+})
+module.exports = {getAllOrders,viewOrders,placeOrder,getSingleOrder}
