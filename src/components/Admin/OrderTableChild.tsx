@@ -1,5 +1,6 @@
 import React from 'react'
 import { toastSuccesss } from '../Toast'
+import { Link } from 'react-router-dom'
 
 type Props = {
   orderId : string,
@@ -19,12 +20,12 @@ export default function OrderTableChild({orderId,date,name,amount,emailId,status
   return (
     <>
      <tr className='border-b h-12 rounded hover:bg-neutral-100 w-full '>
-              <td className=' w-1/6 text-center py-5'>{orderId}<button value={orderId} onClick={handleClick}><i className="fa-solid fa-copy mx-2"></i></button></td>
+              <td className=' w-1/6 text-center py-5'><Link to={`/admin/orders/${orderId}`}><span className='hover:text-indigo-700 cursor-pointer'>{orderId}</span></Link><button value={orderId} onClick={handleClick}><i className="fa-solid fa-copy mx-2"></i></button></td>
               <td className=' w-1/6 text-center py-5'>{date.slice(0,10)}</td>
               <td className='w-1/6 text-center py-5 '>{emailId}</td>
               <td className='w-1/6 text-center py-5 capitalize'>{paymentStatus}</td>
               <td className='w-1/6 text-center py-5'><span className={`bg-green-400 rounded p-1  `}>{status}</span></td>
-              <td className='w-1/6 text-center py-5'>{amount}</td>
+              <td className='w-1/6 text-center py-5'>₹ {amount.toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</td>
              
             </tr> 
     </>
