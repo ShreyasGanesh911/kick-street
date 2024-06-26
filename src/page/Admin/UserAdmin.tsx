@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import TableChildAdmin from '../../components/Admin/TableChildAdmin'
 import { useNavigate } from 'react-router-dom'
+import { ToastContainer } from 'react-toastify'
 type Response = {
   success : boolean,
   result : Result[]
@@ -63,6 +64,7 @@ export default function UserAdmin() {
           </table>
           </div>
       </section>  
+      <ToastContainer/>
     </>
   )
 }
