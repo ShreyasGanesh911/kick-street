@@ -21,6 +21,7 @@ import SuccessPayment from './page/User/SuccessPayment';
 import AboutUser from './page/User/AboutUser';
 import AdminLogin from './page/Admin/AdminLogin';
 import AboutUserAdmin from './page/Admin/AboutUserAdmin';
+import OrderDetails from './page/Admin/OrderDetails';
 function App() {
   return (
 
@@ -48,6 +49,7 @@ function App() {
           <Route path='' element={<HomeAdmin/>}></Route>
          
           <Route path='orders' element={<OrderAdmin/>}></Route>
+          <Route path='orders/:id' element={<OrderDetails/>}></Route>
           <Route path='products' element={<ProductAdmin/>}></Route>
           <Route path='users' element={<UserAdmin/>}></Route>
           <Route path='users/:id' element={<AboutUserAdmin/>}></Route>
