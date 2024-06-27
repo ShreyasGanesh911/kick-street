@@ -1,5 +1,6 @@
 import React, { Dispatch, SetStateAction, useEffect, useState } from 'react'
 import {Product,Size} from "../../Types/Product"
+import UseFetchPost from '../../Hooks/UseFetchPost'
 type Props = {
   setShow :Dispatch<SetStateAction<boolean>>,
   productId:string
@@ -28,7 +29,7 @@ export default function ModalWrapper({setShow,productId}:Props) {
       });
       const data:Data = await response.json();
       const {result }= data
-      console.log(data) 
+      //console.log(data) 
       setDetails({description:result.description,gender:result.gender,name:result.name,price:result.price,discount:result.offer,stock:result.stock})
       setSize(result.size)  
     }catch(e){
@@ -40,13 +41,14 @@ export default function ModalWrapper({setShow,productId}:Props) {
     e.preventDefault()
     console.log(details)
   }
-
+  const data = UseFetchPost<Product,{id:string}>('http://localhost:4000/admin/product',{id:productId})
+  console.log("custom hook",data?._id)
   const handleChange = (e:React.ChangeEvent<HTMLInputElement>)=>{
     const value = e.target.value
     const name = e.target.name
-    console.log(value)
+    //console.log(value)
    setDetails({...details,[name]:value})
-    console.log(details)
+    //console.log(details)
   }
   useEffect(()=>{
     productId && getData() 
