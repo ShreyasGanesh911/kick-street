@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import OrderTableChild from '../../components/Admin/OrderTableChild'
 import {Items} from "../../Types/About"
-import { useNavigate } from 'react-router-dom'
 import { ToastContainer } from 'react-toastify'
+import UseFetchGet from '../../Hooks/UseFetchGet'
 type User = {
   email : string,
   name : string,
@@ -17,37 +17,10 @@ type Result = {
   user : User,
   _id:string
 }
-type Response = {
-  success : boolean,
-  result : Result[]
-}
 export default function OrderAdmin() {
-  const navigate = useNavigate()
-  const [orders,setOrders] = useState<Result[]>()
-  const getData = async()=>{
-    let gender = undefined
-  
-    try{
-      const response = await fetch(`http://localhost:4000/order/all`, {
-        method: "GET", 
-        mode: "cors", 
-        credentials: "include", 
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
-      if(response.status === 402)
-        return navigate('/admin/login')
-      const data:Response = await response.json();
-      console.log(data) 
-      setOrders(data.result)
-      //setProucts(data.result)
-    
-    }catch(e){
-      console.log(e)
-    }
-  }
-  useEffect(()=>{getData()},[])
+  const [data,loading] = UseFetchGet<Result[]>("http://localhost:4000/order/all",'/admin/login')
+  console.log("fetched data", data)
+
   return (
     <>
      <section className='adminPage bg-white p-2'>
@@ -67,7 +40,7 @@ export default function OrderAdmin() {
               <th className='w-1/6 py-5'>AMOUNT</th>
             </tr>
             {
-              orders?.map((e)=>{
+              data?.map((e)=>{
                 return <OrderTableChild paymentStatus={e.status} amount={e.amount} date={e.orderDate} name={e.user.name} emailId={e.user.email} orderId={e._id} status={e.status}/>
               })
             }         

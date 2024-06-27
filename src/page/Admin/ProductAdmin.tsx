@@ -3,9 +3,9 @@ import { Product } from '../../Types/Product'
 import ModalWrapper from '../../components/Modal/ModalWrapper'
 import { useNavigate } from 'react-router-dom'
 import ProductCard from '../../components/Admin/ProductCard'
+import UseFetchGet from '../../Hooks/UseFetchGet'
 export default function ProductAdmin() {
   const navigate = useNavigate()
-  const [products,setProucts] = useState<Product[]>([])
   const [sort,setSort] = useState<number>(1)
   const [brands,setBrands] = useState<string[]>([])
   const [show,setShow] = useState<boolean>(false)
@@ -30,26 +30,9 @@ export default function ProductAdmin() {
     }catch(e){
       console.log(e)
     }
-    try{
-      const response = await fetch(`http://localhost:4000/products/all?limit=20`, {
-        method: "GET", 
-        mode: "cors", 
-        credentials: "include", 
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
-      const data = await response.json();
-      console.log(data) 
-      setProucts(data.result)
-    
-    }catch(e){
-      console.log(e)
-    }
   }
-  useEffect(()=>{
-    window.scrollTo(0,0)
-},[])
+  const [data,loading] = UseFetchGet<Product[]>("http://localhost:4000/products/all?limit=20",'/admin/login')
+  console.log("fetched data",data)
   useEffect(()=>{
     getData()
   },[sort,brands])
@@ -84,7 +67,7 @@ export default function ProductAdmin() {
             </div>
         <div className='w-11/12 flex flex-wrap justify-start items-center   py-2 border-slate-200 flex-col' >
           
-          {products.map((e)=>{
+          {data?.map((e)=>{
             return(
                   <ProductCard _id={e._id} handleClick={handleClick} name={e.name} price={e.price} stock={e.stock} key={e._id}/>
               )

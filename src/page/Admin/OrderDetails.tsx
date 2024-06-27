@@ -1,11 +1,6 @@
-import React, { useEffect, useState } from 'react'
 import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { Items } from '../../Types/About'
-type Data = {
-    success:true,
-    result:Result
-}
-
+import UseFetchGet from '../../Hooks/UseFetchGet'
 type Result = {
     amount:number, 
     items:Items[],
@@ -23,30 +18,8 @@ type Result = {
 export default function OrderDetails() {
     const location = useLocation()
     const navigate = useNavigate()
-    const [orderDetails,setOrderDetails] = useState<Result>()
-    console.log(location.pathname.split('/')[3])
-    const getData = async()=>{
-        const orderId = location.pathname.split('/')[3]
-        const response = await fetch(`http://localhost:4000/order/userorder?orderId=${orderId}`,{
-            method: "GET", 
-              mode: "cors", 
-              credentials: "include", 
-              headers: {
-                "Content-Type": "application/json",
-              },
-          })
-          if(response.status === 500)
-              return navigate('/admin/orders')
-          const data:Data = await response.json()
-          console.log(data.result.user)
-        //   setOrders(data.orders)
-        //   setDetails(data.userDetails[0])
-        setOrderDetails(data.result)
-
-    }
-    useEffect(()=>{
-        getData()
-    },[])
+    const [data,loading] = UseFetchGet<Result>(`http://localhost:4000/order/userorder?orderId=${location.pathname.split('/')[3]}`,'/admin/orders')
+    console.log(data)
   return (
     <>
      <section className="adminPage bg-white flex justify-center items-start pt-16">
@@ -59,7 +32,7 @@ export default function OrderDetails() {
                     <div className='w-3/4 flex justify-start items-center flex-col pt-5 '>   
                         <div className='border bg-white rounded-lg w-11/12'>    
                             {
-                                orderDetails?.items.map(e=>
+                                data?.items.map(e=>
                                 <div className='flex my-5'>
 
                                     <div className='w-1/2 h-20   flex justify-evenly items-center'>
@@ -80,9 +53,9 @@ export default function OrderDetails() {
                             
                             }
                             <div className='flex text-center flex-row-reverse  w-full border-t h-14 pt-3'>
-                                <div className='w-1/4 '> ₹ {orderDetails?.amount.toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</div>
+                                <div className='w-1/4 '> ₹ {data?.amount.toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</div>
                                 <div className='w-1/4  font-bold'> Total</div>
-                                <div className='w-1/2 text-center  '> <span className='font-bold'>Date:</span> {orderDetails?.orderDate.slice(0,10)}</div>
+                                <div className='w-1/2 text-center  '> <span className='font-bold'>Date:</span> {data?.orderDate.slice(0,10)}</div>
                             </div>
                             </div>
 
@@ -92,19 +65,19 @@ export default function OrderDetails() {
                             <h1 className='font-bold text-xl'>Customer</h1>
                             <div className=' border-b py-3 capitalize'>
                               <p className='font-bold'>Customer ID</p>
-                              <p className='cursor-pointer hover:text-indigo-700'> <Link to={`/admin/users/${orderDetails?.user._id}`}>{orderDetails?.user._id}</Link></p>
+                              <p className='cursor-pointer hover:text-indigo-700'> <Link to={`/admin/users/${data?.user._id}`}>{data?.user._id}</Link></p>
                             </div>
                             <div className=' border-b py-3 capitalize'>
                               <p className='font-bold'>Name</p>
-                              <p> {orderDetails?.user.name}</p>
+                              <p> {data?.user.name}</p>
                             </div>
                             <div className=' border-b py-3'>
                               <p className='font-bold'>Email</p>
-                              <p> {orderDetails?.user.email}</p>
+                              <p> {data?.user.email}</p>
                             </div>
                             <div className=' border-b py-3'>
                               <p className='font-bold'>Phone</p>
-                              <p> {orderDetails?.user.phone}</p>
+                              <p> {data?.user.phone}</p>
                             </div>
                     </div>
                 </div>

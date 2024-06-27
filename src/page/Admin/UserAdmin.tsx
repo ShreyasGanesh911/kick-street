@@ -2,10 +2,7 @@ import React, { useEffect, useState } from 'react'
 import TableChildAdmin from '../../components/Admin/TableChildAdmin'
 import { useNavigate } from 'react-router-dom'
 import { ToastContainer } from 'react-toastify'
-type Response = {
-  success : boolean,
-  result : Result[]
-}
+import UseFetchGet from '../../Hooks/UseFetchGet'
 type Result = {
   email : string,
   name : string,
@@ -14,32 +11,7 @@ type Result = {
   _id : string
 }
 export default function UserAdmin() {
-  const navigate = useNavigate()
-
-  const [users,setUsers] = useState<Result[]>()
-  const getData = async()=>{
-  
-    try{
-      const response = await fetch(`http://localhost:4000/admin/details?type=user`, {
-        method: "GET", 
-        mode: "cors", 
-        credentials: "include", 
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
-      if(response.status === 402)
-        return navigate('/admin/login')
-      const data:Response = await response.json();
-      console.log(data)     
-      setUsers(data.result)
-    }catch(e){
-      console.log(e)
-    }
-  }
-  useEffect(()=>{
-    getData()
-  },[])
+  const [data,loading] = UseFetchGet<Result[]>("http://localhost:4000/admin/details?type=user",'/admin/login')
   return (
     <>
     
@@ -58,7 +30,7 @@ export default function UserAdmin() {
               <th className='w-1/5 py-5'>EMAIL</th>
               <th className='w-1/5 py-5'>ACTION</th>
             </tr>
-            {users?.map((e)=>{
+            {data?.map((e)=>{
               return <TableChildAdmin email={e.email} name={e.name} phone={e.phone} userId={e._id} key={e._id}/>
             })}          
           </table>
