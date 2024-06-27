@@ -50,8 +50,6 @@ const stats = AsyncHandler(async(req,res)=>{
             countArray.push(e.count)
             revenueArray.push(e.revenue)
     })
-    console.log(data)
-    console.log(monthArray,countArray)
     const productCount = await product.countDocuments()
     const orders = await order.find()
     const orderCount = orders.length
@@ -77,7 +75,6 @@ const getUserStats = AsyncHandler(async(req,res,next)=>{
     const {userId} = req.query
     if(!userId)
         return next(new ErrorHandler("User ID not provided",400))
-    console.log(userId)
     const userDetails = await user.findById({_id:userId}).select("-password -__v -_id")
     const orders = await order.find({user:userId}).populate('items.pId','-size -rating -stock -offer -gender -category -price -sale -reviews -description').sort({'orderDate':-1})
     res.status(200).json({success:true,result:{orders,userDetails}})

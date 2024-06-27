@@ -16,7 +16,6 @@ const instance = new Razorpay({
 const checkOut = AsyncHandler(async(req,res,next)=>{
     const {amount,cart} = req.body
     const {_id} = req.user
-    //console.log(req.user)
     const user = _id
     console.log(cart)
     if(!amount)
