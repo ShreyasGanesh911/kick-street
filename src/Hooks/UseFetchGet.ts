@@ -15,7 +15,7 @@ export default function UseFetchGet<T>(url:string,reroute:string):[T|undefined,b
                 "Content-Type": "application/json",
               },
           })
-          if(response.status === 500)
+          if(response.status !== 200)
               return navigate(reroute)
           const data = await response.json()
           //console.log(data)

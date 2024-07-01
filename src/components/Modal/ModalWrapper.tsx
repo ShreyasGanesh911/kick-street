@@ -1,5 +1,5 @@
 import React, { Dispatch, SetStateAction, useEffect, useState } from 'react'
-import {Product,Size} from "../../Types/Product"
+import {Product,Size,Images} from "../../Types/Product"
 import UseFetchPost from '../../Hooks/UseFetchPost'
 type Props = {
   setShow :Dispatch<SetStateAction<boolean>>,
@@ -9,9 +9,11 @@ type Data = {
   success:boolean,
   result : Product
 }
+
 export default function ModalWrapper({setShow,productId}:Props) {
   const [details,setDetails] = useState({name:'',gender:'',description:'',price:0,discount:0,stock:0})
-  const [size,setSize] = useState<Size[]>()
+  const [size,setSize] = useState<Size[]>([])
+  const [images,setImages] = useState<Images[]>([])
   const closeModal = ()=>{
     document.body.style.overflow = "scroll"
     setShow(false)
@@ -32,13 +34,40 @@ export default function ModalWrapper({setShow,productId}:Props) {
       //console.log(data) 
       setDetails({description:result.description,gender:result.gender,name:result.name,price:result.price,discount:result.offer,stock:result.stock})
       setSize(result.size)  
+      setImages(result.images)
     }catch(e){
       console.log(e)
     }
   }
 
-  const handleSubmit = (e:React.MouseEvent<HTMLButtonElement, MouseEvent>)=>{
+  const handleEditProduct = (e:React.MouseEvent<HTMLButtonElement, MouseEvent>)=>{
     e.preventDefault()
+    console.log(details,size)
+  }
+  const handleNewProduct = async(e:React.MouseEvent<HTMLButtonElement, MouseEvent>)=>{
+    e.preventDefault()
+    console.log(size)
+    let sale
+      details.discount ? sale = true: sale = false
+    try{
+      const response = await fetch(`http://localhost:4000/products/add`, {
+        method: "POST", 
+        mode: "cors", 
+        credentials: "include", 
+        headers: {
+          "Content-Type": "application/json",
+        },
+        
+        body: JSON.stringify({size:size,name:details.name,description:details.description,images,price:details.price,stock:details.stock,gender:details.gender,sale,offer:details.discount})
+      });
+      const data:Data = await response.json();
+      const {result }= data
+      console.log(data) 
+
+    }catch(e){
+      console.log(e)
+    }
+
     console.log(details)
   }
   const data = UseFetchPost<Product,{id:string}>('http://localhost:4000/admin/product',{id:productId})
@@ -46,13 +75,14 @@ export default function ModalWrapper({setShow,productId}:Props) {
   const handleChange = (e:React.ChangeEvent<HTMLInputElement>)=>{
     const value = e.target.value
     const name = e.target.name
-    //console.log(value)
+
    setDetails({...details,[name]:value})
-    //console.log(details)
+
   }
   useEffect(()=>{
     productId && getData() 
   },[])
+  //React.MouseEvent<HTMLButtonElement, MouseEvent>) => void
   return (
     <>
      <section className=' z-50 fixed top-0 bottom-0 right-0 left-0   flex justify-center items-center overflow-hidden' style={{height:"100vh",width:"100vw",backgroundColor:'rgb(253 253 253 / 86%)'}}>
@@ -60,7 +90,12 @@ export default function ModalWrapper({setShow,productId}:Props) {
               <div className='w-full flex flex-row-reverse pr-5 '><button onClick={closeModal} className='border-black m-3 font-thin text-6xl'>&times;</button></div>
                 <form className='h-5/6  w-full pt-5 '>
                 <div className=' w-full h-16 flex flex-row-reverse py-2 font-medium'>
-                <button className='py-2 px-8 border mx-5 bg-green-400 rounded hover:bg-green-500' onClick={handleSubmit}>{productId? 'Update' : 'Add'}</button>
+                
+                {productId?
+                  <button className='py-2 px-8 border mx-5 bg-green-400 rounded hover:bg-green-500' onClick={handleEditProduct}>Update</button>:
+                  <button className='py-2 px-8 border mx-5 bg-green-400 rounded hover:bg-green-500' onClick={handleNewProduct}>Add</button>
+
+                }
                   {productId && <button  className='py-2 px-8 border bg-red-500 rounded hover:bg-red-600'>Delete</button>}
                  
                 </div>

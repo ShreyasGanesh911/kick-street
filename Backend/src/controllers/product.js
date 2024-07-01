@@ -11,6 +11,7 @@ const product = require("../models/product.model")
 const addProduct = AsyncHandler(async(req,res,next)=>{
     const {name,description,images,price,stock,gender,category,size,sale,offer} = req.body
     let stockCheck = 0
+    console.log(size)
     size.forEach((e)=>stockCheck += e.stock)
     if(stockCheck !== stock)
         return res.status(400).json({success:false,message:"Stock not matching, please check the stock for each size"})
