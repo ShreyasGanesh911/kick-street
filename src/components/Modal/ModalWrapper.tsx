@@ -39,10 +39,27 @@ export default function ModalWrapper({setShow,productId}:Props) {
       console.log(e)
     }
   }
-
-  const handleEditProduct = (e:React.MouseEvent<HTMLButtonElement, MouseEvent>)=>{
+  //http://localhost:4000/products/update
+  const handleEditProduct = async(e:React.MouseEvent<HTMLButtonElement, MouseEvent>)=>{
     e.preventDefault()
-    console.log(details,size)
+    let sale
+      details.discount ? sale = true: sale = false
+    try{
+      const response = await fetch(`http://localhost:4000/products/update`, {
+        method: "POST", 
+        mode: "cors", 
+        credentials: "include", 
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({_id:productId,size:size,name:details.name,description:details.description,images,price:details.price,stock:details.stock,gender:details.gender,sale,offer:details.discount})
+      });
+      const data:Data = await response.json();
+      const {result }= data
+      console.log(result)
+    }catch(e){
+      console.log(e)
+    }
   }
   const handleNewProduct = async(e:React.MouseEvent<HTMLButtonElement, MouseEvent>)=>{
     e.preventDefault()
