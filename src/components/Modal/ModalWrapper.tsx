@@ -3,7 +3,7 @@ import {Product,Size,Images} from "../../Types/Product"
 import UseFetchPost from '../../Hooks/UseFetchPost'
 type Props = {
   setShow :Dispatch<SetStateAction<boolean>>,
-  productId:string
+  productId:string,
 }
 type Data = {
   success:boolean,
@@ -11,12 +11,36 @@ type Data = {
 }
 
 export default function ModalWrapper({setShow,productId}:Props) {
-  const [details,setDetails] = useState({name:'',gender:'',description:'',price:0,discount:0,stock:0})
+  const [details,setDetails] = useState({name:'',gender:'male',description:'',price:0,discount:0,stock:0})
   const [size,setSize] = useState<Size[]>([])
+  const[validate,setValidate] = useState({name:false,brand:false,description:false,price:false})
   const [images,setImages] = useState<Images[]>([])
+  
   const closeModal = ()=>{
     document.body.style.overflow = "scroll"
     setShow(false)
+  }
+  const checkField = ()=>{
+    let valid = true
+    console.log('des',details.description)
+    if(details.name === ''){
+      setValidate({...validate,name:true})
+      valid = false
+    }
+    if(details.description === ``){
+      setValidate({...validate,description:true})
+      valid = false
+    }
+    if(details.price === 0){
+      setValidate({...validate,price:true})
+      valid = false
+    }
+    if(details.name === ''){
+      setValidate({...validate,name:true})
+      valid = false
+      }
+      return valid
+
   }
   const getData = async()=>{
     try{
@@ -31,7 +55,6 @@ export default function ModalWrapper({setShow,productId}:Props) {
       });
       const data:Data = await response.json();
       const {result }= data
-      //console.log(data) 
       setDetails({description:result.description,gender:result.gender,name:result.name,price:result.price,discount:result.offer,stock:result.stock})
       setSize(result.size)  
       setImages(result.images)
@@ -39,67 +62,66 @@ export default function ModalWrapper({setShow,productId}:Props) {
       console.log(e)
     }
   }
-  //http://localhost:4000/products/update
-  const handleEditProduct = async(e:React.MouseEvent<HTMLButtonElement, MouseEvent>)=>{
-    e.preventDefault()
-    let sale
-      details.discount ? sale = true: sale = false
+  async function handlProduct<T>(url:string,method:string,body:T){
     try{
-      const response = await fetch(`http://localhost:4000/products/update`, {
-        method: "POST", 
-        mode: "cors", 
-        credentials: "include", 
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({_id:productId,size:size,name:details.name,description:details.description,images,price:details.price,stock:details.stock,gender:details.gender,sale,offer:details.discount})
-      });
-      const data:Data = await response.json();
-      const {result }= data
-      console.log(result)
-    }catch(e){
-      console.log(e)
-    }
-  }
-  const handleNewProduct = async(e:React.MouseEvent<HTMLButtonElement, MouseEvent>)=>{
-    e.preventDefault()
-    console.log(size)
-    let sale
-      details.discount ? sale = true: sale = false
-    try{
-      const response = await fetch(`http://localhost:4000/products/add`, {
-        method: "POST", 
+      const response = await fetch(url, {
+        method: method, 
         mode: "cors", 
         credentials: "include", 
         headers: {
           "Content-Type": "application/json",
         },
         
-        body: JSON.stringify({size:size,name:details.name,description:details.description,images,price:details.price,stock:details.stock,gender:details.gender,sale,offer:details.discount})
+        body: JSON.stringify(body)
       });
-      const data:Data = await response.json();
-      const {result }= data
-      console.log(data) 
+      if(response.status === 200 || response.status === 201)
+        closeModal()
 
     }catch(e){
       console.log(e)
     }
-
-    console.log(details)
   }
-  const data = UseFetchPost<Product,{id:string}>('http://localhost:4000/admin/product',{id:productId})
-  console.log("custom hook",data?._id)
+
+  const handleEditProduct = async(e:React.MouseEvent<HTMLButtonElement, MouseEvent>)=>{
+    e.preventDefault()
+    let sale
+    details.discount ? sale = true: sale = false
+
+    const body = {_id:productId,size:size,name:details.name,description:details.description,images,price:details.price,stock:details.stock,gender:details.gender,sale,offer:details.discount}
+    if(checkField()){
+      handlProduct('http://localhost:4000/products/update','POST',body)
+    }
+    
+  }
+
+  const handleDeleteProduct = async(e:React.MouseEvent<HTMLButtonElement, MouseEvent>)=>{
+    e.preventDefault()
+    if(checkField()){
+      handlProduct('http://localhost:4000/products/delete','DELETE',{_id:productId})
+    }
+  }
+
+  const handleNewProduct = async(e:React.MouseEvent<HTMLButtonElement, MouseEvent>)=>{
+    e.preventDefault()
+    let sale
+      details.discount ? sale = true: sale = false
+    const body = {size:size,name:details.name,description:details.description,images,price:details.price,stock:details.stock,gender:details.gender,sale,offer:details.discount}
+    console.log(size)
+    if(checkField()){
+      handlProduct('http://localhost:4000/products/add','POST',body)
+    }
+    
+  }
+
   const handleChange = (e:React.ChangeEvent<HTMLInputElement>)=>{
     const value = e.target.value
     const name = e.target.name
-
    setDetails({...details,[name]:value})
 
   }
   useEffect(()=>{
     productId && getData() 
   },[])
-  //React.MouseEvent<HTMLButtonElement, MouseEvent>) => void
   return (
     <>
      <section className=' z-50 fixed top-0 bottom-0 right-0 left-0   flex justify-center items-center overflow-hidden' style={{height:"100vh",width:"100vw",backgroundColor:'rgb(253 253 253 / 86%)'}}>
@@ -113,20 +135,21 @@ export default function ModalWrapper({setShow,productId}:Props) {
                   <button className='py-2 px-8 border mx-5 bg-green-400 rounded hover:bg-green-500' onClick={handleNewProduct}>Add</button>
 
                 }
-                  {productId && <button  className='py-2 px-8 border bg-red-500 rounded hover:bg-red-600'>Delete</button>}
+                  {productId && <button  className='py-2 px-8 border bg-red-500 rounded hover:bg-red-600 ' onClick={handleDeleteProduct}>Delete</button>}
                  
                 </div>
                     <div className='w-full h-full flex'>
                         <div className='w-1/2 h-full  px-5 '>
                             <div className='my-3'>
-                              <label className='p-1 font-bold text-zinc-700 text-sm'>Product Name</label>
-                              <br />
-                              <input type="text" className='border outline-none py-2 w-4/5 px-2 rounded border-slate-300   ' name='name' onChange={handleChange} value={details.name} />
+                              <label className=' font-bold text-zinc-700 text-sm'>Product Name</label>
+                              <p className={`${!validate.name && 'invisible'} text-sm text-red-500 font-medium`}>Name field cannont be left empty *</p>
+                              <input required type="text" className='border outline-none py-2 w-4/5 px-2 rounded border-slate-300   ' name='name' onChange={handleChange} value={details.name} />
+                              
                             </div>
                             <div className='my-3'>
                               <label className='p-1 font-bold text-zinc-700 text-sm'>Brand</label>
-                              <br />
-                              <input type="text" className='border outline-none py-2 w-4/5 px-2 rounded border-slate-300'  />
+                              <p className={`${!validate.brand && 'invisible'} text-sm text-red-500 font-medium`}>Brand field cannont be left empty *</p>
+                              <input required type="text" className='border outline-none py-2 w-4/5 px-2 rounded border-slate-300' name='brand' />
                             </div>
                             <div className='my-3'>
                               <label className='p-1 font-bold text-zinc-700 text-sm'>Gender</label>
@@ -139,8 +162,8 @@ export default function ModalWrapper({setShow,productId}:Props) {
                             </div>
                             <div className='my-3'>
                               <label className='p-1 font-bold text-zinc-700 text-sm'>Description</label>
-                              <br />
-                              <textarea className='w-4/5 h-56 rounded p-3 border-slate-300 border outline-none ' name='description' onChange={(e)=>setDetails({...details,description:e.currentTarget.value})} value={details.description}></textarea>
+                              <p className={`${!validate.description && 'invisible'} text-sm text-red-500 font-medium`}>Description field cannont be left empty *</p>
+                              <textarea required className='w-4/5 h-56 rounded p-3 border-slate-300 border outline-none ' name='description' onChange={(e)=>setDetails({...details,description:e.currentTarget.value})} value={details.description}></textarea>
                             </div>
 
                         </div>
@@ -161,7 +184,7 @@ export default function ModalWrapper({setShow,productId}:Props) {
                             <div className='mx-2'>
                             <label className='p-1 font-bold text-zinc-700 text-sm'>Price</label>
                             <br />
-                            <input type="text" className='px-2 py-1 outline-none border border-slate-300 rounded' name='price' onChange={handleChange} value={details.price}/>
+                            <input required type="text" className={`px-2 py-1 outline-none border border-slate-300 rounded ${validate.price && 'border-red-400'}`} name='price' onChange={handleChange} value={details.price}/>
                             </div>
                             <div className='mx-2'>
                             <label htmlFor=""><span className='p-1 font-bold text-zinc-700 text-sm'>Discount</span> <span className='text-gray-600 text-sm'>(Optional)</span></label>
