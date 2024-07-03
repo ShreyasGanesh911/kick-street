@@ -1,6 +1,6 @@
 const express = require('express')
 const adminAuth = require('../middlewares/Auth.admin')
-const { addProduct, viewProducts, deleteProduct, updateProduct } = require('../controllers/product')
+const { addProduct, viewProducts, deleteProduct, updateProduct,singleProduct } = require('../controllers/product')
 
 const productRouter = express.Router()
 
@@ -15,6 +15,7 @@ productRouter.post("/add",adminAuth,addProduct)
 productRouter.get('/all',viewProducts)
 productRouter.delete('/delete',adminAuth,deleteProduct)
 productRouter.post('/update',adminAuth,updateProduct)
+productRouter.get("/singleProduct",singleProduct)
 
 
 module.exports = productRouter

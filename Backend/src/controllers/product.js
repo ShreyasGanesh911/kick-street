@@ -76,4 +76,14 @@ const updateProduct = AsyncHandler(async(req,res,next)=>{
         return next(new ErrorHandler('Product not found',404))
     res.status(200).json({success:true,message:"Product updated successfully"})
 })
-module.exports = {addProduct,viewProducts,deleteProduct,updateProduct}    
+
+const singleProduct = AsyncHandler(async(req,res,next)=>{
+    const {name} = req.query
+    const result = await product.findOne({name:{ $regex: '.*' + name + '.*' }})
+    if(!result)
+        return next(new ErrorHandler("Item not found",404))
+    res.status(200).json({success:true,result})
+})
+
+
+module.exports = {addProduct,viewProducts,deleteProduct,updateProduct,singleProduct}    
