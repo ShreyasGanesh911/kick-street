@@ -49,10 +49,10 @@ export default function Home() {
       <div className='mb-14'><Link to='/all ' state={{gender:""}}><button className='border p-4 font-medium border-black text-lg hover:bg-neutral-200 '>View all</button></Link></div>
       <h2 className='w-3/4 text-3xl'>Shop by category</h2>
       <div className='container-div py-20 w-3/4 text-white'>
-      <Link to ='/all' state={{gender:'male'}}><button className='w-72 h-72 bg-black flex justify-center items-center text-2xl hover:text-3xl hover:delay-100 hover:duration-150' value='men'>
+      <Link to ='/men' ><button className='w-72 h-72 bg-black flex justify-center items-center text-2xl hover:text-3xl hover:delay-100 hover:duration-150' value='men'>
           Men
         </button></Link>
-        <Link to='/all' state={{gender:'female'}}><button className='w-72 h-72 bg-black flex justify-center items-center text-2xl hover:text-3xl hover:delay-75 hover:duration-150'  value='women'>Women</button></Link>
+        <Link to='/women' ><button className='w-72 h-72 bg-black flex justify-center items-center text-2xl hover:text-3xl hover:delay-75 hover:duration-150'  value='women'>Women</button></Link>
         <button className='w-72 h-72 bg-black flex justify-center items-center text-2xl hover:text-3xl hover:delay-75 hover:duration-150' onClick={handleClick} value='trending'>Trending</button>
       </div>
       <div></div>

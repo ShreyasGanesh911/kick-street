@@ -12,12 +12,14 @@ export default function AllProducts() {
   const [brands,setBrands] = useState<string[]>([])
   const handleSort = (e:React.ChangeEvent<HTMLSelectElement>)=>{
     e.preventDefault()
-    console.log(e.currentTarget.value)
     setSort(Number(e.currentTarget.value))
   } 
   const getData = async()=>{
     let gender = undefined
-    location.state?gender = location.state.gender:gender = ''
+    console.log(location.pathname.split('/')[1])
+    location.pathname.split('/')[1] ==='men' ? gender = 'male':gender = 'female'
+    if(location.pathname.split('/')[1] === 'all')
+      gender = ''
     try{
       const response = await fetch(`http://localhost:4000/products/all?limit=20&gender=${gender}&sort=${sort}&brand=${brands.join('')}`, {
         method: "GET", 
@@ -59,7 +61,7 @@ export default function AllProducts() {
         </div>
         <div className='w-full flex flex-wrap py-5 justify-center items-center'>
           {products.map((e)=>{
-            return(<Link to={`/product/${e.name}`} key={e._id} state={{description:e.description,price:e.price,images:e.images,size:e.size,name:e.name }} > <CardAdmin key={e._id} _id={e._id} description={e.description} gender={e.gender} images={e.images} name={e.name} offer={e.offer} price={e.price} rating={e.rating} reviews={e.reviews} sale={e.sale} size={e.size} stock={e.stock}  /></Link>)
+            return(<Link to={`/product/${e.name}`} key={e._id}  > <CardAdmin key={e._id} name={e.name} price={e.price}/></Link>)
           })}     
         </div>
        

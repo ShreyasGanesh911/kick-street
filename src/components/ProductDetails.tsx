@@ -1,16 +1,23 @@
 import React, {useState } from 'react'
-import { Product } from '../Types/Product'
+import { Product, Size } from '../Types/Product'
 import { useSelector, useDispatch } from 'react-redux'
 import { addToCart, updateQty } from '../Redux/Slice/Cart/Index'
 import { RootState } from '../Redux/Store'
 import { ToastContainer } from 'react-toastify'
 import { toastSuccesss, toastWarning } from './Toast'
 
+type Props = {
+  description:string,
+  name:string,
+  price:number,
+  size:Size[],
+  _id:string,
+  offer:number
+}
 export default function ProductDetails({description,name,price,size,_id}:Product) {
   const [qty,setQty] = useState(1)
 console.log('size',size)
   const [shoeSize,setShoeSize] = useState<number>(0)
-  console.log('product id',_id)
   const handleSize = (e:React.MouseEvent<HTMLInputElement, MouseEvent>)=>{
     e.preventDefault()
     setShoeSize(Number(e.currentTarget.value))

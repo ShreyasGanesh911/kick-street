@@ -16,8 +16,8 @@ export default function Navbar() {
         <Link to='/'><div className="nav-logo"><img className="logo" src={logo} alt="Logo Here" /></div></Link>
         <div className="flex">
           <ul className="flex justify-center items-center">
-            <Link to='/all' key='male' state={{gender:'male'}}><li className="px-3 hover:font-medium">Men</li></Link>
-            <Link to='/all' key='female' state={{gender:'female'}} ><li className="px-3 hover:font-medium">Women</li></Link>
+            <NavLink to='/men' key='male' state={{gender:'male'}}><li className="px-3 hover:font-medium">Men</li></NavLink>
+            <NavLink to='/women' key='female' state={{gender:'female'}} ><li className="px-3 hover:font-medium">Women</li></NavLink>
             <NavLink to='/cart'><li className="px-3 hover:font-medium">Trending</li></NavLink>
             <NavLink to='/cart'><li className="px-3 hover:font-medium">Sale</li></NavLink>
            

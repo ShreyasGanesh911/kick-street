@@ -31,6 +31,7 @@ export default function ProductCard() {
       console.log(e)
     }
   }
+
     useEffect(()=>{
         window.scrollTo(0,0)
         getData()
