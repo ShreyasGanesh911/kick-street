@@ -1,6 +1,5 @@
 import React, { Dispatch, SetStateAction, useEffect, useState } from 'react'
 import {Product,Size,Images} from "../../Types/Product"
-import UseFetchPost from '../../Hooks/UseFetchPost'
 type Props = {
   setShow :Dispatch<SetStateAction<boolean>>,
   productId:string,
@@ -15,7 +14,9 @@ export default function ModalWrapper({setShow,productId}:Props) {
   const [size,setSize] = useState<Size[]>([])
   const[validate,setValidate] = useState({name:false,brand:false,description:false,price:false})
   const [images,setImages] = useState<Images[]>([])
-  
+  const [addMore,setAddMore] = useState<boolean>(false)
+  const [newSize,setNewSize] = useState({size:"",stock:0})
+  const [error,setError] = useState<string>()
   const closeModal = ()=>{
     document.body.style.overflow = "scroll"
     setShow(false)
@@ -105,6 +106,7 @@ export default function ModalWrapper({setShow,productId}:Props) {
     e.preventDefault()
     let sale
       details.discount ? sale = true: sale = false
+      
     const body = {size:size,name:details.name,description:details.description,images,price:details.price,stock:details.stock,gender:details.gender,sale,offer:details.discount}
     console.log(size)
     if(checkField()){
@@ -119,6 +121,58 @@ export default function ModalWrapper({setShow,productId}:Props) {
    setDetails({...details,[name]:value})
 
   }
+  const handleNewSize = (e:React.MouseEvent<HTMLButtonElement, MouseEvent>)=>{
+    e.preventDefault()
+   console.log(newSize.size)
+   if(newSize.size ===  '')
+    return setError("Size cannont be 0")
+   let found = false
+   size.forEach(e=>{
+    if(e.size===newSize.size){
+      found = true
+      return setError("Size already exists")
+    } 
+   })
+   if(!found){
+    setError('')
+    setSize([...size,newSize])
+    setDetails({...details,stock:details.stock +=newSize.stock
+
+    })
+    setAddMore(false)
+   }
+    
+  }
+
+  const handleResmoveSize = (e:React.MouseEvent<HTMLButtonElement, MouseEvent>)=>{
+      e.preventDefault()
+      const findSize = e.currentTarget.value
+      console.log(size)
+      let i=0,stock=0
+      for(i=0;i<size.length;i++)
+        if(size[i].size === findSize){
+          const array = size
+          stock = size[i].stock
+          array.splice(i,1)
+          setSize(array)
+        }
+      setDetails({...details,stock:details.stock-=stock})
+  }
+  const handleStockChange = (e:React.ChangeEvent<HTMLInputElement>)=>{
+    const name = e.target.name
+    const value = Number(e.target.value)
+    let array = size
+    for(let i=0;i<size.length;i++)
+      if(size[i].size === name){
+          array[i].stock = 95
+          console.log(array[i].stock )
+          setSize(array)
+      }
+      console.log(array)
+      
+  }
+
+
   useEffect(()=>{
     productId && getData() 
   },[])
@@ -131,11 +185,11 @@ export default function ModalWrapper({setShow,productId}:Props) {
                 <div className=' w-full h-16 flex flex-row-reverse py-2 font-medium'>
                 
                 {productId?
-                  <button className='py-2 px-8 border mx-5 bg-green-400 rounded hover:bg-green-500' onClick={handleEditProduct}>Update</button>:
-                  <button className='py-2 px-8 border mx-5 bg-green-400 rounded hover:bg-green-500' onClick={handleNewProduct}>Add</button>
+                  <button className='py-2 px-8 border mx-5 bg-green-500 rounded hover:bg-green-500' onClick={handleEditProduct}>Update</button>:
+                  <button className='py-2 px-8 border mx-5 bg-green-500 rounded hover:bg-green-500' onClick={handleNewProduct}>Add</button>
 
                 }
-                  {productId && <button  className='py-2 px-8 border bg-red-500 rounded hover:bg-red-600 ' onClick={handleDeleteProduct}>Delete</button>}
+                  {productId && <button  className='py-2 px-8 border bg-red-600 rounded hover:bg-red-600 ' onClick={handleDeleteProduct}>Delete</button>}
                  
                 </div>
                     <div className='w-full h-full flex'>
@@ -173,9 +227,9 @@ export default function ModalWrapper({setShow,productId}:Props) {
                           
                             <div className='border h-5/6 w-1/2  '></div>
                             <div className=' h-5/6 w-1/2 flex justify-center items-center'>
-                              <div className='border w-3/4 h-3/4 border-dashed border-slate-800 flex justify-center items-center '>
+                              <div className='border w-3/4 h-3/4 border-dashed border-slate-800 flex justify-center items-center relative'>
                                   <input type="file" placeholder='Click here to add images' accept="image/*" className=' opacity-0 w-full h-full border cursor-pointer' />
-                                  <span className='text-slate-500 fixed '>Click here to add images</span>
+                                  <span className='text-slate-500 absolute w-11/12 text-center '>Click here to add images</span>
                               </div>
                             </div>
                         </div>
@@ -197,14 +251,28 @@ export default function ModalWrapper({setShow,productId}:Props) {
                             <input type="text" className='px-2 py-1 outline-none border bg-white border-slate-300 rounded' disabled value={ details.price - (details.price * details.discount/100)}/>
                             </div>
                            </div>
-                           <h2 className='my-3 px-1 text-lg font-bold text-zinc-700'>Stock ({details.stock})</h2>
+                           <div className='flex'>
+                           <h2 className='my-3 px-1 text-lg font-bold text-zinc-700 '>Stock ({details.stock})</h2>
+                            <p className='my-3 px-1 text-sm text-red-500 pl-10'>{error}</p>
+                           </div>
+                           
                            <div className='flex flex-wrap  border border-slate-200 mr-3'>
-                                {size?.map(e=>
-                                   <div className='w-24 h-16 p-1 border border-dashed bg-zinc-100 rounded m-2'>
+                                {size.map(e=>
+                                   <div className='w-24 h-16 p-1 border border-dashed bg-zinc-100 rounded m-2 relative'>
                                     <p className='text-center'>UK : {e.size}</p>
-                                    <input type="number" className=' text-center w-full px-2 outline-none rounded border py-1' value={e.stock} />
+                                    <button value={e.size} className=' absolute right-0 top-0 text-xl text-red-600  rounded-full' style={{top:"-16px",right:"-2px"}} onClick={handleResmoveSize}>&times;</button>
+                                    <input disabled type="number" name={e.size} className=' text-center w-full px-2 outline-none rounded border py-1 bg-white' value={e.stock} onChange={handleStockChange}/>
                                 </div>)}    
-                                <div className='w-24 h-16 p-1 border border-dashed bg-zinc-100 rounded m-2'> <button className='w-full h-full  text-sm text-violet-700'>{productId? 'Add more +' : 'Add size'}</button> </div>                            
+                                  {
+                                    !addMore &&                                   <div className='w-24 h-16 p-1 border border-dashed bg-zinc-100 rounded m-2'> 
+                                    <button className='w-full h-full  text-sm text-violet-700' onClick={()=>setAddMore(true)}>{productId? 'Add more +' : 'Add size'}</button> 
+                                  </div> 
+                                  }
+                                  {addMore && <div className='w-24 h-16 p-1 border border-dashed bg-zinc-100 rounded m-2 flex justify-center items-center flex-col text-sm relative'>
+                                      <input name='size' type="text" className='w-3/4 mb-2 outline-none border border-slate-300 text-center' placeholder='UK:' value={newSize.size} onChange={(e)=>setNewSize({...newSize,size:e.target.value})}/>
+                                      <input name = 'stock' type="number" min={0} className='w-3/4  outline-none border border-slate-300 text-center' placeholder='stock' value={newSize.stock} onChange={(e)=>setNewSize({...newSize,stock:Number(e.target.value)})}/>
+                                      <button className='   rounded absolute right-0 top-0  ' style={{top:"-10px",right:"-1px"}} onClick={handleNewSize}>&#x2705;</button>
+                                    </div>  }
                            </div>
                         </div>  
                         </div>     
