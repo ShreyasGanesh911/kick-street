@@ -9,15 +9,16 @@ const product = require("../models/product.model")
     4. View all products 
 */
 const addProduct = AsyncHandler(async(req,res,next)=>{
-    const {name,description,images,price,stock,gender,category,size,sale,offer} = req.body
+    let {name,description,images,price,stock,gender,category,size,sale,offer} = req.body
     let stockCheck = 0
     console.log(size)
     size.forEach((e)=>stockCheck += e.stock)
+    size = size.sort((a, b) => a.size > b.size ? 1 : -1)
     if(stockCheck !== stock)
         return res.status(400).json({success:false,message:"Stock not matching, please check the stock for each size"})
     if(!offer && sale)
         return res.status(400).json({success:false,message:"Please mention the offer percentage"})
-        
+    
    await product.create({name,description,images,price,stock,gender,category,size,sale,offer})
     res.status(201).json({success:true,message:"Product added successfully"})
 })
@@ -70,7 +71,8 @@ const deleteProduct = AsyncHandler(async(req,res,next)=>{
 })
 
 const updateProduct = AsyncHandler(async(req,res,next)=>{
-    const {name,description,price,stock,gender,_id,size} = req.body
+    let {name,description,price,stock,gender,_id,size} = req.body
+    size = size.sort((a, b) => a.size > b.size ? 1 : -1)
     const responce = await product.findByIdAndUpdate(_id,{name,description,price,stock,gender,size})
     if(!responce)
         return next(new ErrorHandler('Product not found',404))
