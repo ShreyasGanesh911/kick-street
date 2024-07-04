@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import {Product} from '../../Types/Product'
 import IntroCard from '../../components/Carousel-card/IntroCard'
 import Filter from '../../components/AllProducts/Filter'
-import CardAdmin from '../../components/Admin/CardAdmin'
+import CardMini from '../../components/CardMini'
 import { Link, useLocation } from 'react-router-dom'
 
 export default function AllProducts() {
@@ -61,7 +61,7 @@ export default function AllProducts() {
         </div>
         <div className='w-full flex flex-wrap py-5 justify-center items-center'>
           {products.map((e)=>{
-            return(<Link to={`/product/${e.name}`} key={e._id}  > <CardAdmin key={e._id} name={e.name} price={e.price}/></Link>)
+            return(<Link to={`/product/${e.name}`} key={e._id}  > <CardMini key={e._id} name={e.name} price={e.price}/></Link>)
           })}     
         </div>
        
