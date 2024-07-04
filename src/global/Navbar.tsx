@@ -11,10 +11,10 @@ export default function Navbar() {
     <div className="bg-black  overflow-x-hidden text-white  flex justify-center w-full ">
       <span className="p-2">FREE SHIPPING ON ALL ORDERS ABOVE 19,999/-</span>
     </div>
-    <nav className=' nav displayFlex sticky top-0 bg-white z-30 overflow-hidden'>
-      <div className="displayFlex nav-div bg-white">
-        <Link to='/'><div className="nav-logo"><img className="logo" src={logo} alt="Logo Here" /></div></Link>
-        <div className="flex">
+    <nav className=' nav flex justify-center items-start sticky top-0 bg-white z-30 overflow-hidden'>
+      <div className="flex justify-between items-center nav-div bg-white ">
+        <Link to='/'><div className="nav-logo relative right-4"><img className="logo" src={logo} alt="Logo Here" /></div></Link>
+        <div className="sm:flex hidden">
           <ul className="flex justify-center items-center">
             <NavLink to='/men' key='male' state={{gender:'male'}}><li className="px-3 hover:font-medium">Men</li></NavLink>
             <NavLink to='/women' key='female' state={{gender:'female'}} ><li className="px-3 hover:font-medium">Women</li></NavLink>
@@ -23,7 +23,7 @@ export default function Navbar() {
            
           </ul>
         </div>
-        <div className="nav-side">
+        <div className="nav-side sm:flex hidden">
           <ul className="flex text-xl">
           <li ><NavLink to='/login'><i className="fa-regular fa-user px-4 "></i></NavLink></li>
           <li><NavLink to='/about'><i className="fa-solid fa-circle-info "></i></NavLink></li>

@@ -31,7 +31,7 @@ export default function Filter({brands,setBrands}:Props) {
     };
   return (
     <>
-        <div className='w-1/4 min-h-60 h-auto pl-16 pt-12 flex flex-col '>
+        <div className='w-1/4 min-h-60 h-auto pl-16 pt-12 sm:flex flex-col  hidden'>
         <h2 className='text-2xl  w-3/4 py-2 border-gray-400'>SHOP BY</h2>
         <div className='my-5'>
         <h3 className='text-lg pb-2 border-b w-3/4'>PRICE</h3>

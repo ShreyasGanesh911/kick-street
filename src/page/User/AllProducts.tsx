@@ -46,12 +46,12 @@ export default function AllProducts() {
     <>
      <section className='page flex justify-start items-center flex-col overflow-hidden'>
 
-      <div className='w-3/4'>
-      <IntroCard/>
+      <div className='sm:w-3/4 w-11/12 h-56 mt-10 bg-red-400'>
+        
       </div>
         <h1 className='text-5xl p-2 mt-6 font-extralight '>All sneakers</h1>
       <div className='w-full flex mt-14 overflow-hidden'>
-      <Filter brands={brands} setBrands={setBrands}/>
+      <Filter brands={brands} setBrands={setBrands} />
       <div className='w-3/4  '>
         <div className='flex flex-row-reverse w-11/12   p-2'>
           <select name="sort" className='border p-2 rounded-none outline-none border-black' onChange={handleSort}>
