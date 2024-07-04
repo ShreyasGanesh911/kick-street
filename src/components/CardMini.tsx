@@ -1,12 +1,12 @@
 import React from 'react'
-import img from '../../Assets/Shoe.webp'
-import {Product} from "../../Types/Product"
+import img from '../Assets/Shoe.webp'
+import {Product} from "../Types/Product"
 import { motion } from 'framer-motion'
 type Props = {
   name:string,
   price:number,
 }
-export default function CardAdmin({name,price}:Props) {
+export default function Card({name,price}:Props) {
   return (
     <>
       <div className='bg-white rounded w-60 h-80 border m-2 hover:border-black  '>
