@@ -3,7 +3,7 @@ import {Product} from '.././Types/Product'
 export default function Card({description,name,price,size}:Product) {
   return (
 <>
-        <div className='  border-slate-300 item-container mx-8 w-32 sm:h-80 sm:w-80'> 
+        <div className='  border-slate-300 item-container sm:mx-8 mx-4 w-32 sm:h-80 sm:w-80'> 
      
           <div className=' h-full sm:h-3/4 overflow-hidden'>
             <img src={img} className="object-contain overflow-hidden" alt="" />

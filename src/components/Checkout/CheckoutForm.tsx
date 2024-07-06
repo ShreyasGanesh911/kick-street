@@ -86,7 +86,7 @@ export default function CheckoutForm() {
   return (
     <>  
         <div className='border rounded w-full  ' style={{minHeight:"30vh",height:"auto"}}>
-          <h2 className='text-3xl p-2 border-b '>Order summary</h2>
+          <h2 className='sm:text-3xl sm:text-start text-center text-2xl p-2 border-b '>Order summary</h2>
           <div className='px-2 flex justify-around'>
             <p>Sub total </p>
             <p>₹ {subTotal.toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</p>

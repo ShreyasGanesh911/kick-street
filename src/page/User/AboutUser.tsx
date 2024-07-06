@@ -48,22 +48,23 @@ export default function AboutUser() {
   return (
     <>
      <section className='page  flex justify-start items-center flex-col'>
-      <h1 className='text-4xl p-3  text-slate-700 text'>My Account</h1>
-      <div className='w-3/4 h-auto flex justify-evenly   border mb-10 pb-5'>
-        <div className='w-2/3  flex justify-start items-center flex-col'>
-          <h1 className='capitalize text-slate-700   p-3 text-2xl border-b border-black w-3/4'>order history</h1>
+      <h1 className='sm:text-4xl text-2xl p-3  text-slate-700 text'>My Account</h1>
+      <div className='sm:w-3/4 w-11/12 h-auto flex sm:justify-evenly justify-center sm:flex-row flex-col-reverse  mb-10 pb-5'>
+        <div className='sm:w-2/3 w-full flex justify-start items-center flex-col '>
+          <h1 className='capitalize text-slate-700   p-3 text-2xl border-b border-black sm:w-3/4 w-5/6 sm:text-start text-center'>order history</h1>
           {orders?.length ? 
             <>
-              {orders.map(e=><div className='w-3/4 h-auto border-b border-black  flex'>
-              <div className='w-3/4 h-full '>
-              {e.items.map(f=><div className='w-full  flex h-28 my-5 justify-between'> 
+              {orders.map(e=>
+              <div className='sm:w-3/4 w-full h-auto border-b  border-black flex sm:flex-row flex-col justify-center items-center'>
+              <div className='sm:w-3/4 w-11/12 h-full flex sm:inline-block flex-col justify-start items-start'>
+              {e.items.map(f=><div className='w-full  flex h-28 sm:my-5 my-3 justify-between'> 
                 
                 <div className='w-1/4 h-full bg-red-500 '>
 
                 </div>
-                <div className='w-3/4 px-4 py-2 capitalize'>
+                <div className='w-3/4 sm:px-4 px-2 py-1 sm:py-2 capitalize'>
                 {}
-                <p className='font-semibold'>{f.pId.name}</p>
+                <p className='font-semibold text-sm sm:text-base'>{f.pId.name}</p>
                 <p>qty :{f.qty}</p>
                 <p>₹ {f.price.toFixed(2)} </p>
                 <p>UK : <span className='font-semibold'>{f.size}</span></p>
@@ -71,12 +72,12 @@ export default function AboutUser() {
           
               </div>)}
                 </div>  
-              <div className='w-1/4 h-full flex justify-between items-center flex-col'>
-                <div className='my-3'>
+              <div className='sm:w-1/4 w-full  h-full flex justify-between items-center flex-col'>
+                <div className='sm:my-3 my-1'>
                 <p className='font-semibold'>Date Placed</p>
                 <p className='flex-row-reverse flex px-2 font-thin'>{e.orderDate.slice(0,10)}</p>
                 </div>
-                <p className='text-center font-semibold my-5 border-t border-black py-1'>Total {e.amount.toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</p>
+                <p className='text-center  font-semibold sm:my-5 my-2 border-t border-black py-1'>Total {e.amount.toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</p>
                
                 </div>  
               
@@ -86,8 +87,8 @@ export default function AboutUser() {
         }
          
         </div>
-        <div className='w-1/3 h-32  flex justify-start items-center flex-col'>
-        <h1 className='capitalize text-slate-700   p-3 text-2xl border-b w-3/4 border-black'>Account details</h1>
+        <div className='sm:w-1/3 h-32  flex justify-start items-center flex-col'>
+        <h1 className='capitalize text-slate-700  py-3 sm:p-3 text-2xl border-b sm:w-3/4 w-5/6 sm:text-start text-center border-black'>Account details</h1>
         <p className='w-3/4 font-medium'>Name  : {details.name}</p>
         <p className='w-3/4 font-medium'>Email  : {details.email}</p>
         </div>

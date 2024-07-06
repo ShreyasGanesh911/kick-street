@@ -54,14 +54,14 @@ export default function LoginForm({ form, setForm }: Props) {
   }
   return (
     <>
-      <form className=' px-14  bg-white w-3/4 h-4/5  flex flex-col justify-center' onSubmit={handleForm}>
-        <h1 className=' text-4xl overflow-hidden font-semibold my-3'>Welcome back !</h1>
-        <p className='py-3'>Don't have an account!? <span className='text-red-500 underline'>< button className='text-lg underline' onClick={() => { setForm(false) }}>Create Account</button></span>, takes less than a minute </p>
+      <form className=' sm:px-14 px-5  bg-white sm:w-3/4 w-11/12 sm:h-4/5  flex flex-col justify-center' onSubmit={handleForm}>
+        <h1 className=' sm:text-4xl text-3xl overflow-hidden font-semibold my-3'>Welcome back !</h1>
+        <p className='py-3 sm:text-base text-sm'>Don't have an account!? <span className='text-red-500 underline'>< button className='text-lg underline' onClick={() => { setForm(false) }}>Create Account</button></span>, takes less than a minute </p>
         <div className='flex justify-center items-start flex-col'>
           <div >
             <label htmlFor="email" className=' text-slate-700 tracking-wide text-lg ' >Email:</label>
           </div>
-          <div className='w-8/12'>
+          <div className='sm:w-8/12 w-full'>
             <input className='border border-slate-400 w-full p-3 my-3 rounded tracking-wide outline-slate-400' placeholder='Your Email Address' type="email" value={cred.userEmail} name='userEmail' onChange={handleChange} />
           </div>
         </div>
@@ -70,15 +70,15 @@ export default function LoginForm({ form, setForm }: Props) {
           <div>
             <label htmlFor="password" className=' text-slate-700 tracking-wide text-lg ' >Password:</label>
           </div>
-          <div className='w-3/4 flex items-center'>
+          <div className='sm:w-3/4 w-full flex items-center'>
             <input className='border border-slate-400 w-full p-3 my-3 rounded outline-slate-400 tracking-wide' placeholder='Enter Password' onChange={handleChange} type={show} value={cred.password} name='password' />
-            <button className="border border-slate-400 rounded px-2 py-1 text-sm text-gray-600 font-mono cursor-pointer js-password-label relative right-14" onClick={handlePasswordVisibility} >{visibility}</button>
+            <button className="border sm:inline hidden border-slate-400 rounded px-2 py-1 text-sm text-gray-600 font-mono cursor-pointer js-password-label relative right-14" onClick={handlePasswordVisibility} >{visibility}</button>
           </div>
         </div>
-        <div className='flex justify-center items-start flex-col mt-3 p-10'>
+        <div className='sm:flex hidden justify-center items-start flex-col mt-3 p-10'>
           <p className='invisible'> q</p>
         </div>
-        <div className='flex justify-center items-start flex-col mt-3 p-10'>
+        <div className='sm:flex hidden justify-center items-start flex-col mt-3 p-10'>
           <p className='invisible'> q</p>
         </div>
 

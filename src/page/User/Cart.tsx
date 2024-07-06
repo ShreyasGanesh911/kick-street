@@ -7,8 +7,8 @@ export default function Cart() {
   const cart = useSelector((state: RootState) => state.cart.cart)
   return (
     <>
-      <section className='page flex justify-center items-start p-5 text-black'>
-        <div className='w-1/2  bg-neutral-50 rounded-lg ' style={{minHeight:"60vh",height:"auto"}}>
+      <section className='page flex sm:flex-row flex-col justify-center items-start p-5 text-black'>
+        <div className='sm:w-1/2 w-full bg-neutral-50 rounded-lg ' style={{minHeight:"60vh",height:"auto"}}>
         {
           cart.length===0 ? <div className='w-full h-96  flex items-center justify-center  flex-col' >
             <h1 className='text-3xl text-center font-'>Oh no, your cart looks empty!</h1>

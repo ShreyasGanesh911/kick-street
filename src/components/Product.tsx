@@ -3,7 +3,6 @@ import img from "../Assets/Shoe.webp"
 import ProductDetails from './ProductDetails'
 import { useLocation, useNavigate } from 'react-router-dom'
 import { Product ,Images} from '../Types/Product'
-import UseFetchGet from '../Hooks/UseFetchGet'
 type Data = {
   success:boolean,
   result:Product
@@ -38,14 +37,16 @@ export default function ProductCard() {
     },[])
   return (
     <>
-     <section className="page flex justify-between items-center ">
-        <div className='w-1/2  flex items-center justify-center' style={{height:"90vh"}}> 
-            <div className=' w-3/4 h-5/6 mt-10'>
-            <img src={img} className="object-contain overflow-hidden" alt="" />
+     <section className="page sm:flex justify-between items-center mb-5">
+        <div className='sm:w-1/2 w-full flex flex-col items-center justify-center h-96 ' > 
+            <div className=' sm:w-3/4 w-full sm:h-full bg-pink-200 '>
+            <img  className="object-contain overflow-hidden" alt="" />
+           
             </div>
+            <div className='w-3/4 h-32 bg-red-500'></div>
         </div>  
-        <div className='w-1/2 flex items-start justify-center' style={{height:"90vh"}}>
-        <div className='  w-3/4 h-5/6 mt-10 flex justify-center items-center'>
+        <div className='sm:w-1/2 flex items-start justify-center ' >
+        <div className='  sm:w-3/4 h-5/6 mt-10 flex justify-center items-center'>
             <ProductDetails _id={details._id} description={details.description} gender={details.gender} images={details.images} name={details.name} offer={details.offer} price={details.price} rating={details.rating} reviews={details.reviews} sale={details.sale} size={details.size} stock={details.stock} />    
         </div>    
         </div>  

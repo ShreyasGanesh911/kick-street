@@ -52,14 +52,14 @@ export default function AllProducts() {
         <h1 className='text-5xl p-2 mt-6 font-extralight '>All sneakers</h1>
       <div className='w-full flex mt-14 overflow-hidden'>
       <Filter brands={brands} setBrands={setBrands} />
-      <div className='w-3/4  '>
+      <div className='sm:w-3/4 w-full  '>
         <div className='flex flex-row-reverse w-11/12   p-2'>
           <select name="sort" className='border p-2 rounded-none outline-none border-black' onChange={handleSort}>
             <option value="1" className='p-2 border bg-white outline-none  rounded-none' >Low to High</option>
             <option value="-1" className='p-2 border bg-white outline-none  rounded-none' >High to Low</option>
           </select>
         </div>
-        <div className='w-full flex flex-wrap py-5 justify-center items-center'>
+        <div className='w-full flex flex-wrap py-5 justify-center items-center '>
           {products.map((e)=>{
             return(<Link to={`/product/${e.name}`} key={e._id}  > <CardMini key={e._id} name={e.name} price={e.price}/></Link>)
           })}     

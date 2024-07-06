@@ -27,8 +27,8 @@ export default function OrderSummary({sum}:Props) {
   },[])
   return (
     <>
-        <div className='border rounded w-1/5 ml-5 sticky top-32 ' style={{minHeight:"30vh",height:"auto"}}>
-          <h2 className='text-3xl p-2 border-b '>Order summary</h2>
+        <div className='border rounded sm:w-1/5 w-11/12 ml-5 sm:sticky top-32 py-3' >
+          <h2 className='sm:text-3xl text-2xl text-center sm:text-start p-2 border-b '>Order summary</h2>
           <div className='px-2 flex justify-around'>
             <p>Sub total </p>
             <p>₹ {sum.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}.00</p>

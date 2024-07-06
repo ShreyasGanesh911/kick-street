@@ -49,14 +49,14 @@ export default function SignupForm({ form, setForm }: Props) {
   }
   return (
     <>
-      <form className=' px-14  bg-white w-3/4 h-4/5  flex flex-col justify-center' onSubmit={handleForm}>
-        <h1 className=' text-4xl overflow-hidden font-semibold my-3'>Create account</h1>
-        <p className='py-3'>Have an account!?, try  <span className='text-red-500 underline'><button onClick={() => { setForm(true) }} className='text-lg underline'>Logging in</button></span></p>
+      <form className=' sm:px-14 px-5   bg-white sm:w-3/4 w-11/12 sm:h-4/5  flex flex-col justify-center' onSubmit={handleForm}>
+        <h1 className=' sm:text-4xl text-3xl overflow-hidden font-semibold my-3'>Create account</h1>
+        <p className='py-3 sm:text-base text-sm'>Have an account!?, try  <span className='text-red-500 underline'><button onClick={() => { setForm(true) }} className='text-lg underline'>Logging in</button></span></p>
         <div className='flex justify-center items-start flex-col'>
           <div >
             <label htmlFor="email" className=' text-slate-700 tracking-wide text-lg ' >Email:</label>
           </div>
-          <div className='w-8/12'>
+          <div className='sm:w-8/12 w-full'>
             <input className='border border-slate-400 w-full p-3 my-3 rounded tracking-wide outline-slate-400' placeholder='Your Email Address' type="email" name='email' value={cred.email} onChange={handleChange} />
           </div>
         </div>
@@ -64,7 +64,7 @@ export default function SignupForm({ form, setForm }: Props) {
           <div >
             <label htmlFor="name" className=' text-slate-700 tracking-wide text-lg ' >Name:</label>
           </div>
-          <div className='w-8/12'>
+          <div className='sm:w-8/12 w-full'>
             <input className='border border-slate-400 w-full p-3 my-3 rounded tracking-wide outline-slate-400' placeholder='Your Name Here' type="text" name='name' value={cred.name} onChange={handleChange} />
           </div>
         </div>
@@ -72,7 +72,7 @@ export default function SignupForm({ form, setForm }: Props) {
           <div >
             <label htmlFor="name" className=' text-slate-700 tracking-wide text-lg ' >Phone:</label>
           </div>
-          <div className='w-8/12'>
+          <div className='sm:w-8/12 w-full'>
             <input className='border border-slate-400 w-full p-3 my-3 rounded tracking-wide outline-slate-400' required={true} placeholder='Your Phone number' maxLength={10} type="tel" name='phone' value={cred.phone} onChange={handleChange} />
           </div>
         </div>
@@ -82,9 +82,9 @@ export default function SignupForm({ form, setForm }: Props) {
           <div>
             <label htmlFor="password" className=' text-slate-700 tracking-wide text-lg ' >Password:</label>
           </div>
-          <div className='w-3/4 flex items-center'>
+          <div className='sm:w-3/4 w-full flex items-center'>
             <input className='border border-slate-400 w-full p-3 my-3 rounded outline-slate-400 tracking-wide' placeholder='Password' type={show} name='password' value={cred.password} onChange={handleChange} />
-            <button className="border border-slate-400 rounded px-2 py-1 text-sm text-gray-600 font-mono cursor-pointer js-password-label relative right-14" onClick={handlePasswordVisibility} >{visibility}</button>
+            <button className="border sm:inline hidden border-slate-400 rounded px-2 py-1 text-sm text-gray-600 font-mono cursor-pointer js-password-label relative right-14" onClick={handlePasswordVisibility} >{visibility}</button>
           </div>
         </div>
 

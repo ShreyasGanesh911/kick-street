@@ -43,14 +43,14 @@ export default function Checkout() {
 
   return (
     <>
-    <section className='page flex justify-evenly items-start mt-20'>
-        <div className='w-1/3 min-h-96 h-auto border flex justify-start items-center pt-5 flex-col ' style={{height:'70vh'}}>
+    <section className='page flex justify-evenly items-start sm:flex-row flex-col sm:mt-20'>
+        <div className='sm:w-1/3 w-full sm:min-h-96 h-auto sm:border flex justify-start items-center py-5 flex-col ' >
             {show ? <AddressField setShow={setShow} show={show}/>:
             <>
             { addresses?.length ? <>
             {addresses.map(e=><AddressCard/>)}
             <br />
-            <button className=' h-28 border w-3/4 border-black capitalize' onClick={()=>setShow(true)}> add address <span className='text-xl'>+</span></button>
+            <button className=' h-28 border w-3/4 border-black capitalize sm:my-0 my-3' onClick={()=>setShow(true)}> add address <span className='text-xl'>+</span></button>
             </> : <>No addresses</> }
             </>
 }
@@ -58,9 +58,9 @@ export default function Checkout() {
             
              
         </div>
-        <div className='w-1/3 h-96 '>
+        <div className='sm:w-1/3 w-full px-2 sm:h-96 '>
             <CheckoutForm/>
-            <div className="border w-3/5 h-48  bg-black  text-white rounded-xl flex justify-start items-end pb-12 mt-10">
+            <div className="border sm:w-3/5 h-48  bg-black  text-white rounded-xl flex justify-start items-end pb-12 mt-10">
                <div className='w-full'>
                <p className='ml-10 mb-2 text-lg'>5267 3181 8797 5449	</p>
                <div className='w-full  justify-around flex'><span>TEST USER</span> <span>06/25</span></div>
