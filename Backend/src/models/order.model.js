@@ -36,11 +36,11 @@ const orderSchema = new mongoose.Schema({
         type:Number,
         required:true
     },
-    // payment:{
-    //     type:mongoose.Schema.Types.ObjectId,
-    //     ref:"payment",
-    //     required:[true,"Payment Id not provided"]
-    // }
+    address:{
+        type:mongoose.Schema.Types.ObjectId,
+        ref:"address",
+        required:[true,"Address Id not provided"]
+    }
 
 })
 
