@@ -14,10 +14,10 @@ const instance = new Razorpay({
 */
 
 const checkOut = AsyncHandler(async(req,res,next)=>{
-    const {amount,cart} = req.body
+    const {amount,cart,address} = req.body
     const {_id} = req.user
     const user = _id
-    console.log(cart)
+    console.log(address)
     if(!amount)
         return next(new ErrorHandler("Didn't pass the amount",400))
     const options = {
@@ -26,7 +26,7 @@ const checkOut = AsyncHandler(async(req,res,next)=>{
         receipt: "order_rcptid_11"
       }
       const createOrder = await instance.orders.create(options)
-      const placeOrder = await order.create({user,items:cart,amount})
+      const placeOrder = await order.create({user,items:cart,amount,address:address})
       console.log(placeOrder._id)
       const orderId = placeOrder._id
       res.status(200).json({success:true,createOrder,key:process.env.KEY_ID,orderId})
