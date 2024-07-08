@@ -27,7 +27,7 @@ export default function OrderSummary({sum}:Props) {
   },[])
   return (
     <>
-        <div className='border rounded sm:w-1/5 w-11/12 ml-5 sm:sticky top-32 py-3' >
+        <div className='border rounded sm:w-1/5 w-11/12 ml-5 sm:sticky top-32 py-3 sm:mt-0 mt-10' >
           <h2 className='sm:text-3xl text-2xl text-center sm:text-start p-2 border-b '>Order summary</h2>
           <div className='px-2 flex justify-around'>
             <p>Sub total </p>

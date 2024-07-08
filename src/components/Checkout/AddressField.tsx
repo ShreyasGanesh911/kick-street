@@ -1,11 +1,14 @@
 import React, { Dispatch, SetStateAction, useEffect, useState } from 'react'
 import state from "../../JSON/State.json"
 import { myList} from '../../JSON/test'
+import { useNavigate } from 'react-router-dom'
+
 type Props = {
     show:boolean,   
     setShow : Dispatch<SetStateAction<boolean>>
 }
 export default function AddressField({show,setShow}:Props) {
+    const navigate = useNavigate()
     const[form,setForm] = useState({al1:"",al2:'',state:'',city:'',postcode:undefined,country:'India'})
     const[options,setOptions] = useState<string[]>([])
     const handleChange = (e:React.ChangeEvent<HTMLSelectElement>)=>{
@@ -19,8 +22,28 @@ export default function AddressField({show,setShow}:Props) {
         const name = e.target.name
         setForm({...form,[name]:value})
     }
-   const handleClick = (e:React.MouseEvent<HTMLButtonElement, MouseEvent>)=>{
+   const handleClick = async(e:React.MouseEvent<HTMLButtonElement, MouseEvent>)=>{
     e.preventDefault()
+    const body = {addressLine1:form.al1,addressLine2:form.al2,city:form.city,state:form.state,zipcode:form.postcode,country:form.country}
+    try{
+        const response = await fetch('http://localhost:4000/user/addAddress', {
+            method: "POST", 
+            mode: "cors", 
+            credentials: "include", 
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body:JSON.stringify(body)
+          });
+          if(response.status===200){
+                setShow(false)
+          }
+        //   const data= await response.json()
+        //   console.log(data)
+        //   console.log(data.response)
+    }catch(e){
+        console.log(e)
+    }
     console.log(form)
    }
 

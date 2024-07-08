@@ -2,12 +2,16 @@ import React, { useEffect, useState } from 'react'
 import { RootState } from '../../Redux/Store';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import { toastError } from '../Toast';
 declare global {
     interface Window {
         Razorpay: any;
     }
   }
-export default function CheckoutForm() {
+  type Props = {
+    select:string|undefined
+  }
+export default function CheckoutForm({select}:Props) {
   const navigate = useNavigate()
   const cart = useSelector((state: RootState) => state.cart.cart)
   const [totalAmount,setTotalAmount] = useState<number>(0)
@@ -15,9 +19,12 @@ export default function CheckoutForm() {
   const [fee,setFee] = useState<boolean>(true)
     const handleCheckout = async(e:React.MouseEvent<HTMLButtonElement, MouseEvent>)=>{
         e.preventDefault()
+        if(select === undefined)
+          return toastError("Please select an address")
         const body = {
             amount : totalAmount,
-            cart : cart
+            cart : cart,
+            address:select
         }
         try{
             const response = await fetch('http://localhost:4000/payment/checkout',{

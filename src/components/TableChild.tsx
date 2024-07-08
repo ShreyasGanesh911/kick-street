@@ -17,7 +17,7 @@ export default function TableChild({name,price,qty,pId,size}:Props) {
   }
   return (
     <>
-    <tr className='h-28 border-b '>
+    <tr className='h-28 border-b  '>
         <td className='w-1/4 text-center '>
             <div className='flex'>
                 <div className='w-1/2 bg-red-400 h-20 mx-3'></div>
@@ -32,6 +32,17 @@ export default function TableChild({name,price,qty,pId,size}:Props) {
         <td className='w-1/4 text-center'>{qty}</td>
         <td className='w-1/4 text-center'>₹ {(qty*price).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</td>
     </tr>
+    {/* <div className='flex sm:hidden w-'>
+            <div className='w-1/2  p-2 h-40'>
+                <div className='bg-red-500 w-full h-full'></div>
+            </div>    
+            <div className='w-1/2 h-40'>
+            <p className='font-bold'>Name <span className='font-normal capitalize'>{name}</span></p>
+            <p className='font-bold'>Price <span className='font-normal capitalize'>{price}</span></p>
+            <p className='font-bold'>qty: <span className='font-normal capitalize'>{qty}</span></p>
+            <button className='text-red-600' onClick={handleRemove}><span><i className="fa-solid fa-trash mx-2 text-sm"></i></span>Remove</button>
+            </div>    
+    </div>  */}
     </>
   )
 }

@@ -15,7 +15,7 @@ export default function UserAdmin() {
   return (
     <>
     
-      <section className='adminPage bg-white p-2'>
+      <section className='adminPage bg-white p-2 flex justify-start flex-col items-center'>
   
       <h1 className='p-3 text-2xl font-semibold w-full'>Users</h1>
         <div className='w-full flex justify-evenly items-center mt-5' >

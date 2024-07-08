@@ -1,5 +1,4 @@
 import React from 'react'
-import { toastSuccesss } from '../Toast'
 import { Link } from 'react-router-dom'
 
 type Props = {
@@ -12,15 +11,10 @@ type Props = {
   paymentStatus:string
 }
 export default function OrderTableChild({orderId,date,name,amount,emailId,status,paymentStatus}:Props) {
-  const handleClick = (e:React.MouseEvent<HTMLButtonElement, MouseEvent>)=>{
-    e.preventDefault()
-    navigator.clipboard.writeText(e.currentTarget.value)
-    toastSuccesss("Copied Order ID")
-  }
   return (
     <>
      <tr className='border-b h-12 rounded hover:bg-neutral-100 w-full '>
-              <td className=' w-1/6 text-center py-5'><Link to={`/admin/orders/${orderId}`}><span className='hover:text-indigo-700 cursor-pointer'>{orderId}</span></Link><button value={orderId} onClick={handleClick}><i className="fa-solid fa-copy mx-2"></i></button></td>
+              <td className=' w-1/6 text-center py-5'><Link to={`/admin/orders/${orderId}`}><span className='hover:text-indigo-700 cursor-pointer text-sm'>{orderId}</span></Link></td>
               <td className=' w-1/6 text-center py-5'>{date.slice(0,10)}</td>
               <td className='w-1/6 text-center py-5 '>{emailId}</td>
               <td className='w-1/6 text-center py-5 capitalize'>{paymentStatus}</td>

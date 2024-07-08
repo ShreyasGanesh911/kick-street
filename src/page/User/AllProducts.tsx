@@ -9,6 +9,7 @@ export default function AllProducts() {
   const location = useLocation()
   const [products,setProucts] = useState<Product[]>([])
   const [sort,setSort] = useState<number>(1)
+  const [show,setShow] = useState(false)
   const [brands,setBrands] = useState<string[]>([])
   const handleSort = (e:React.ChangeEvent<HTMLSelectElement>)=>{
     e.preventDefault()
@@ -51,13 +52,18 @@ export default function AllProducts() {
       </div>
         <h1 className='text-5xl p-2 mt-6 font-extralight '>All sneakers</h1>
       <div className='w-full flex mt-14 overflow-hidden'>
-      <Filter brands={brands} setBrands={setBrands} />
+        {show && <Filter brands={brands} setBrands={setBrands} setShow={setShow} />}
+        <div className='w-1/4 hidden sm:block'>
+        <Filter brands={brands} setBrands={setBrands} setShow={setShow}/>
+        </div>
       <div className='sm:w-3/4 w-full  '>
-        <div className='flex flex-row-reverse w-11/12   p-2'>
+        <div className='flex flex-row-reverse w-11/12 justify-between  p-2'>
+         
           <select name="sort" className='border p-2 rounded-none outline-none border-black' onChange={handleSort}>
             <option value="1" className='p-2 border bg-white outline-none  rounded-none' >Low to High</option>
             <option value="-1" className='p-2 border bg-white outline-none  rounded-none' >High to Low</option>
           </select>
+          <button onClick={()=>setShow(true)} className=' sm:hidden border ml-5 py-2 px-3 '><i className="fa-solid fa-filter mx-1"></i>Filter</button>
         </div>
         <div className='w-full flex flex-wrap py-5 justify-center items-center '>
           {products.map((e)=>{

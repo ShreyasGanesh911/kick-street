@@ -36,8 +36,8 @@ export default function AdminLogin() {
   return (
     <>
      <section  className='page bg-white flex justify-center items-center flex-col'>
-     <h1 className='text-5xl text-center w-full my-3 font-mono'>Kick Street</h1>
-            <form className='w-1/4 h-96 border rounded-lg text-indigo-600 py-2'>
+     <h1 className='sm:text-5xl text-3xl text-center w-full my-3 font-mono'>Kick Street</h1>
+            <form className='sm:w-1/4 h-96 border rounded-lg text-indigo-600 py-2'>
                     <h1 className='text-2xl font-bold text-indigo-600  w-full my-3  px-5 '>Sign in to your account</h1>
                     <div className='w-full flex justify-center items-start flex-col px-5'>
                         <label className='w-full text-start  '>Your Email</label>

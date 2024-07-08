@@ -3,6 +3,7 @@ import AddressField from '../../components/Checkout/AddressField';
 import CheckoutForm from '../../components/Checkout/CheckoutForm';
 import { useNavigate } from 'react-router-dom';
 import AddressCard from '../../components/Checkout/AddressCard';
+import { ToastContainer } from 'react-toastify';
 type Props = {
     user:{},
     addressLine1: string,
@@ -11,6 +12,7 @@ type Props = {
     state: string,
     zipcode: number,
     country: string,
+    _id:string
 }
   type Data = {
         success:boolean,
@@ -19,6 +21,7 @@ type Props = {
 export default function Checkout() {
     const navigate = useNavigate()
     const [addresses,setAddresses] = useState<Props[]>()
+    const [select,setSelect] = useState<string>()
     const [show,setShow] = useState<boolean>(false)
       const getAddresses=async()=>{
         try{
@@ -39,7 +42,7 @@ export default function Checkout() {
       }
       useEffect(()=>{
         getAddresses()
-      },[])
+      },[show,setShow])
 
   return (
     <>
@@ -48,26 +51,30 @@ export default function Checkout() {
             {show ? <AddressField setShow={setShow} show={show}/>:
             <>
             { addresses?.length ? <>
-            {addresses.map(e=><AddressCard/>)}
+            {addresses.map(e=>
+              <>
+                <AddressCard  city={e.city} line1={e.addressLine1} line2={e.addressLine2} state={e.state} zipcode={e.zipcode}/>
+                <input type="radio" onChange={(f)=>setSelect(f.currentTarget.value)} className=' border-black inline-block w-96 rounded-none h-96 border mx-3 opacity-50   relative z-40 bottom-36   hover:bg-neutral-200' name='address' value={e._id}/>
+              </>
+            )}
             <br />
             <button className=' h-28 border w-3/4 border-black capitalize sm:my-0 my-3' onClick={()=>setShow(true)}> add address <span className='text-xl'>+</span></button>
             </> : <>No addresses</> }
             </>
-}
-
-            
-             
+}    
         </div>
         <div className='sm:w-1/3 w-full px-2 sm:h-96 '>
-            <CheckoutForm/>
-            <div className="border sm:w-3/5 h-48  bg-black  text-white rounded-xl flex justify-start items-end pb-12 mt-10">
+            <CheckoutForm select={select}/>
+            <div className="border sm:w-3/5 h-48 form-radio bg-black  text-white rounded-xl flex justify-start items-end pb-12 mt-10">
                <div className='w-full'>
                <p className='ml-10 mb-2 text-lg'>5267 3181 8797 5449	</p>
                <div className='w-full  justify-around flex'><span>TEST USER</span> <span>06/25</span></div>
                </div>
             </div>
         </div>
+        
     </section> 
+    <ToastContainer/>
     </>
   )
 }

@@ -1,8 +1,7 @@
 import React from 'react'
 import { Chart as ChartJS, ArcElement, Tooltip, Legend, Chart, CategoryScale, BarElement, LinearScale, PointElement, LineElement } from "chart.js";
-import { Bar, Line } from "react-chartjs-2";
+import { Bar} from "react-chartjs-2";
 ChartJS.register(BarElement,Tooltip,Legend,CategoryScale,LinearScale,PointElement,LineElement)
-//const labels = ["January", "February", "March", "April", "May", "June"];
 
   type Props = {
     month:string[],
@@ -25,7 +24,7 @@ export default function BarChart({month,orders}:Props) {
     ],
     };
   return (
-    <div className='w-5/6 h-auto border min-h-60'>
+    <div className='sm:w-5/6 w-11/12 h-auto border sm:min-h-60'>
       <Bar data={data} />
     </div>
   )
