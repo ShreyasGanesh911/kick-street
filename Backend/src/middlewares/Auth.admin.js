@@ -11,12 +11,12 @@ const adminAuth = async(req,res,next)=>{
             res.clearCookie("Auth")
             return next(new ErrorHandler("Invalid token, login again",402))
         } 
-        const check = await User.findOne({email:user.email})
+        const check = await User.findOne({email:user.email}).select('-password')
         if(!check)
             return next(new ErrorHandler("Invalid token, login again",402))
         if( check.type !== "admin")
         return next(new ErrorHandler("You're not logged in as an admin",402))
-        req.admin = user
+        req.admin = check
         next()
     })
 }
