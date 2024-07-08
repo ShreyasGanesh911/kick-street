@@ -5,7 +5,7 @@ export default function Sale() {
     <>
         <div className='w-full flex  pl-14 h-full items-center  '>
         <img src={logo} alt="" />
-            <div className='bg-white p-5 rounded-lg w-1/3 h-4/6'>
+            <div className='bg-white p-5 rounded-lg sm:w-1/3 w-full h-4/6'>
                 
             <p className='text-6xl border p-2 rounded bg-white mt-5'>Kick street</p>
             <p className='text-sm font-semibold my-2'>Under retail for sure </p>

@@ -40,7 +40,7 @@ export default function Home() {
     <>
      <section className='page displayFlex flex-col relative'>
       <Carousel />
-      <div className='flex flex-wrap justify-center w-full py-20 sm:w-5/6 overflow-x-hidden'>  
+      <div className='flex flex-wrap sm:justify-center justify-around w-full py-20  sm:w-5/6 overflow-x-hidden'>  
       {products.map((e)=>{
         return (<Link key={e._id} to={`/product/${e.name}`} state={{description:e.description,price:e.price,images:e.images,size:e.size,name:e.name,_id:e._id }}> <Card key={e._id} _id={e._id} description={e.description} gender={e.gender} images={e.images} name={e.name} offer={e.offer} price={e.price} rating={e.rating} reviews={e.reviews} sale={e.sale} size={e.size} stock={e.stock}  /></Link>)
       })}

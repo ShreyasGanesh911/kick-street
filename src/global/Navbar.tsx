@@ -17,8 +17,8 @@ export default function Navbar() {
      {menu && <NavMenu setMenu={setMenu}/>}
     <nav className=' nav flex justify-center items-start sticky top-0 bg-white z-30 overflow-hidden'>
     <button className=" py-3 px-3 sm:hidden mt-4 " onClick={()=>setMenu(true)}><i className="fa-solid fa-bars text-3xl"></i></button>
-      <div className="flex  justify-between items-center nav-div bg-white ">
-        <Link to='/'><div className="object-contain sm:h-24 sm:w-48 h-20 w-36 relative sm:left-32 left-20 sm:top-2"><img className="logo" src={logo} alt="Logo Here" /></div></Link>
+      <div className="flex  justify-between items-center nav-div bg-white overflow-hidden">
+        <Link to='/'><div className="object-contain sm:h-24 sm:w-48 h-20 w-36 relative sm:left-32 left-20 sm:top-2 py-2 overflow-hidden"><img className="logo" src={logo} alt="Logo Here" /></div></Link>
         <div className="sm:flex hidden">
           <ul className="flex justify-center items-center">
             <NavLink to='/men' key='male' state={{gender:'male'}}><li className="px-3 hover:font-medium">Men</li></NavLink>
