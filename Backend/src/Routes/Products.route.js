@@ -1,7 +1,7 @@
 const express = require('express')
 const adminAuth = require('../middlewares/Auth.admin')
-const { addProduct, viewProducts, deleteProduct, updateProduct,singleProduct } = require('../controllers/product')
-
+const { addProduct, viewProducts, deleteProduct, updateProduct,singleProduct, uploadImage } = require('../controllers/product')
+const upload  = require('../middlewares/Multer')
 const productRouter = express.Router()
 
 /*
@@ -15,6 +15,7 @@ productRouter.post("/add",adminAuth,addProduct)
 productRouter.get('/all',viewProducts)
 productRouter.delete('/delete',adminAuth,deleteProduct)
 productRouter.post('/update',adminAuth,updateProduct)
+productRouter.post('/upload',adminAuth,upload.single("image"),uploadImage)
 productRouter.get("/singleProduct",singleProduct)
 
 
