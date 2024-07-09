@@ -1,6 +1,7 @@
 const AsyncHandler = require("../utils/AsyncHandler");
 const ErrorHandler = require("../utils/errorHandler");
 const product = require("../models/product.model")
+const UploadToCloudinary = require("../utils/CloudinaryUpload")
 /*
     Basic crud operation
     1. Delete product
@@ -87,5 +88,14 @@ const singleProduct = AsyncHandler(async(req,res,next)=>{
     res.status(200).json({success:true,result})
 })
 
+const uploadImage = AsyncHandler(async(req,res,next)=>{
+    const body = req.file
+    console.log(body)
+    //const resp = await  UploadToCloudinary('../../public/temp/'+body.destination)
+    const resp = await  UploadToCloudinary(body.path)
+    console.log(resp)
+    res.status(200).json({message:"Hello"})
+})
 
-module.exports = {addProduct,viewProducts,deleteProduct,updateProduct,singleProduct}    
+
+module.exports = {addProduct,viewProducts,deleteProduct,updateProduct,singleProduct,uploadImage}    
