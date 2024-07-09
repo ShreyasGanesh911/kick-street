@@ -1,6 +1,6 @@
-import { v2 as cloudinary } from 'cloudinary';
-import fs from 'fs'
-
+const cloudinary = require('cloudinary').v2;
+const fs = require('fs')
+//const my = require('../../public/temp')
 // Cloudinary setup config
 cloudinary.config({ 
         cloud_name: process.env.CLOUDINARY_NAME, 
@@ -14,7 +14,7 @@ const UploadToCloudinary = async(filePath)=>{
             return "No File path sent"
         const upload = await cloudinary.uploader.upload(filePath,{resource_type:"auto"})
         console.log("Uploaded file successfully!",upload.url);
-
+        return upload
     }catch(e){
         console.log(e)
         fs.unlinkSync(filePath)
