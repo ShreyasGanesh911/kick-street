@@ -1,5 +1,6 @@
 import React, { Dispatch, SetStateAction, useEffect, useState } from 'react'
-import {Product,Size,Images} from "../../Types/Product"
+import {Product,Size} from "../../Types/Product"
+import ImageUpload from '../Admin/ImageUpload'
 type Props = {
   setShow :Dispatch<SetStateAction<boolean>>,
   productId:string,
@@ -8,7 +9,9 @@ type Data = {
   success:boolean,
   result : Product
 }
-
+type Images= {
+  url:string
+}
 export default function ModalWrapper({setShow,productId}:Props) {
   const [details,setDetails] = useState({name:'',gender:'male',description:'',price:0,discount:0,stock:0})
   const [size,setSize] = useState<Size[]>([])
@@ -17,6 +20,7 @@ export default function ModalWrapper({setShow,productId}:Props) {
   const [addMore,setAddMore] = useState<boolean>(false)
   const [newSize,setNewSize] = useState({size:"",stock:0})
   const [error,setError] = useState<string>()
+  
   const closeModal = ()=>{
     document.body.style.overflow = "scroll"
     setShow(false)
@@ -158,6 +162,8 @@ export default function ModalWrapper({setShow,productId}:Props) {
         }
       setDetails({...details,stock:details.stock-=stock})
   }
+
+
   const handleStockChange = (e:React.ChangeEvent<HTMLInputElement>)=>{
     const name = e.target.name
     const value = Number(e.target.value)
@@ -171,7 +177,7 @@ export default function ModalWrapper({setShow,productId}:Props) {
       console.log(array)
       
   }
-
+  
 
   useEffect(()=>{
     productId && getData() 
@@ -223,16 +229,7 @@ export default function ModalWrapper({setShow,productId}:Props) {
                         </div>
                         <div className='w-1/2 h-full  '>
                         <label className='p-1 font-bold text-zinc-700 text-sm'>Product images</label>
-                        <div className='h-2/5 w-full   px-3 displayFlex'>
-                          
-                            <div className='border h-5/6 w-1/2  '></div>
-                            <div className=' h-5/6 w-1/2 flex justify-center items-center'>
-                              <div className='border w-3/4 h-3/4 border-dashed border-slate-800 flex justify-center items-center relative'>
-                                  <input type="file" placeholder='Click here to add images' accept="image/*" className=' opacity-0 w-full h-full border cursor-pointer' />
-                                  <span className='text-slate-500 absolute w-11/12 text-center '>Click here to add images</span>
-                              </div>
-                            </div>
-                        </div>
+                          <ImageUpload images={images} setImages={setImages}/>
                         <div className='h-3/5 w-full '>
                            <div className='flex flex-wrap'>
                             <div className='mx-2'>
