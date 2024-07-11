@@ -72,9 +72,9 @@ const deleteProduct = AsyncHandler(async(req,res,next)=>{
 })
 
 const updateProduct = AsyncHandler(async(req,res,next)=>{
-    let {name,description,price,stock,gender,_id,size} = req.body
+    let {name,description,price,stock,gender,_id,size,images} = req.body
     size = size.sort((a, b) => a.size > b.size ? 1 : -1)
-    const responce = await product.findByIdAndUpdate(_id,{name,description,price,stock,gender,size})
+    const responce = await product.findByIdAndUpdate(_id,{name,description,price,stock,gender,size,images})
     if(!responce)
         return next(new ErrorHandler('Product not found',404))
     res.status(200).json({success:true,message:"Product updated successfully"})
@@ -91,10 +91,8 @@ const singleProduct = AsyncHandler(async(req,res,next)=>{
 const uploadImage = AsyncHandler(async(req,res,next)=>{
     const body = req.file
     console.log(body)
-    //const resp = await  UploadToCloudinary('../../public/temp/'+body.destination)
-    const resp = await  UploadToCloudinary(body.path)
-    console.log(resp)
-    res.status(200).json({message:"Hello"})
+    const response = await  UploadToCloudinary(body.path)
+    res.status(200).json({success:true,result:response.url})
 })
 
 
