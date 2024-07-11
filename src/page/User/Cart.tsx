@@ -27,7 +27,7 @@ export default function Cart() {
           {cart.map((e)=>{
             sum += e.price * e.qty
             
-            return <TableChild name={e.name} price={e.price} qty={e.qty} key={e.pId} pId={e.pId} size={e.size}/>
+            return <TableChild name={e.name} price={e.price} qty={e.qty} key={e.pId} pId={e.pId} size={e.size} image={e.image}/>
           })}
         </table>
               </div>

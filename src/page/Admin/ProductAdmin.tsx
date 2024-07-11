@@ -89,7 +89,7 @@ export default function ProductAdmin() {
           
           {data?.map((e)=>{
             return(
-                  <ProductCard _id={e._id} handleClick={handleClick} name={e.name} price={e.price} stock={e.stock} key={e._id}/>
+                  <ProductCard _id={e._id} handleClick={handleClick} name={e.name} price={e.price} stock={e.stock} key={e._id} images={e.images}/>
               )
           })}
         </div>

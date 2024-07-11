@@ -14,7 +14,7 @@ type Props = {
   _id:string,
   offer:number
 }
-export default function ProductDetails({description,name,price,size,_id}:Product) {
+export default function ProductDetails({description,name,price,size,_id,images}:Product) {
   const [qty,setQty] = useState(1)
 console.log('size',size)
   const [shoeSize,setShoeSize] = useState<number>(0)
@@ -42,8 +42,8 @@ console.log('size',size)
       console.log('after removing',cart)       
     }
     else{
-      localStorage.setItem('cart',JSON.stringify([...cart,{pId:_id,price:price,qty:qty,name:name,size:shoeSize}]))
-      dispatch(addToCart([...cart,{pId:_id,price:price,qty:qty,name:name,size:shoeSize}]))
+      localStorage.setItem('cart',JSON.stringify([...cart,{pId:_id,price:price,qty:qty,name:name,size:shoeSize,image:images[0].url}]))
+      dispatch(addToCart([...cart,{pId:_id,price:price,qty:qty,name:name,size:shoeSize,image:images[0].url}]))
     }
       toastSuccesss("Item added to cart")
   }

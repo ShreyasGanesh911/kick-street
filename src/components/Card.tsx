@@ -1,12 +1,13 @@
 import img from "../Assets/Shoe.webp"
 import {Product} from '.././Types/Product'
-export default function Card({description,name,price,size}:Product) {
+import { motion } from "framer-motion"
+export default function Card({description,name,price,size,images}:Product) 
+{
   return (
 <>
         <div className='  border-slate-300 item-container sm:mx-8 mx-4 w-32 sm:h-80 sm:w-80'> 
-     
           <div className=' h-full sm:h-3/4 overflow-hidden'>
-            <img src={img} className="object-contain overflow-hidden" alt="" />
+            <motion.img whileHover={{scale:0.95}} src={images[0]?images[0].url:img} className="object-contain overflow-hidden w-full h-full" alt="" />
           </div>
           <div className=' h-1/4  flex items-center flex-col justify-evenly'> 
             <p className="font-thin capitalize text-sm sm:text-base text-center">{name}</p>

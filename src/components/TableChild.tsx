@@ -6,21 +6,25 @@ type Props = {
   price:number,
   qty:number,
   pId:string,
-  size:number
+  size:number,
+  image:string
 }
-export default function TableChild({name,price,qty,pId,size}:Props) {
+export default function TableChild({name,price,qty,pId,size,image}:Props) {
   const dispatch = useDispatch()
   const handleRemove = (e:React.MouseEvent<HTMLButtonElement, MouseEvent>)=>{
     e.preventDefault()
     dispatch(removeFromCart(pId))
     console.log('pressed',pId)
   }
+  console.log(image)
   return (
     <>
     <tr className='h-28 border-b  '>
         <td className='w-1/4 text-center '>
             <div className='flex'>
-                <div className='w-1/2 bg-red-400 h-20 mx-3'></div>
+                <div className='w-1/2  h-20 mx-3'>
+                  <img src={image} alt="" className='object-contain overflow-hidden h-full w-full' />
+                </div>
                 <div className='w-1/2'>
                     <p className='text-start capitalize'>{name}</p>
                     <p className='text-start text-sm'>Size: {size}</p>

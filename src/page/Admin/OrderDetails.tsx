@@ -36,7 +36,9 @@ export default function OrderDetails() {
                                 <div className='flex my-5'>
 
                                     <div className='w-1/2 h-20   flex justify-evenly items-center'>
-                                        <div className='h-16 w-16 bg-black'></div>
+                                        <div className='h-16 w-16 '>
+                                          <img src={e.pId.images[0].url} className='object-contain overflow-hidden h-full w-full' alt="" />
+                                        </div>
                                         <div className='w-3/4'>
                                         <p className='capitalize font-semibold'>{e.pId.name}</p>
                                         <p className='text-sm text-gray-600'>{e.pId._id}</p>
