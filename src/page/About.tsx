@@ -26,9 +26,13 @@ export default function About() {
         credentials: "include", 
           body:form
         })
-        if(response.ok)
+        if(response.ok){
           console.log('Uploaded')
+          const data = await response.json()
+          console.log(data.result)
 
+        }
+          
       }catch(e){}
     }
       
@@ -46,6 +50,8 @@ export default function About() {
     </form>
 
     </section> 
+
+    <img  src="https://res.cloudinary.com/dpvxmg0un/image/upload/v1720671893/npy9n57lf8xca9oeaznt.jpg" alt="" />
     </>
   )
 }
