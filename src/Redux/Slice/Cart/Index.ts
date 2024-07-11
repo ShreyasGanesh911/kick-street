@@ -5,7 +5,8 @@ type Cart = {
     name:string,
     qty:number,
     price:number,
-    size:number
+    size:number,
+    image:string
 }
 type PayLoad = {
   id : string
