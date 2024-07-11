@@ -59,8 +59,8 @@ export default function AboutUser() {
               <div className='sm:w-3/4 w-11/12 h-full flex sm:inline-block flex-col justify-start items-start'>
               {e.items.map(f=><div className='w-full  flex h-28 sm:my-5 my-3 justify-between'> 
                 
-                <div className='w-1/4 h-full bg-red-500 '>
-
+                <div className='w-1/4 h-full  '>
+                    <img src={f.pId.images[0].url} className='object-contain overflow-hidden h-full w-full' alt="" />
                 </div>
                 <div className='w-3/4 sm:px-4 px-2 py-1 sm:py-2 capitalize'>
                 {}
