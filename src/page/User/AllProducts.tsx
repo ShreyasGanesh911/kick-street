@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import {Product} from '../../Types/Product'
-import IntroCard from '../../components/Carousel-card/IntroCard'
+import img from '../../Assets/725b1b77-89e7-405d-a902-5a8896f5338b.jpg'
 import Filter from '../../components/AllProducts/Filter'
 import CardMini from '../../components/CardMini'
 import { Link, useLocation } from 'react-router-dom'
@@ -47,8 +47,8 @@ export default function AllProducts() {
     <>
      <section className='page flex justify-start items-center flex-col overflow-hidden'>
 
-      <div className='sm:w-3/4 w-11/12 h-56 mt-10 bg-red-400'>
-        
+      <div className='sm:w-3/4 w-11/12 sm:h-72 h-36 mt-10 bg-red-400'>
+        <img src={img} alt="" className='w-full h-full object-cover'/>
       </div>
         <h1 className='text-5xl p-2 mt-6 font-extralight '>All sneakers</h1>
       <div className='w-full flex mt-14 overflow-hidden'>

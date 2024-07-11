@@ -6,9 +6,10 @@ type Props = {
   price:number,
   qty:number,
   pId:string,
-  size:number
+  size:number,
+  image:string
 }
-export default function CartMobile({pId,name,price,qty,size}:Props) {
+export default function CartMobile({pId,name,price,qty,size,image}:Props) {
     const dispatch = useDispatch()
     const handleRemove = (e:React.MouseEvent<HTMLButtonElement, MouseEvent>)=>{
         e.preventDefault()
@@ -19,7 +20,10 @@ export default function CartMobile({pId,name,price,qty,size}:Props) {
     <>
      <div className='flex'>
             <div className='w-1/2  p-2 '>
-                <div className='bg-red-500 w-full h-full'></div>
+                <div className='bg-red-500 w-full h-full'>
+                  <img src={image} alt="" />
+
+                </div>
             </div>    
             <div className='w-1/2  py-2'>
             <p className='font-bold'>Name <span className='font-normal capitalize'>{name}</span></p>

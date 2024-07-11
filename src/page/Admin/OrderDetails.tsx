@@ -23,7 +23,7 @@ export default function OrderDetails() {
   return (
     <>
      <section className="adminPage bg-white flex justify-center items-start pt-16">
-        <div className='w-9/12  '>
+        <div className='w-11/12  '>
                 <div className='w-1/2 h-20  flex items-center  px-3'>
                     <button className=' py-2 px-3  text-xl rounded text-indigo-700' onClick={()=>navigate('/admin/orders')}><i className="fa-solid fa-arrow-left"></i></button>
                     <p>Order details</p>
@@ -63,7 +63,7 @@ export default function OrderDetails() {
 
                         <div>aa</div>
                     </div>
-                    <div className='w-1/4 border rounded-lg p-3 m-3'>
+                    <div className='w-1/4 border rounded-lg p-3 mt-5'>
                             <h1 className='font-bold text-xl'>Customer</h1>
                             <div className=' border-b py-3 capitalize'>
                               <p className='font-bold'>Customer ID</p>

@@ -35,7 +35,7 @@ export default function Filter({brands,setBrands,setShow}:Props) {
         <div className='w-full h-full bg-white sm:bg-none min-h-60 sm:h-auto pl-16 pt-12 sm:flex flex-col sm:relative fixed top-0 z-50'>
         <button className='absolute top-3 right-3 text-4xl sm:hidden'onClick={()=>setShow(false)}>&times;</button>
         <h2 className='text-2xl  w-3/4 py-2 border-gray-400'>SHOP BY</h2>
-        <div className='my-5'>
+        {/* <div className='my-5'>
         <h3 className='text-lg pb-2 border-b w-3/4'>PRICE</h3>
         <div className='flex justify-between w-3/4'>
         <input type="number" className='w-3/12 ' value={minValue} onChange={(e)=>set_minValue(Number(e.target.value))}/>
@@ -49,7 +49,7 @@ export default function Filter({brands,setBrands,setShow}:Props) {
 			maxValue={maxValue}
 			
 		/>
-        </div>
+        </div> */}
         <div className='my-5'>
           <h3 className='text-lg pb-2 border-b w-3/4'>BRAND</h3>
           <div >
@@ -62,7 +62,7 @@ export default function Filter({brands,setBrands,setShow}:Props) {
           })}
           </div>
         </div>
-        <div>
+        {/* <div>
           <h3 className='text-lg border-b w-3/4 pb-2'>SIZE</h3>
           <div>
           {size.map((e)=>{
@@ -73,7 +73,7 @@ export default function Filter({brands,setBrands,setShow}:Props) {
             </div>)
           })}
           </div>
-        </div>
+        </div> */}
       </div> 
     </>
   )
