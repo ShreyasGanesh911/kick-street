@@ -12,7 +12,6 @@ const UploadToCloudinary = require("../utils/CloudinaryUpload")
 const addProduct = AsyncHandler(async(req,res,next)=>{
     let {name,description,images,price,stock,gender,category,size,sale,offer} = req.body
     let stockCheck = 0
-    console.log(size)
     size.forEach((e)=>stockCheck += e.stock)
     size = size.sort((a, b) => a.size > b.size ? 1 : -1)
     if(stockCheck !== stock)
@@ -90,7 +89,6 @@ const singleProduct = AsyncHandler(async(req,res,next)=>{
 
 const uploadImage = AsyncHandler(async(req,res,next)=>{
     const body = req.file
-    console.log(body)
     const response = await  UploadToCloudinary(body.path)
     res.status(200).json({success:true,result:response.url})
 })

@@ -166,8 +166,7 @@ export default function ModalWrapper({setShow,productId}:Props) {
 
   const handleStockChange = (e:React.ChangeEvent<HTMLInputElement>)=>{
     const name = e.target.name
-    const value = Number(e.target.value)
-    let array = size
+     let array = size
     for(let i=0;i<size.length;i++)
       if(size[i].size === name){
           array[i].stock = 95
@@ -181,11 +180,11 @@ export default function ModalWrapper({setShow,productId}:Props) {
 
   useEffect(()=>{
     productId && getData() 
-  },[])
+  },[])// eslint-disable-line react-hooks/exhaustive-deps
   return (
     <>
      <section className=' z-50 fixed top-0 bottom-0 right-0 left-0   flex justify-center items-center overflow-hidden' style={{height:"100vh",width:"100vw",backgroundColor:'rgb(253 253 253 / 86%)'}}>
-            <div className='w-9/12 h-5/6 bg-white rounded border'>
+            <div className='w-9/12 min-h-5/6 bg-white rounded border pb-5'>
               <div className='w-full flex flex-row-reverse pr-5 '><button onClick={closeModal} className='border-black m-3 font-thin text-6xl'>&times;</button></div>
                 <form className='h-5/6  w-full pt-5 '>
                 <div className=' w-full h-16 flex flex-row-reverse py-2 font-medium'>

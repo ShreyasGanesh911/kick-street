@@ -1,7 +1,5 @@
-import React, { useEffect, useState } from 'react'
 import LineChart from '../../components/Charts/LineChart'
 import BarChart from '../../components/Charts/BarChart'
-import { useNavigate } from 'react-router-dom'
 import UseFetchGet from '../../Hooks/UseFetchGet'
 type Result ={
   orderAmount:number,
@@ -10,29 +8,18 @@ type Result ={
   month:string[],
   orders:number[],
   revenue:number[],
+  totalUsers:number
   user:{
     name:string,_id:string,email:string,phone:number
   }
 }
-type Data = {
-  success :boolean,
-  result:Result
-}
 export default function HomeAdmin() {
-  const [data,loading] = UseFetchGet<Result>(`http://localhost:4000/admin/stats`,'/admin/login')
-  console.log(data)
+  const [data] = UseFetchGet<Result>(`http://localhost:4000/admin/stats`,'/admin/login')
   return (
     <>
      <section className='adminPage bg-white ' >
       <div className='w-full h-32 flex  justify-between items-center'>
         <h2 className='p-3 sm:text-3xl text-2xl sm:ml-10 '>Welcome back <span className='text-indigo-700 font-semibold '>{data?.user.name}</span></h2>
-        <div className='mr-10 sm:flex hidden ' >  
-        <select name="sort" className='border p-2 rounded outline-none border-black' >
-            <option value="1" className='p-2 border bg-white outline-none  rounded-none'>This Week</option>
-            <option value="2" className='p-2 border bg-white outline-none  rounded-none'>This Month</option>
-            <option value="2" className='p-2 border bg-white outline-none  rounded-none'>This Year</option>
-          </select>
-        </div>
       </div>
       <div className='w-full h-auto min-h-96 mt-14 '>
         <div className='sm:flex items-center justify-evenly py-5'>
@@ -55,8 +42,8 @@ export default function HomeAdmin() {
             <p className='sm:text-3xl text-gray-500 pb-5 text-center'>{data?.orderCount}</p>
              </div>
             <div className='sm:w-1/3 w-1/2 h-40 border flex flex-col justify-around '>
-            <p className='capitalize font-bold text-indigo-700 sm:text-xl  flex justify-center items-center'>Total revenue</p>
-            <p className='sm:text-3xl text-gray-500 pb-5 text-center'>{data?.orderAmount.toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</p>
+            <p className='capitalize font-bold text-indigo-700 sm:text-xl  flex justify-center items-center'><i className="fa-solid fa-user  bg-indigo-700 text-white py-2 px-3 rounded mx-1"></i>Total Users</p>
+            <p className='sm:text-3xl text-gray-500 pb-5 text-center'>{data?.totalUsers}</p>
             </div>
           </div>
         </div>

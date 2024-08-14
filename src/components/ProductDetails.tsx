@@ -1,22 +1,12 @@
 import React, {useState } from 'react'
-import { Product, Size } from '../Types/Product'
+import { Product} from '../Types/Product'
 import { useSelector, useDispatch } from 'react-redux'
 import { addToCart, updateQty } from '../Redux/Slice/Cart/Index'
 import { RootState } from '../Redux/Store'
 import { ToastContainer } from 'react-toastify'
 import { toastSuccesss, toastWarning } from './Toast'
-
-type Props = {
-  description:string,
-  name:string,
-  price:number,
-  size:Size[],
-  _id:string,
-  offer:number
-}
 export default function ProductDetails({description,name,price,size,_id,images}:Product) {
   const [qty,setQty] = useState(1)
-console.log('size',size)
   const [shoeSize,setShoeSize] = useState<number>(0)
   const handleSize = (e:React.MouseEvent<HTMLInputElement, MouseEvent>)=>{
     e.preventDefault()
@@ -31,15 +21,13 @@ console.log('size',size)
     let num = 0
     for(let i=0;i<myCart.length;i++){
       if(cart[i].pId === _id){
-        console.log("Product exists in the cart")
         num = i
         exist = true
         break 
       }
     }
     if(exist){
-      dispatch(updateQty({id:cart[num].pId,qty}))
-      console.log('after removing',cart)       
+      dispatch(updateQty({id:cart[num].pId,qty}))     
     }
     else{
       localStorage.setItem('cart',JSON.stringify([...cart,{pId:_id,price:price,qty:qty,name:name,size:shoeSize,image:images[0].url}]))
@@ -48,7 +36,6 @@ console.log('size',size)
       toastSuccesss("Item added to cart")
   }
   const cart = useSelector((state: RootState) => state.cart.cart)
-  console.log(cart)
   const dispatch = useDispatch()
   return (
     <>

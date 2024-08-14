@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { toastError, toastSuccesss,toastWarning } from './Toast'
+import {toastSuccesss,toastWarning } from './Toast'
 import { useNavigate } from 'react-router-dom'
 import { ToastContainer } from 'react-toastify'
 
@@ -40,7 +40,6 @@ export default function SignupForm({ form, setForm }: Props) {
     }catch(e){
       toastWarning("Internal server error")
     }
-    console.log(cred)
   }
   const handlePasswordVisibility = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     e.preventDefault()

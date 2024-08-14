@@ -56,9 +56,10 @@ const stats = AsyncHandler(async(req,res)=>{
     const productCount = await product.countDocuments()
     const orders = await order.find()
     const orderCount = orders.length
+    const users = await user.countDocuments()
     let orderAmount = 0
     orders.forEach((e)=>orderAmount += e.amount)
-    res.status(200).json({success:true,result:{month:monthArray,orders:countArray,revenue:revenueArray,productCount,orderCount,orderAmount,user:userDetails}})
+    res.status(200).json({success:true,result:{month:monthArray,orders:countArray,revenue:revenueArray,productCount,orderCount,orderAmount,user:userDetails,totalUsers:users}})
     
 })
 

@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from 'react'
-import img from "../Assets/Shoe.webp"
 import ProductDetails from './ProductDetails'
 import { useLocation, useNavigate } from 'react-router-dom'
-import { Product ,Images} from '../Types/Product'
+import { Product} from '../Types/Product'
 type Data = {
   success:boolean,
   result:Product
@@ -27,7 +26,6 @@ export default function ProductCard() {
       if(response.status === 404)
         return navigate('/')
       const data:Data = await response.json();
-      console.log("img",data.result.images[0].url)
       setCurrentImage(data.result.images[0].url)
 
       setDetails(data.result)
@@ -40,7 +38,7 @@ export default function ProductCard() {
     useEffect(()=>{
         window.scrollTo(0,0)
         getData()
-    },[])
+    },[])// eslint-disable-line react-hooks/exhaustive-deps
   return (
     <>
      <section className="page sm:flex justify-between items-center mb-5">

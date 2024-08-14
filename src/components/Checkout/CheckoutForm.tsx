@@ -35,10 +35,7 @@ export default function CheckoutForm({select}:Props) {
                 },
                 body: JSON.stringify(body)
               })
-              const {createOrder,key,orderId} = await response.json()
-              console.log(response.status)
-
-            
+              const {createOrder,key,orderId} = await response.json()           
             const options = {
                 key: key, 
                 amount:createOrder.amount, 
@@ -82,14 +79,14 @@ export default function CheckoutForm({select}:Props) {
     console.log(cart)
     useEffect(()=>{
       getAmount()
-    },[])
+    },[])// eslint-disable-line react-hooks/exhaustive-deps
     useEffect(()=>{
       if(cart.length === 0){
         console.log("no items")
         return  navigate('/cart')
       }
        
-    },[])
+    },[])// eslint-disable-line react-hooks/exhaustive-deps
   return (
     <>  
         <div className='border rounded w-full  ' style={{minHeight:"30vh",height:"auto"}}>

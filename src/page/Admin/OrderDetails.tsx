@@ -18,8 +18,7 @@ type Result = {
 export default function OrderDetails() {
     const location = useLocation()
     const navigate = useNavigate()
-    const [data,loading] = UseFetchGet<Result>(`http://localhost:4000/order/userorder?orderId=${location.pathname.split('/')[3]}`,'/admin/orders')
-    console.log(data)
+    const [data] = UseFetchGet<Result>(`http://localhost:4000/order/userorder?orderId=${location.pathname.split('/')[3]}`,'/admin/orders')
   return (
     <>
      <section className="adminPage bg-white flex justify-center items-start pt-16">
@@ -61,7 +60,7 @@ export default function OrderDetails() {
                             </div>
                             </div>
 
-                        <div>aa</div>
+                       
                     </div>
                     <div className='w-1/4 border rounded-lg p-3 mt-5'>
                             <h1 className='font-bold text-xl'>Customer</h1>

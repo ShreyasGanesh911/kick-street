@@ -1,11 +1,26 @@
 import React, { useEffect, useState } from 'react'
-import { Link, useNavigate } from 'react-router-dom';
+import {useNavigate } from 'react-router-dom';
 import {Data , Result} from '../../Types/About'
 export default function AboutUser() {
   const [orders,setOrders] = useState<Result[]>()
   const [details,setDetails] = useState({name:"",email:""})
 
     const navigate = useNavigate()
+    const handleLogout = async(e:React.MouseEvent<HTMLButtonElement, MouseEvent>)=>{
+      try{
+        await fetch('http://localhost:4000/logout', {
+          method: "GET", 
+          mode: "cors", 
+          credentials: "include", 
+          headers: {
+            "Content-Type": "application/json",
+          },
+        });
+          navigate('/')
+      }catch(e){
+        console.log(e)
+      }
+    }
     const checkUser = async()=>{
         try{
           const response = await fetch('http://localhost:4000/user/about', {
@@ -18,13 +33,12 @@ export default function AboutUser() {
           });
           response.status===200 ? navigate('/account'):navigate('/login')
           const data = await response.json()
-          console.log(data.details[0].name)
           setDetails({name:data.details[0].name,email:data.details[0].email})
         }catch(e){console.log(e)}
       }
       useEffect(()=>{
           checkUser()
-      },[])
+      },[])// eslint-disable-line react-hooks/exhaustive-deps
       const getOrders = async()=>{
         try{
           const response = await fetch('http://localhost:4000/order/myorders', {
@@ -36,10 +50,7 @@ export default function AboutUser() {
             },
           });
           const data:Data = await response.json()
-          
-          console.log(data.result)
           setOrders(data.result)
-          console.log("hello test ", data.result[5].items[0].pId.name)
         }catch(e){console.log(e)}
       }
       useEffect(()=>{
@@ -87,11 +98,13 @@ export default function AboutUser() {
         }
          
         </div>
-        <div className='sm:w-1/3 h-32  flex justify-start items-center flex-col'>
+        <div className='sm:w-1/3 h-32  flex justify-start items-center flex-col relative'>
         <h1 className='capitalize text-slate-700  py-3 sm:p-3 text-2xl border-b sm:w-3/4 w-5/6 sm:text-start text-center border-black'>Account details</h1>
         <p className='w-3/4 font-medium'>Name  : {details.name}</p>
         <p className='w-3/4 font-medium'>Email  : {details.email}</p>
+        <button className='border text-white sm:text-base text-sm bg-black rounded px-2 py-1 absolute right-0' onClick={handleLogout}>Logout</button>
         </div>
+       
       </div>
     </section> 
     </>

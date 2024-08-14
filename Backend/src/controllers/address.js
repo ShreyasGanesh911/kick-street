@@ -7,10 +7,10 @@ const ErrorHandler = require("../utils/errorHandler");
 */
 
 const addAddress = AsyncHandler(async(req,res,next)=>{
-    const {addressName,addressLine1,addressLine2,city,state,zipcode,country} = req.body
+    const {addressLine1,addressLine2,city,state,zipcode,country} = req.body
     const {_id} = req.user
     const user = _id
-    await address.create({user,addressName,addressLine1,addressLine2,city,state,zipcode,country})
+    await address.create({user,addressLine1,addressLine2,city,state,zipcode,country})
     res.status(200).json({success:true,message:"Address added successfully"})
 })
 

@@ -7,11 +7,6 @@ import {Product} from '../../Types/Product'
 
 export default function Home() {
   const [products,setProucts] = useState<Product[]>([])
-  const handleClick = (e:React.MouseEvent<HTMLButtonElement, MouseEvent>)=>{
-      e.preventDefault()
-      const value = e.currentTarget.value
-      console.log(value)
-  }
   const getData = async()=>{
     try{
       const response = await fetch('http://localhost:4000/products/all?limit=12', {
@@ -23,7 +18,6 @@ export default function Home() {
         },
       });
       const data = await response.json(); 
-      console.log(data.result[0]._id)
       setProucts(data.result)
     
     }catch(e){
@@ -52,7 +46,7 @@ export default function Home() {
           Men
         </button></Link>
         <Link to='/women' ><button className='sm:w-72 sm:h-72 h-44 w-44 sm:my-0 my-3 bg-black flex justify-center items-center sm:text-2xl text-xl hover:text-3xl hover:delay-75 hover:duration-150'  value='women'>Women</button></Link>
-        <button className='sm:w-72 sm:h-72 h-44 w-44 sm:my-0 my-3 bg-black flex justify-center items-center sm:text-2xl text-xl hover:text-3xl hover:delay-75 hover:duration-150' onClick={handleClick} value='trending'>Trending</button>
+        <button className='sm:w-72 sm:h-72 h-44 w-44 sm:my-0 my-3 bg-black flex justify-center items-center sm:text-2xl text-xl hover:text-3xl hover:delay-75 hover:duration-150'  value='trending'>Trending</button>
       </div>
       <div></div>
      </section>

@@ -14,7 +14,6 @@ export default function CartMobile({pId,name,price,qty,size,image}:Props) {
     const handleRemove = (e:React.MouseEvent<HTMLButtonElement, MouseEvent>)=>{
         e.preventDefault()
         dispatch(removeFromCart(pId))
-        console.log('pressed',pId)
       }
   return (
     <>

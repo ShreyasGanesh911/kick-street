@@ -1,6 +1,4 @@
-import React, { useEffect, useState } from 'react'
 import TableChildAdmin from '../../components/Admin/TableChildAdmin'
-import { useNavigate } from 'react-router-dom'
 import { ToastContainer } from 'react-toastify'
 import UseFetchGet from '../../Hooks/UseFetchGet'
 type Result = {
@@ -11,7 +9,7 @@ type Result = {
   _id : string
 }
 export default function UserAdmin() {
-  const [data,loading] = UseFetchGet<Result[]>("http://localhost:4000/admin/details?type=user",'/admin/login')
+  const [data] = UseFetchGet<Result[]>("http://localhost:4000/admin/details?type=user",'/admin/login')
   return (
     <>
     

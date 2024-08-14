@@ -1,6 +1,6 @@
 import React from 'react'
 import img from '../Assets/Shoe.webp'
-import {Images, Product} from "../Types/Product"
+import {Images} from "../Types/Product"
 import { motion } from 'framer-motion'
 type Props = {
   name:string,
@@ -9,7 +9,6 @@ type Props = {
 }
 
 export default function Card({name,price,images}:Props) {
-  console.log(images[0])
   return (
     <>
       <div className='bg-white rounded w-40 h-56 sm:w-60 sm:h-80 border m-2 hover:border-black  '>

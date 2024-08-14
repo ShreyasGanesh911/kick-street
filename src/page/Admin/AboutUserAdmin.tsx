@@ -1,4 +1,3 @@
-import React, { useEffect, useState } from 'react'
 import { Link, useLocation, useNavigate} from 'react-router-dom'
 import { Result } from '../../Types/About'
 import UseFetchGet from '../../Hooks/UseFetchGet'
@@ -20,8 +19,7 @@ export default function AboutUserAdmin() {
   const location = useLocation()
   const navigate = useNavigate()
 
-  const [data,loading] = UseFetchGet<Data>(`http://localhost:4000/admin/userdetails?userId=${location.pathname.split('/')[3]}`,'/admin/users')
-  console.log('a',data?.orders)
+  const [data] = UseFetchGet<Data>(`http://localhost:4000/admin/userdetails?userId=${location.pathname.split('/')[3]}`,'/admin/users')
   return (
     <>
     <section className="adminPage bg-white text-black flex pt-12 flex-col justify-start items-center">

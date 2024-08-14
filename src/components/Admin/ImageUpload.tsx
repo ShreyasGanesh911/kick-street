@@ -25,10 +25,9 @@ export default function ImageUpload({setImages,images}:Props) {
               body:form
             })
             if(response.ok){
-              console.log('Uploaded')
+
               const data = await response.json()
-              console.log(data.result)
-              if(images.length===3)
+              if(images.length===3 && disable===false)
                 setDisable(true)
               setImages([...images,{url:data.result}])
               setImage(undefined)
@@ -57,14 +56,13 @@ export default function ImageUpload({setImages,images}:Props) {
       const handleRemoveImage = (e:React.MouseEvent<HTMLButtonElement, MouseEvent>)=>{
         e.preventDefault()
         const newImages = images.filter((f)=>f.url !== e.currentTarget.value)
-        console.log(newImages)
         setImages(newImages)
       }
 
   return (
     <>
-        <form className={`h-2/5 w-full ${loading ? "cursor-wait":""}   px-3 displayFlex`}  encType="multipart/form-data">             
-            <div className={`border h-5/6 w-1/2 flex flex-wrap ${!images.length?"justify-center items-center":""} `}>
+        <form className={`h-full w-full ${loading ? "cursor-wait":""}   px-3 displayFlex`}  encType="multipart/form-data">             
+            <div className={`border h-64 w-1/2 flex flex-wrap ${!images.length?"justify-center items-center":""} `}>
                 {images.length?
                     <>
                 {images.map(e=> 
@@ -76,7 +74,7 @@ export default function ImageUpload({setImages,images}:Props) {
                     <p className='text-slate-500 text-lg'> No images</p>  
             }                            
             </div>
-            <div className=' h-5/6 w-1/2 flex justify-center items-center flex-col relative'>
+            <div className=' h-64 w-1/2 flex justify-center items-center flex-col relative '>
                 <div className='border w-3/4 h-3/4 border-dashed border-slate-800 flex justify-center items-center relative'>
                     <input type="file" placeholder='Click here to add images' disabled={images.length === 4} accept="image/*" className=' opacity-0 w-full h-full border cursor-pointer' onChange={(e)=>setImage(e.target.files?.[0])} />
                     <span className='text-slate-500 absolute w-11/12 text-center '>{image? image.name:text}</span>

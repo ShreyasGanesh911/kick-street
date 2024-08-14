@@ -36,13 +36,11 @@ export default function Checkout() {
             response.status===200 ? navigate('/checkout'):navigate('/cart')
             const data:Data = await response.json()
             setAddresses(data.response)
-            console.log(data.response)
-
           }catch(e){console.log(e)}
       }
       useEffect(()=>{
         getAddresses()
-      },[show,setShow])
+      },[show,setShow])// eslint-disable-line react-hooks/exhaustive-deps
 
   return (
     <>
@@ -52,10 +50,13 @@ export default function Checkout() {
             <>
             { addresses?.length ? <>
             {addresses.map(e=>
-              <>
+              <div className={`w-full ${select===e._id && 'bg-slate-50'} flex items-center justify-center   relative`}>
+                
+
+                <input type="radio" onChange={(f)=>setSelect(f.currentTarget.value)} className=' op z-40 border-black    w-40 h-40 border  opacity-0  ' name='address' value={e._id}/>
                 <AddressCard  city={e.city} line1={e.addressLine1} line2={e.addressLine2} state={e.state} zipcode={e.zipcode}/>
-                <input type="radio" onChange={(f)=>setSelect(f.currentTarget.value)} className=' border-black inline-block w-96 rounded-none h-96 border mx-3 opacity-50   relative z-40 bottom-36   hover:bg-neutral-200' name='address' value={e._id}/>
-              </>
+              
+              </div>
             )}
             <br />
             <button className=' h-28 border w-3/4 border-black capitalize sm:my-0 my-3' onClick={()=>setShow(true)}> add address <span className='text-xl'>+</span></button>

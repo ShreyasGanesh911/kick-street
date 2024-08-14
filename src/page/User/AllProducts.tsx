@@ -17,7 +17,6 @@ export default function AllProducts() {
   } 
   const getData = async()=>{
     let gender = undefined
-    console.log(location.pathname.split('/')[1])
     location.pathname.split('/')[1] ==='men' ? gender = 'male':gender = 'female'
     if(location.pathname.split('/')[1] === 'all')
       gender = ''
@@ -42,7 +41,7 @@ export default function AllProducts() {
 },[])
   useEffect(()=>{
     getData()
-  },[sort,brands])
+  },[sort,brands])// eslint-disable-line react-hooks/exhaustive-deps
   return (
     <>
      <section className='page flex justify-start items-center flex-col overflow-hidden'>

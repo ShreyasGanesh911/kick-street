@@ -1,6 +1,6 @@
 .footer-div{
-    width: 99vw;
-    height: 50vh;
+    min-width: 99vw;
+    min-height: 40vh;
     background-color: #264348;
     overflow-x:'hidden' ;
     

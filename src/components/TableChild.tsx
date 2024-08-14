@@ -14,9 +14,7 @@ export default function TableChild({name,price,qty,pId,size,image}:Props) {
   const handleRemove = (e:React.MouseEvent<HTMLButtonElement, MouseEvent>)=>{
     e.preventDefault()
     dispatch(removeFromCart(pId))
-    console.log('pressed',pId)
   }
-  console.log(image)
   return (
     <>
     <tr className='h-28 border-b  '>

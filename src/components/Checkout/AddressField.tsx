@@ -1,14 +1,12 @@
-import React, { Dispatch, SetStateAction, useEffect, useState } from 'react'
+import React, { Dispatch, SetStateAction,useState } from 'react'
 import state from "../../JSON/State.json"
 import { myList} from '../../JSON/test'
-import { useNavigate } from 'react-router-dom'
 
 type Props = {
     show:boolean,   
     setShow : Dispatch<SetStateAction<boolean>>
 }
 export default function AddressField({show,setShow}:Props) {
-    const navigate = useNavigate()
     const[form,setForm] = useState({al1:"",al2:'',state:'',city:'',postcode:undefined,country:'India'})
     const[options,setOptions] = useState<string[]>([])
     const handleChange = (e:React.ChangeEvent<HTMLSelectElement>)=>{
@@ -38,13 +36,10 @@ export default function AddressField({show,setShow}:Props) {
           if(response.status===200){
                 setShow(false)
           }
-        //   const data= await response.json()
-        //   console.log(data)
-        //   console.log(data.response)
     }catch(e){
         console.log(e)
     }
-    console.log(form)
+    
    }
 
   return (

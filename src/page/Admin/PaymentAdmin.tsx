@@ -1,10 +1,7 @@
-import React from 'react'
-import ModalWrapper from '../../components/Modal/ModalWrapper'
-
 export default function PaymentAdmin() {
   return (
-    <>
-    {/* <ModalWrapper/> */}
-    </>
+    <section className='adminPage bg-white text-black flex items-center justify-center'>
+    <h1>Yet to add payments</h1>
+    </section>
   )
 }

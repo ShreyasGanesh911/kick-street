@@ -3,7 +3,7 @@ import '../Styles/Footer.css'
 export default function Footer() {
   return (
     <>
-      <section className='footer-div overflow-hidden'>
+      <section className='footer-div overflow-hidden pb-2'>
       <div className='text-white   my-4 overflow-y-hidden'>
         <h2 className='text-4xl text-center overflow-y-hidden'>Kick Street</h2>
       </div>
@@ -27,12 +27,7 @@ export default function Footer() {
         </div>
         <div>
         <h2 className='text-sky-400'>Policies</h2>
-          <ul>
-          <li>h</li>
-            <li>h</li>
-            <li>h</li>
-            <li>h</li>
-          </ul>
+         
         </div>
         
       </div>
