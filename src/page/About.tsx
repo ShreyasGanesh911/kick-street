@@ -4,7 +4,7 @@ export default function About() {
     <section className='page flex items-start pt-16 justify-center'>
 
       
-      <div className='w-1/3'>
+      <div className='sm:w-1/3 w-11/12'>
       <div className='w-full flex items-center justify-center my-5'>
       <img src={require('../Assets/Logo.png')} className="w-56" alt="" />
       </div>
