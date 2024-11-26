@@ -1,0 +1,849 @@
+[{
+  "_id": {
+    "$oid": "6612a9104ee09729be98aea5"
+  },
+  "name": "adidas OZWEEGO",
+  "description": "SPORTY SHOES WITH A FUTURISTIC OUTLOOK. Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta, necessitatibus corrupti animi natus laboriosam rem eaque laudantium eligendi modi nihil beatae illo. Nihil dignissimos architecto atque ipsum, temporibus tempore perspiciatis culpa rem laboriosam tempora alias in quia corrupti ullam voluptas aliquam esse. Non, ea ipsam!",
+  "rating": 0,
+  "price": 9999,
+  "stock": 20,
+  "gender": "male",
+  "category": [
+    {
+      "$oid": "66124505840da9d6b43af28c"
+    },
+    {
+      "$oid": "6612452b840da9d6b43af28f"
+    }
+  ],
+  "reviews": [],
+  "__v": 0,
+  "size": [
+    {
+      "size": "10",
+      "stock": 5,
+      "_id": {
+        "$oid": "665168c158994afd89a954a4"
+      }
+    },
+    {
+      "size": "11",
+      "stock": 5,
+      "_id": {
+        "$oid": "665168c158994afd89a954a5"
+      }
+    },
+    {
+      "size": "12",
+      "stock": 5,
+      "_id": {
+        "$oid": "665168c158994afd89a954a6"
+      }
+    },
+    {
+      "size": "9",
+      "stock": 5,
+      "_id": {
+        "$oid": "665168c158994afd89a954a3"
+      }
+    }
+  ],
+  "images": [
+    {
+      "url": "http://res.cloudinary.com/dpvxmg0un/image/upload/v1720704139/szhu0rvsyfc9lp8kppo9.webp",
+      "_id": {
+        "$oid": "668fdc9882e5559274d73a7e"
+      }
+    },
+    {
+      "url": "http://res.cloudinary.com/dpvxmg0un/image/upload/v1720704147/ywpzsytrlyrbgc2nx2yo.webp",
+      "_id": {
+        "$oid": "668fdc9882e5559274d73a7f"
+      }
+    },
+    {
+      "url": "http://res.cloudinary.com/dpvxmg0un/image/upload/v1720704151/lusa70dxtxobjmqtq4xr.webp",
+      "_id": {
+        "$oid": "668fdc9882e5559274d73a80"
+      }
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "6612a9884ee09729be98aead"
+  },
+  "name": "Air jordan 1 Low 'Bred Toe 2.0'",
+  "description": "' a modern masterpiece that seamlessly blends heritage with contemporary style. Crafted with precision.Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta, necessitatibus corrupti animi natus laboriosam rem eaque laudantium eligendi modi nihil beatae illo. Nihil dignissimos architecto atque ipsum, temporibus tempore perspiciatis culpa rem laboriosam tempora alias in quia corrupti ullam voluptas aliquam esse. Non, ea ipsam!",
+  "rating": 0,
+  "price": 9999,
+  "stock": 15,
+  "gender": "male",
+  "category": [
+    {
+      "$oid": "66124505840da9d6b43af28c"
+    },
+    {
+      "$oid": "6612452b840da9d6b43af28f"
+    }
+  ],
+  "images": [
+    {
+      "url": "http://res.cloudinary.com/dpvxmg0un/image/upload/v1720702380/wuzofflxrm2pov3pq2hs.webp",
+      "_id": {
+        "$oid": "668fd5b282e5559274d71f96"
+      }
+    },
+    {
+      "url": "http://res.cloudinary.com/dpvxmg0un/image/upload/v1720702418/ep7c72jw10qouodu9gqy.webp",
+      "_id": {
+        "$oid": "668fd5e282e5559274d7209e"
+      }
+    },
+    {
+      "url": "http://res.cloudinary.com/dpvxmg0un/image/upload/v1720702433/hgbpq0sguaaxizxxqucd.webp",
+      "_id": {
+        "$oid": "668fd5e282e5559274d7209f"
+      }
+    }
+  ],
+  "reviews": [],
+  "__v": 0,
+  "size": [
+    {
+      "size": "10",
+      "stock": 5,
+      "_id": {
+        "$oid": "668ecaa489fa10bdbaaa7450"
+      }
+    },
+    {
+      "size": "11",
+      "stock": 5,
+      "_id": {
+        "$oid": "668ecaa489fa10bdbaaa7451"
+      }
+    },
+    {
+      "size": "9",
+      "stock": 5,
+      "_id": {
+        "$oid": "668ecaa489fa10bdbaaa7452"
+      }
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "664ea9415a787f3923fc6c4c"
+  },
+  "name": "yeezy 350 V2",
+  "description": "a distinctive and sought-after addition to the Yeezy lineup. These sneakers feature a captivating blend of Space Ash and Steel Grey hues, creating a unique and versatile colorway",
+  "rating": 0,
+  "price": 24499,
+  "stock": 10,
+  "gender": "male",
+  "category": [
+    {
+      "$oid": "66124505840da9d6b43af28c"
+    }
+  ],
+  "images": [
+    {
+      "url": "http://res.cloudinary.com/dpvxmg0un/image/upload/v1720703187/c6mg5jr1da9lfosrjzaq.webp",
+      "_id": {
+        "$oid": "668fd8de82e5559274d72894"
+      }
+    },
+    {
+      "url": "http://res.cloudinary.com/dpvxmg0un/image/upload/v1720703193/o1rwjbaie5ey8yiwhebr.webp",
+      "_id": {
+        "$oid": "668fd8de82e5559274d72895"
+      }
+    },
+    {
+      "url": "http://res.cloudinary.com/dpvxmg0un/image/upload/v1720703198/pdygrxghccsl3vpfc2tw.webp",
+      "_id": {
+        "$oid": "668fd8de82e5559274d72896"
+      }
+    }
+  ],
+  "size": [
+    {
+      "size": "10",
+      "stock": 5,
+      "_id": {
+        "$oid": "664ea9415a787f3923fc6c4f"
+      }
+    },
+    {
+      "size": "11",
+      "stock": 5,
+      "_id": {
+        "$oid": "664ea9415a787f3923fc6c50"
+      }
+    },
+    {
+      "size": "12",
+      "stock": 5,
+      "_id": {
+        "$oid": "664ea9415a787f3923fc6c51"
+      }
+    },
+    {
+      "size": "8",
+      "stock": 5,
+      "_id": {
+        "$oid": "6686a3363e29f3253b3607a5"
+      }
+    },
+    {
+      "size": "9",
+      "stock": 5,
+      "_id": {
+        "$oid": "664ea9415a787f3923fc6c4e"
+      }
+    }
+  ],
+  "reviews": [],
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6651699258994afd89a954b9"
+  },
+  "name": "air jordan 4 Retro 'Military Blue' 2024",
+  "description": "The 2024 edition of the Air Jordan 4 Retro ‘Military Blue’ also known as 'Industrial Blue' brings back a coveted OG colorway of the legacy silhouette. Smooth off-white leather is utilized on the upper, featuring quarter panel netting and a tonal nubuck forefoot overlay. A vibrant blue Jumpman logo adorns the woven tongue tag, matching the molded eyelets and a back tab marked with Nike Air branding. The sneaker rides on a lightweight polyurethane midsole with encapsulated Air-sole cushioning in the forefoot and a visible Air bag in the heel.",
+  "rating": 0,
+  "price": 13499,
+  "stock": 25,
+  "sale": false,
+  "offer": 0,
+  "gender": "male",
+  "category": {
+    "$oid": "66124505840da9d6b43af28c"
+  },
+  "images": [
+    {
+      "url": "http://res.cloudinary.com/dpvxmg0un/image/upload/v1720703392/vur9vqcdmgfivu8ptzcs.webp",
+      "_id": {
+        "$oid": "668fd9ab82e5559274d73017"
+      }
+    },
+    {
+      "url": "http://res.cloudinary.com/dpvxmg0un/image/upload/v1720703399/fhpho9jauqjxrt7rk3c0.webp",
+      "_id": {
+        "$oid": "668fd9ab82e5559274d73018"
+      }
+    },
+    {
+      "url": "http://res.cloudinary.com/dpvxmg0un/image/upload/v1720703403/wgdnqu3yv1tgjqcmkzhw.webp",
+      "_id": {
+        "$oid": "668fd9ab82e5559274d73019"
+      }
+    }
+  ],
+  "size": [
+    {
+      "size": "10",
+      "stock": 10,
+      "_id": {
+        "$oid": "6651699258994afd89a954bc"
+      }
+    },
+    {
+      "size": "11",
+      "stock": 5,
+      "_id": {
+        "$oid": "6651699258994afd89a954bd"
+      }
+    },
+    {
+      "size": "12",
+      "stock": 5,
+      "_id": {
+        "$oid": "6651699258994afd89a954be"
+      }
+    },
+    {
+      "size": "9",
+      "stock": 5,
+      "_id": {
+        "$oid": "6651699258994afd89a954bb"
+      }
+    }
+  ],
+  "reviews": [],
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "665169e058994afd89a954c1"
+  },
+  "name": "air jordan 1 Mid Tie Dye Zen Master",
+  "description": "The pair then equips a galaxy-like print to the textile overlays in the rear. Here, it’s significantly more saturated than the Retro 4, but its palette and gradient finish is extremely like-minded. Elsewhere, the pair is constructed in a simple white and black leather build, with black nylon tongues, and two-tone sole units completing the design.",
+  "rating": 0,
+  "price": 21999,
+  "stock": 25,
+  "sale": true,
+  "offer": 10,
+  "gender": "male",
+  "category": {
+    "$oid": "66124505840da9d6b43af28c"
+  },
+  "images": [
+    {
+      "url": "http://res.cloudinary.com/dpvxmg0un/image/upload/v1720703916/bllxvr6j8xbp05hgxl45.webp",
+      "_id": {
+        "$oid": "668fdbad82e5559274d732c5"
+      }
+    }
+  ],
+  "size": [
+    {
+      "size": "10",
+      "stock": 10,
+      "_id": {
+        "$oid": "665169e058994afd89a954c4"
+      }
+    },
+    {
+      "size": "11",
+      "stock": 5,
+      "_id": {
+        "$oid": "665169e058994afd89a954c5"
+      }
+    },
+    {
+      "size": "12",
+      "stock": 5,
+      "_id": {
+        "$oid": "665169e058994afd89a954c6"
+      }
+    },
+    {
+      "size": "9",
+      "stock": 5,
+      "_id": {
+        "$oid": "665169e058994afd89a954c3"
+      }
+    }
+  ],
+  "reviews": [],
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "66516a2458994afd89a954c9"
+  },
+  "name": "nike Dunk Low Retro 'Panda'",
+  "description": "The Nike Dunk Low ‘Black White’ treats the retro model to an essential two-tone color scheme that accentuates the sneaker’s clean lines, developed by designer Peter Moore and responsible for the shoe’s easy transition from the hardwood to the street. The leather upper combines a white base with contrasting black overlays that wrap around the toe and heel. On both the woven tongue tag and heel tab, Nike branding in white stands out in relief against a black backdrop.",
+  "rating": 0,
+  "price": 21999,
+  "stock": 25,
+  "sale": false,
+  "offer": 0,
+  "gender": "unisex",
+  "category": {
+    "$oid": "66124505840da9d6b43af28c"
+  },
+  "images": [
+    {
+      "url": "http://res.cloudinary.com/dpvxmg0un/image/upload/v1720703957/thq6kqajw5wj1nrao6hg.webp",
+      "_id": {
+        "$oid": "668fdbde82e5559274d73379"
+      }
+    },
+    {
+      "url": "http://res.cloudinary.com/dpvxmg0un/image/upload/v1720703961/s3dttrso8rrnmc2uvyo4.webp",
+      "_id": {
+        "$oid": "668fdbde82e5559274d7337a"
+      }
+    },
+    {
+      "url": "http://res.cloudinary.com/dpvxmg0un/image/upload/v1720703966/r4spppnap1aovhqvhv8c.webp",
+      "_id": {
+        "$oid": "668fdbde82e5559274d7337b"
+      }
+    }
+  ],
+  "size": [
+    {
+      "size": "10",
+      "stock": 10,
+      "_id": {
+        "$oid": "66516a2458994afd89a954cc"
+      }
+    },
+    {
+      "size": "11",
+      "stock": 5,
+      "_id": {
+        "$oid": "66516a2458994afd89a954cd"
+      }
+    },
+    {
+      "size": "12",
+      "stock": 5,
+      "_id": {
+        "$oid": "66516a2458994afd89a954ce"
+      }
+    },
+    {
+      "size": "9",
+      "stock": 5,
+      "_id": {
+        "$oid": "66516a2458994afd89a954cb"
+      }
+    }
+  ],
+  "reviews": [],
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "66516aad58994afd89a954e6"
+  },
+  "name": "new balance 9060 'Olivine'",
+  "description": "The New Balance 9060 'Olivine' features subtle shades of green throughout the upper, constructed from breathable mesh with suede and synthetic leather overlays. The lifestyle runner is equipped with a padded collar and a translucent TPU heel clip for rearfoot stability. Lightweight cushioning comes courtesy of an exaggerated dual-density ABZORB midsole with SBS cushioning in the heel. Underfoot, a diamond-pattern rubber outsole provides durable traction.",
+  "rating": 0,
+  "price": 19999,
+  "stock": 25,
+  "sale": false,
+  "offer": 0,
+  "gender": "male",
+  "category": {
+    "$oid": "66124505840da9d6b43af28c"
+  },
+  "images": [
+    {
+      "url": "http://res.cloudinary.com/dpvxmg0un/image/upload/v1720703447/cmk0cdignbtainm6eihz.webp",
+      "_id": {
+        "$oid": "668fd9ea82e5559274d73169"
+      }
+    },
+    {
+      "url": "http://res.cloudinary.com/dpvxmg0un/image/upload/v1720703451/r9peehpslu03r0qhziwx.webp",
+      "_id": {
+        "$oid": "668fd9ea82e5559274d7316a"
+      }
+    },
+    {
+      "url": "http://res.cloudinary.com/dpvxmg0un/image/upload/v1720703456/eunzfsgxpwywwpzsr30w.webp",
+      "_id": {
+        "$oid": "668fd9ea82e5559274d7316b"
+      }
+    }
+  ],
+  "size": [
+    {
+      "size": "10",
+      "stock": 10,
+      "_id": {
+        "$oid": "66516aad58994afd89a954e9"
+      }
+    },
+    {
+      "size": "11",
+      "stock": 5,
+      "_id": {
+        "$oid": "66516aad58994afd89a954ea"
+      }
+    },
+    {
+      "size": "12",
+      "stock": 5,
+      "_id": {
+        "$oid": "66516aad58994afd89a954eb"
+      }
+    },
+    {
+      "size": "9",
+      "stock": 5,
+      "_id": {
+        "$oid": "66516aad58994afd89a954e8"
+      }
+    }
+  ],
+  "reviews": [],
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "66516b4558994afd89a954ee"
+  },
+  "name": "supreme x Dunk Low OG SB QS 'Black'",
+  "description": "The New Balance 9060 'Olivine' features subtle shades of green throughout the upper, constructed from breathable mesh with suede and synthetic leather overlays. The lifestyle runner is equipped with a padded collar and a translucent TPU heel clip for rearfoot stability. Lightweight cushioning comes courtesy of an exaggerated dual-density ABZORB midsole with SBS cushioning in the heel. Underfoot, a diamond-pattern rubber outsole provides durable traction.",
+  "rating": 0,
+  "price": 65999,
+  "stock": 5,
+  "sale": false,
+  "offer": 0,
+  "gender": "male",
+  "category": {
+    "$oid": "66124505840da9d6b43af28c"
+  },
+  "images": [
+    {
+      "url": "http://res.cloudinary.com/dpvxmg0un/image/upload/v1720704463/j8scqsudu1mfvegnkbx3.png",
+      "_id": {
+        "$oid": "668fddce82e5559274d74017"
+      }
+    }
+  ],
+  "size": [
+    {
+      "size": "10",
+      "stock": 1,
+      "_id": {
+        "$oid": "66516b4558994afd89a954f0"
+      }
+    },
+    {
+      "size": "11",
+      "stock": 2,
+      "_id": {
+        "$oid": "66516b4558994afd89a954f1"
+      }
+    },
+    {
+      "size": "9",
+      "stock": 2,
+      "_id": {
+        "$oid": "66516b4558994afd89a954f2"
+      }
+    }
+  ],
+  "reviews": [],
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "66516b9d58994afd89a954f5"
+  },
+  "name": "crocs Classic Clog Lightning McQueen ",
+  "description": "The Cars x Crocs Classic Clog ‘Lightning McQueen’ takes inspiration from the vehicular hero of the hit 2006 Pixar film. The character’s likeness, highlighted by windshield eyes and a smiling grille, appears on the red Croslite foam upper. The character’s signature decals are accompanied by functioning LEDs that light up with every step.",
+  "rating": 0,
+  "price": 11999,
+  "stock": 25,
+  "sale": false,
+  "offer": 0,
+  "gender": "male",
+  "category": {
+    "$oid": "66124505840da9d6b43af28c"
+  },
+  "images": [
+    {
+      "url": "http://res.cloudinary.com/dpvxmg0un/image/upload/v1720703007/vucxknx9qnamxjmxs8x2.webp",
+      "_id": {
+        "$oid": "668fd83182e5559274d725e7"
+      }
+    },
+    {
+      "url": "http://res.cloudinary.com/dpvxmg0un/image/upload/v1720703011/ljkwqpxasvke4wreqt8o.webp",
+      "_id": {
+        "$oid": "668fd83182e5559274d725e8"
+      }
+    },
+    {
+      "url": "http://res.cloudinary.com/dpvxmg0un/image/upload/v1720703016/kgjm9fro56indyau5ggb.webp",
+      "_id": {
+        "$oid": "668fd83182e5559274d725e9"
+      }
+    }
+  ],
+  "size": [
+    {
+      "size": "10",
+      "stock": 10,
+      "_id": {
+        "$oid": "66516b9d58994afd89a954f8"
+      }
+    },
+    {
+      "size": "11",
+      "stock": 5,
+      "_id": {
+        "$oid": "66516b9d58994afd89a954f9"
+      }
+    },
+    {
+      "size": "12",
+      "stock": 5,
+      "_id": {
+        "$oid": "66516b9d58994afd89a954fa"
+      }
+    },
+    {
+      "size": "9",
+      "stock": 5,
+      "_id": {
+        "$oid": "66516b9d58994afd89a954f7"
+      }
+    }
+  ],
+  "reviews": [],
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "66516bc958994afd89a954fd"
+  },
+  "name": "crocs Classic Clog Coca-Cola",
+  "description": "Introducing the Crocs Classic Clog in collaboration with Coca-Cola, a refreshing and iconic edition. These Classic Clogs feature Coca-Cola-themed designs, capturing the essence of the beloved beverage brand. Crafted with Croslite™ material, these clogs offer comfort and durability for everyday wear. Whether you're a Coca-Cola enthusiast or looking to add a pop of fun to your style, the Crocs Classic Clog Coca-Cola edition is a must-have. ",
+  "rating": 0,
+  "price": 21999,
+  "stock": 30,
+  "sale": false,
+  "offer": 0,
+  "gender": "male",
+  "category": {
+    "$oid": "66124505840da9d6b43af28c"
+  },
+  "images": [
+    {
+      "url": "http://res.cloudinary.com/dpvxmg0un/image/upload/v1720704006/k0bw1pad3cxn7or4b0ud.webp",
+      "_id": {
+        "$oid": "668fdc0f82e5559274d734ea"
+      }
+    },
+    {
+      "url": "http://res.cloudinary.com/dpvxmg0un/image/upload/v1720704010/eibrlzvjy7bpapkkwijz.webp",
+      "_id": {
+        "$oid": "668fdc0f82e5559274d734eb"
+      }
+    },
+    {
+      "url": "http://res.cloudinary.com/dpvxmg0un/image/upload/v1720704014/sbmpkjavs5ultw7qnr5t.webp",
+      "_id": {
+        "$oid": "668fdc0f82e5559274d734ec"
+      }
+    }
+  ],
+  "size": [
+    {
+      "size": "10",
+      "stock": 10,
+      "_id": {
+        "$oid": "66516bc958994afd89a95500"
+      }
+    },
+    {
+      "size": "11",
+      "stock": 5,
+      "_id": {
+        "$oid": "66516bc958994afd89a95501"
+      }
+    },
+    {
+      "size": "12",
+      "stock": 5,
+      "_id": {
+        "$oid": "66516bc958994afd89a95502"
+      }
+    },
+    {
+      "size": "8",
+      "stock": 5,
+      "_id": {
+        "$oid": "6686a3553e29f3253b3608d3"
+      }
+    },
+    {
+      "size": "9",
+      "stock": 5,
+      "_id": {
+        "$oid": "66516bc958994afd89a954ff"
+      }
+    }
+  ],
+  "reviews": [],
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "66516bf858994afd89a95505"
+  },
+  "name": "asics Gel NYC 'Harbor Blue'",
+  "description": "Introducing the Crocs Classic Clog in collaboration with Coca-Cola, a refreshing and iconic edition. These Classic Clogs feature Coca-Cola-themed designs, capturing the essence of the beloved beverage brand. Crafted with Croslite™ material, these clogs offer comfort and durability for everyday wear. Whether you're a Coca-Cola enthusiast or looking to add a pop of fun to your style, the Crocs Classic Clog Coca-Cola edition is a must-have. ",
+  "rating": 0,
+  "price": 21999,
+  "stock": 37,
+  "sale": false,
+  "offer": 0,
+  "gender": "female",
+  "category": {
+    "$oid": "66124505840da9d6b43af28c"
+  },
+  "images": [
+    {
+      "url": "http://res.cloudinary.com/dpvxmg0un/image/upload/v1720703251/aipybzgf179oyihce2tg.webp",
+      "_id": {
+        "$oid": "668fd91a82e5559274d7293b"
+      }
+    },
+    {
+      "url": "http://res.cloudinary.com/dpvxmg0un/image/upload/v1720703255/som0weo3uzjwqlubegoq.webp",
+      "_id": {
+        "$oid": "668fd91a82e5559274d7293c"
+      }
+    }
+  ],
+  "size": [
+    {
+      "size": "10",
+      "stock": 10,
+      "_id": {
+        "$oid": "66516bf858994afd89a95508"
+      }
+    },
+    {
+      "size": "11",
+      "stock": 5,
+      "_id": {
+        "$oid": "66516bf858994afd89a95509"
+      }
+    },
+    {
+      "size": "12",
+      "stock": 5,
+      "_id": {
+        "$oid": "66516bf858994afd89a9550a"
+      }
+    },
+    {
+      "size": "6",
+      "stock": 12,
+      "_id": {
+        "$oid": "668649403e29f3253b35f885"
+      }
+    },
+    {
+      "size": "9",
+      "stock": 5,
+      "_id": {
+        "$oid": "66516bf858994afd89a95507"
+      }
+    }
+  ],
+  "reviews": [],
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "66516c3058994afd89a9550d"
+  },
+  "name": "balenciaga Track Sneaker 'White Orange'",
+  "description": "Officially debuted in September 2018, the Balenciaga Track Trainer sneaker was first seen on the Paris runways during their Fall 2018 show. The shoe is constructed of a mesh upper outfitted in overlapping protective nylon panels that are attached to its double lacing system. Balenciaga branding appears throughout, while the sneaker's European size number is marked at the toe box. The unique shoe is finished with a sculpted sole.",
+  "rating": 0,
+  "price": 81999,
+  "stock": 25,
+  "sale": false,
+  "offer": 0,
+  "gender": "unisex",
+  "category": {
+    "$oid": "66124505840da9d6b43af28c"
+  },
+  "images": [
+    {
+      "url": "http://res.cloudinary.com/dpvxmg0un/image/upload/v1720703109/h5yi1095fick9qk6xa0n.webp",
+      "_id": {
+        "$oid": "668fd88a82e5559274d72768"
+      }
+    },
+    {
+      "url": "http://res.cloudinary.com/dpvxmg0un/image/upload/v1720703113/fqlaigc6pvg2yyhnvevo.webp",
+      "_id": {
+        "$oid": "668fd88a82e5559274d72769"
+      }
+    }
+  ],
+  "size": [
+    {
+      "size": "10",
+      "stock": 10,
+      "_id": {
+        "$oid": "66516c3058994afd89a95510"
+      }
+    },
+    {
+      "size": "11",
+      "stock": 5,
+      "_id": {
+        "$oid": "66516c3058994afd89a95511"
+      }
+    },
+    {
+      "size": "12",
+      "stock": 5,
+      "_id": {
+        "$oid": "66516c3058994afd89a95512"
+      }
+    },
+    {
+      "size": "9",
+      "stock": 5,
+      "_id": {
+        "$oid": "66516c3058994afd89a9550f"
+      }
+    }
+  ],
+  "reviews": [],
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "66516c7558994afd89a95515"
+  },
+  "name": "converse Chuck Taylor All-Star 70 ",
+  "description": "Introducing the Chuck Taylor All-Star 70 Hi in collaboration with JW Anderson, featuring a vibrant Glitter Yellow Red colorway. These iconic sneakers showcase the imaginative and playful design elements that JW Anderson is known for, with eye-catching glitter detailing. Crafted with attention to detail, the shoes offer both comfort and a bold fashion statement. ",
+  "rating": 0,
+  "price": 9999,
+  "stock": 25,
+  "sale": false,
+  "offer": 0,
+  "gender": "unisex",
+  "category": {
+    "$oid": "66124505840da9d6b43af28c"
+  },
+  "images": [
+    {
+      "url": "http://res.cloudinary.com/dpvxmg0un/image/upload/v1720702969/nfaqhgvcsiambrdbxulg.webp",
+      "_id": {
+        "$oid": "668fd7f982e5559274d72555"
+      }
+    }
+  ],
+  "size": [
+    {
+      "size": "10",
+      "stock": 10,
+      "_id": {
+        "$oid": "66516c7558994afd89a95518"
+      }
+    },
+    {
+      "size": "11",
+      "stock": 5,
+      "_id": {
+        "$oid": "66516c7558994afd89a95519"
+      }
+    },
+    {
+      "size": "12",
+      "stock": 5,
+      "_id": {
+        "$oid": "66516c7558994afd89a9551a"
+      }
+    },
+    {
+      "size": "9",
+      "stock": 5,
+      "_id": {
+        "$oid": "66516c7558994afd89a95517"
+      }
+    }
+  ],
+  "reviews": [],
+  "__v": 0
+}]

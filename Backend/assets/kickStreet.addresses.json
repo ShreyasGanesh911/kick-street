@@ -1,0 +1,46 @@
+[{
+  "_id": {
+    "$oid": "66bc3a64524b9ecb188c8f4e"
+  },
+  "user": {
+    "$oid": "6604164f150e735d76071b7b"
+  },
+  "addressLine1": "#4545 BNM street",
+  "addressLine2": "near This hospital ",
+  "city": "Bengaluru",
+  "state": "Karnataka",
+  "zipcode": 560062,
+  "country": "India",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6618dad47a13bc2a418e4598"
+  },
+  "user": {
+    "$oid": "6604164f150e735d76071b7b"
+  },
+  "addressName": "Home",
+  "addressLine1": "XYZ street",
+  "addressLine2": "Off kankapura Rd",
+  "city": "Bangalore",
+  "state": "Karnataka",
+  "zipcode": 560062,
+  "country": "India",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "668b89360966537415c243b3"
+  },
+  "user": {
+    "$oid": "6604164f150e735d76071b7b"
+  },
+  "addressLine1": "1911 Twin Tower",
+  "addressLine2": "Off kankapura road turahalli forest",
+  "city": "Mysore",
+  "state": "Karnataka",
+  "zipcode": 560062,
+  "country": "India",
+  "__v": 0
+}]

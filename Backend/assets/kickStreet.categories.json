@@ -1,0 +1,24 @@
+[{
+  "_id": {
+    "$oid": "661244b8840da9d6b43af289"
+  },
+  "categoryName": "Athletic",
+  "categoryDesc": "Athletic shoes,  a shoe designed for sporting and physical activities",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "66124505840da9d6b43af28c"
+  },
+  "categoryName": "Sneakers",
+  "categoryDesc": "Sneakers or trainers, we have it all ",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6612452b840da9d6b43af28f"
+  },
+  "categoryName": "Casuals",
+  "categoryDesc": "Your everyday go to shoes ",
+  "__v": 0
+}]

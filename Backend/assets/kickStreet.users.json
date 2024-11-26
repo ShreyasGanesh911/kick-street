@@ -1,0 +1,22 @@
+[{
+  "_id": {
+    "$oid": "66041618150e735d76071b79"
+  },
+  "name": "Shreyas",
+  "email": "shreyas.ganesh911@gmail.com",
+  "phone": 9945333584,
+  "type": "admin",
+  "password": "$2b$10$iGHF9OJ/qxj.sVvEHHH63OwfQaF3O4XniuKnZ0eCDSInsHqSXTHuK",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6604164f150e735d76071b7b"
+  },
+  "name": "Shreyas",
+  "email": "kickStreetisnow@gmail.com",
+  "phone": 123456789,
+  "type": "user",
+  "password": "$2b$10$ayKWBGYfa3kS/sqwj3cFp.3pZhiFqK.3nam.zV4V.UrCzyexg5uke",
+  "__v": 0
+}]

@@ -1,0 +1,427 @@
+[{
+  "_id": {
+    "$oid": "6666a90ebd672ec06b57ec8f"
+  },
+  "user": {
+    "$oid": "6604164f150e735d76071b7b"
+  },
+  "items": [
+    {
+      "pId": {
+        "$oid": "66516c7558994afd89a95515"
+      },
+      "price": 9999,
+      "qty": 1,
+      "size": 10,
+      "_id": {
+        "$oid": "6666a90ebd672ec06b57ec90"
+      }
+    },
+    {
+      "pId": {
+        "$oid": "66516b9d58994afd89a954f5"
+      },
+      "price": 11999,
+      "qty": 1,
+      "size": 10,
+      "_id": {
+        "$oid": "6666a90ebd672ec06b57ec91"
+      }
+    }
+  ],
+  "status": "Placed",
+  "orderDate": {
+    "$date": "2024-06-10T07:17:53.821Z"
+  },
+  "amount": 21998,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6666a9ab9b7122b94912b207"
+  },
+  "user": {
+    "$oid": "6604164f150e735d76071b7b"
+  },
+  "items": [
+    {
+      "pId": {
+        "$oid": "66516c7558994afd89a95515"
+      },
+      "price": 9999,
+      "qty": 1,
+      "size": 10,
+      "_id": {
+        "$oid": "6666a9ab9b7122b94912b208"
+      }
+    },
+    {
+      "pId": {
+        "$oid": "66516b9d58994afd89a954f5"
+      },
+      "price": 11999,
+      "qty": 1,
+      "size": 10,
+      "_id": {
+        "$oid": "6666a9ab9b7122b94912b209"
+      }
+    }
+  ],
+  "status": "Placed",
+  "orderDate": {
+    "$date": "2024-05-10T07:21:57.551Z"
+  },
+  "amount": 21998,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6666a9fb9b7122b94912b280"
+  },
+  "user": {
+    "$oid": "6604164f150e735d76071b7b"
+  },
+  "items": [
+    {
+      "pId": {
+        "$oid": "66516c7558994afd89a95515"
+      },
+      "price": 9999,
+      "qty": 1,
+      "size": 10,
+      "_id": {
+        "$oid": "6666a9fb9b7122b94912b281"
+      }
+    },
+    {
+      "pId": {
+        "$oid": "66516b9d58994afd89a954f5"
+      },
+      "price": 11999,
+      "qty": 1,
+      "size": 10,
+      "_id": {
+        "$oid": "6666a9fb9b7122b94912b282"
+      }
+    }
+  ],
+  "status": "Placed",
+  "orderDate": {
+    "$date": "2024-06-10T07:21:57.551Z"
+  },
+  "amount": 21998,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6666ae149b7122b94912bd77"
+  },
+  "user": {
+    "$oid": "6604164f150e735d76071b7b"
+  },
+  "items": [
+    {
+      "pId": {
+        "$oid": "66516c7558994afd89a95515"
+      },
+      "price": 9999,
+      "qty": 1,
+      "size": 11,
+      "_id": {
+        "$oid": "6666ae149b7122b94912bd78"
+      }
+    }
+  ],
+  "status": "Placed",
+  "orderDate": {
+    "$date": "2024-06-10T07:21:57.551Z"
+  },
+  "amount": 10298,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "666fc71285d8accca6cf2b22"
+  },
+  "user": {
+    "$oid": "6604164f150e735d76071b7b"
+  },
+  "items": [
+    {
+      "pId": {
+        "$oid": "66516bc958994afd89a954fd"
+      },
+      "price": 21999,
+      "qty": 1,
+      "size": 10,
+      "_id": {
+        "$oid": "666fc71285d8accca6cf2b23"
+      }
+    }
+  ],
+  "status": "Placed",
+  "orderDate": {
+    "$date": "2024-06-17T05:06:30.911Z"
+  },
+  "amount": 21999,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "666fc7fc85d8accca6cf2d67"
+  },
+  "user": {
+    "$oid": "6604164f150e735d76071b7b"
+  },
+  "items": [
+    {
+      "pId": {
+        "$oid": "66516c7558994afd89a95515"
+      },
+      "price": 9999,
+      "qty": 1,
+      "size": 10,
+      "_id": {
+        "$oid": "666fc7fc85d8accca6cf2d68"
+      }
+    }
+  ],
+  "status": "Placed",
+  "orderDate": {
+    "$date": "2024-06-17T05:06:30.911Z"
+  },
+  "amount": 10298,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "668b947b25226d2f9055b326"
+  },
+  "user": {
+    "$oid": "6604164f150e735d76071b7b"
+  },
+  "items": [
+    {
+      "pId": {
+        "$oid": "66516b9d58994afd89a954f5"
+      },
+      "price": 11999,
+      "qty": 1,
+      "size": 9,
+      "_id": {
+        "$oid": "668b947b25226d2f9055b327"
+      }
+    }
+  ],
+  "status": "Placed",
+  "orderDate": {
+    "$date": "2024-07-08T07:25:36.972Z"
+  },
+  "amount": 12298,
+  "address": {
+    "$oid": "6618dad47a13bc2a418e4598"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "668bb5e48e4ad4a368ad2ae3"
+  },
+  "user": {
+    "$oid": "6604164f150e735d76071b7b"
+  },
+  "items": [
+    {
+      "pId": {
+        "$oid": "66516b9d58994afd89a954f5"
+      },
+      "price": 11999,
+      "qty": 1,
+      "size": 12,
+      "_id": {
+        "$oid": "668bb5e48e4ad4a368ad2ae4"
+      }
+    }
+  ],
+  "status": "Placed",
+  "orderDate": {
+    "$date": "2024-07-08T09:31:24.759Z"
+  },
+  "amount": 12298,
+  "address": {
+    "$oid": "668b89360966537415c243b3"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "66bb7d9d30b2bf619bcd9bff"
+  },
+  "user": {
+    "$oid": "6604164f150e735d76071b7b"
+  },
+  "items": [
+    {
+      "pId": {
+        "$oid": "66516a2458994afd89a954c9"
+      },
+      "price": 21999,
+      "qty": 1,
+      "size": 12,
+      "_id": {
+        "$oid": "66bb7d9d30b2bf619bcd9c00"
+      }
+    },
+    {
+      "pId": {
+        "$oid": "664ea9415a787f3923fc6c4c"
+      },
+      "price": 24499,
+      "qty": 1,
+      "size": 11,
+      "_id": {
+        "$oid": "66bb7d9d30b2bf619bcd9c01"
+      }
+    }
+  ],
+  "status": "Processing",
+  "orderDate": {
+    "$date": "2024-08-13T14:43:07.395Z"
+  },
+  "amount": 46498,
+  "address": {
+    "$oid": "6618dad47a13bc2a418e4598"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "66bb7e5c30b2bf619bcd9c1c"
+  },
+  "user": {
+    "$oid": "6604164f150e735d76071b7b"
+  },
+  "items": [
+    {
+      "pId": {
+        "$oid": "66516a2458994afd89a954c9"
+      },
+      "price": 21999,
+      "qty": 1,
+      "size": 12,
+      "_id": {
+        "$oid": "66bb7e5c30b2bf619bcd9c1d"
+      }
+    },
+    {
+      "pId": {
+        "$oid": "664ea9415a787f3923fc6c4c"
+      },
+      "price": 24499,
+      "qty": 1,
+      "size": 11,
+      "_id": {
+        "$oid": "66bb7e5c30b2bf619bcd9c1e"
+      }
+    }
+  ],
+  "status": "Processing",
+  "orderDate": {
+    "$date": "2024-08-13T14:43:07.395Z"
+  },
+  "amount": 46498,
+  "address": {
+    "$oid": "668b89360966537415c243b3"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "66bc3ac0524b9ecb188c8f69"
+  },
+  "user": {
+    "$oid": "6604164f150e735d76071b7b"
+  },
+  "items": [
+    {
+      "pId": {
+        "$oid": "66516aad58994afd89a954e6"
+      },
+      "price": 19999,
+      "qty": 1,
+      "size": 11,
+      "_id": {
+        "$oid": "66bc3ac0524b9ecb188c8f6a"
+      }
+    }
+  ],
+  "status": "Placed",
+  "orderDate": {
+    "$date": "2024-08-14T04:55:46.054Z"
+  },
+  "amount": 20298,
+  "address": {
+    "$oid": "66bc3a64524b9ecb188c8f4e"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "674552aac9b77c849de8c27a"
+  },
+  "user": {
+    "$oid": "6604164f150e735d76071b7b"
+  },
+  "items": [
+    {
+      "pId": {
+        "$oid": "66516b4558994afd89a954ee"
+      },
+      "price": 65999,
+      "qty": 1,
+      "size": 10,
+      "_id": {
+        "$oid": "674552aac9b77c849de8c27b"
+      }
+    }
+  ],
+  "status": "Processing",
+  "orderDate": {
+    "$date": "2024-11-26T04:39:45.230Z"
+  },
+  "amount": 65999,
+  "address": {
+    "$oid": "66bc3a64524b9ecb188c8f4e"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "674552c1c9b77c849de8c27e"
+  },
+  "user": {
+    "$oid": "6604164f150e735d76071b7b"
+  },
+  "items": [
+    {
+      "pId": {
+        "$oid": "66516b4558994afd89a954ee"
+      },
+      "price": 65999,
+      "qty": 1,
+      "size": 10,
+      "_id": {
+        "$oid": "674552c1c9b77c849de8c27f"
+      }
+    }
+  ],
+  "status": "Placed",
+  "orderDate": {
+    "$date": "2024-11-26T04:39:45.230Z"
+  },
+  "amount": 65999,
+  "address": {
+    "$oid": "66bc3a64524b9ecb188c8f4e"
+  },
+  "__v": 0
+}]
