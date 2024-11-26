@@ -18,6 +18,7 @@ const UploadToCloudinary = async(filePath:string)=>{
     }catch(e){
         console.log(e)
         fs.unlinkSync(filePath)
+        throw new Error("File upload failed");
     }
 }
 

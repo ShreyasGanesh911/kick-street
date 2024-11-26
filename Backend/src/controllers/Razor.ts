@@ -1,4 +1,4 @@
-require('dotenv').config()
+import 'dotenv/config'
 import Razorpay from 'razorpay';
 import crypto from 'crypto';
 import order from "../models/order.model.js";

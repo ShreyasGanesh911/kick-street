@@ -15,16 +15,7 @@ const months = [
     check monthly / weekly / daily  sales
     check user details
 */
-type User = {
-    _id: string
-    name: string
-    email: string,
-    phone: number
-    type: string
-}
-interface RequestWithAdmin extends Request {
-    admin: User
-}
+
 export const getUserDetails = AsyncHandler(async(req:Request,res:Response)=>{
 
     const {type} = req.query
@@ -32,7 +23,7 @@ export const getUserDetails = AsyncHandler(async(req:Request,res:Response)=>{
     res.status(200).json({success:true,result:details})
 })
 
-export const stats = AsyncHandler(async(req:RequestWithAdmin,res:Response)=>{
+export const stats = AsyncHandler(async(req:Request,res:Response)=>{
     const userDetails = req.admin
     
     const data = await order.aggregate([
